@@ -47,8 +47,16 @@ export default function Home() {
         gap={6}
       >
         {ListCard.map((item) => (
-          <HStack key={item.title} bg="#101B2D" borderRadius="24px">
-            <Box height="240px" width="240px">
+          <HStack
+            className="animate__animated animate__bounceIn animate__delay-0.2s"
+            padding={6}
+            gap={6}
+            key={item.title}
+            bg="#101B2D"
+            borderRadius="24px"
+            flexWrap={{ md: "nowrap", base: "wrap" }}
+          >
+            <Box>
               <Image
                 src={item.image}
                 width="full"
@@ -57,7 +65,7 @@ export default function Home() {
               />
             </Box>
 
-            <Box padding={6}>
+            <Box>
               <Text fontSize="32px" fontWeight="900">
                 {item.title}
               </Text>
