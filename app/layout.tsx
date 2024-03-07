@@ -2,7 +2,7 @@ import DefaultLayout from "@/components/DefaultLayout";
 import ChakraProvider from "@/providers/ChakraProvider";
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-
+import "./global.css";
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

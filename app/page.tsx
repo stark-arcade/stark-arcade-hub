@@ -46,9 +46,9 @@ export default function Home() {
         templateColumns={{ md: "repeat(2, 1fr)", base: "repeat(1,1fr)" }}
         gap={6}
       >
-        {ListCard.map((item) => (
+        {ListCard.map((item, index) => (
           <HStack
-            className="animate__animated animate__bounceIn animate__delay-0.2s"
+            className={`animate__animated animate__bounceIn animate__delay-${index}s`}
             padding={6}
             gap={6}
             key={item.title}
