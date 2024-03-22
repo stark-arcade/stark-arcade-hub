@@ -14,23 +14,23 @@ export default function Home() {
   const ListCard: ICardProps[] = [
     {
       image: "/assets/art/coinflip.png",
-      title: "Flip Coin",
+      title: "StarkFlip",
       content:
-        'During a coin toss, the coin is thrown into the air such that it rotates edge-over-edge several times. Either beforehand or when the coin is in the air, an interested party declares "heads" or "tails", indicating which side of the coin that party is choosing. The other party is assigned the opposite side. Depending on custom, the coin may be caught; caught and inverted; or allowed to land on the ground. ',
+        "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
       link: "https://coinflip.decolgenlabs.com/",
     },
     {
       image: "/assets/art/gameble.png",
-      title: "Sport Betting",
+      title: "StarkBet",
       content:
-        'During a coin toss, the coin is thrown into the air such that it rotates edge-over-edge several times. Either beforehand or when the coin is in the air, an interested party declares "heads" or "tails", indicating which side of the coin that party is choosing. The other party is assigned the opposite side. Depending on custom, the coin may be caught; caught and inverted; or allowed to land on the ground. ',
+        "Put your sports alpha to the ultimate test for a shot in the most sporty realm on Starknet. This battle-hardened arena separates the plebs & jeeters from the real chads.",
       link: "https://sports.decolgenlabs.com/",
     },
     {
       image: "/assets/art/lottery.png",
-      title: "Lottery",
+      title: "StarkPot 6/45",
       content:
-        'During a coin toss, the coin is thrown into the air such that it rotates edge-over-edge several times. Either beforehand or when the coin is in the air, an interested party declares "heads" or "tails", indicating which side of the coin that party is choosing. The other party is assigned the opposite side. Depending on custom, the coin may be caught; caught and inverted; or allowed to land on the ground. ',
+        "Jackpot dreams crystallized on the Starknet. Each spin births a new Stark whale, chasing generational wealth with every decentralized draw. The numbers await - deploy your degen strategies and claim your destined wealth.",
       link: "https://lottery.starkarcade.com/",
     },
     {
