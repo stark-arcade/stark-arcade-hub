@@ -1,13 +1,14 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import ListPageItem from "./ListPageItem";
+import LogoStarkHub from "../Logo";
 
 const Header = () => {
   return (
     <HStack justifyContent="space-between">
       <Link href="/">
-        <Text>StarkLogo</Text>
+        <LogoStarkHub />
       </Link>
       <ListPageItem />
     </HStack>

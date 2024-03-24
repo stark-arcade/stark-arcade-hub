@@ -22,7 +22,7 @@ const Button: ComponentStyleConfig = {
       transition: "all .3s",
       _hover: {
         bg: "#85D4F0",
-        boxShadow:'0px 0px 32px #85D4F0'
+        boxShadow: "0px 0px 32px #85D4F0",
       },
     },
   },

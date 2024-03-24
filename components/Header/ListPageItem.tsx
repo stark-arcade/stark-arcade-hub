@@ -4,23 +4,86 @@ import {
   Center,
   HStack,
   Icon,
-  IconButton,
   Text,
+  Link,
+  Box,
 } from "@chakra-ui/react";
-import Link from "next/link";
+
 import React from "react";
-import LogoIcon from "@/public/assets/logo/logo.svg";
-import LogoIconPrimary from "@/public/assets/logo/logo_primary.svg";
+import LogoIcon from "@/public/assets/logo/logo-lab.svg";
+import DiscordIcon from "@/public/general/discord.svg";
+import TwitterIcon from "@/public/general/twitter.svg";
+
 const ListPageItem = () => {
+  const ListLink = [
+    { link: "/", inside: true, content: "Home" },
+    {
+      link: "https://twitter.com/starkarcade",
+
+      content: "Twitter",
+    },
+    {
+      link: "https://discord.gg/n93qp8AW",
+      content: "Discord",
+    },
+  ];
   return (
     <>
-      <HStack gap={5} py={6} display={{ md: "flex", base: "none" }}>
-        <Link href="/">
-          <Text fontWeight="700">Home</Text>
-        </Link>
-        <Link href="/contact-us">
-          <Text fontWeight="700">Contact Us</Text>
-        </Link>
+      <HStack gap={8}>
+        <HStack
+          gap={{ lg: 12, md: 8 }}
+          py={6}
+          display={{ md: "flex", base: "none" }}
+          fontSize="xl"
+        >
+          {ListLink.map((item) => (
+            <Link
+              key={item.link}
+              href={item.link}
+              target={`${item.link == "/" ? "" : "_blank"}`}
+              textDecoration="none!important"
+            >
+              <Text
+                fontWeight="800"
+                fontSize="xl"
+                transition="all .4s"
+                _hover={{
+                  color: "#33C7F1",
+                }}
+              >
+                {item.content}
+              </Text>
+            </Link>
+          ))}
+        </HStack>
+
+        <HStack height="full" display={{ md: "none", base: "flex" }} gap={4}>
+          <Link
+            href="https://twitter.com/starkarcade"
+            target="_blank"
+            alignSelf="center"
+            display="flex"
+            transition="all .4s"
+            _hover={{
+              color: "#33C7F1",
+            }}
+          >
+            <Icon as={DiscordIcon} height={12} w={12} />
+          </Link>
+          <Link
+            target="_blank"
+            height="full"
+            href="https://discord.gg/n93qp8AW"
+            alignSelf="center"
+            display="flex"
+            transition="all .4s"
+            _hover={{
+              color: "#33C7F1",
+            }}
+          >
+            <Icon as={TwitterIcon} height={12} w={12} />
+          </Link>
+        </HStack>
         <Link href="https://www.decolgenlabs.com/" target="_blank">
           <Button
             role="group"

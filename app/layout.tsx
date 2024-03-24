@@ -4,10 +4,17 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./global.css";
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
-
+import Favicon from "@/app/favicon.ico";
 export const metadata: Metadata = {
   title: "StarkArcade Hub | DecolgenLabs",
   description: "Keep Building Work Hard",
+  icons: {
+    icon: Favicon.src,
+    shortcut: Favicon.src,
+    apple: Favicon.src,
+    other: { rel: "apple-touch-icon-precomposed", url: Favicon.src },
+  },
+  keywords: ["StarkArcade", "What is StarkArcade"],
 };
 
 export default function RootLayout({
