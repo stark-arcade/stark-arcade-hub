@@ -15,22 +15,10 @@ import DiscordIcon from "@/public/general/discord.svg";
 import TwitterIcon from "@/public/general/twitter.svg";
 
 const ListPageItem = () => {
-  const ListLink = [
-    { link: "/", inside: true, content: "Home" },
-    {
-      link: "https://twitter.com/starkarcade",
-
-      content: "Twitter",
-    },
-    {
-      link: "https://discord.gg/n93qp8AW",
-      content: "Discord",
-    },
-  ];
   return (
     <>
-      <HStack gap={8}>
-        <HStack
+      <HStack gap={{ lg: 6, base: 4 }}>
+        {/* <HStack
           gap={{ lg: 12, md: 8 }}
           py={6}
           display={{ md: "flex", base: "none" }}
@@ -55,35 +43,34 @@ const ListPageItem = () => {
               </Text>
             </Link>
           ))}
-        </HStack>
+        </HStack> */}
 
-        <HStack height="full" display={{ md: "none", base: "flex" }} gap={4}>
-          <Link
-            href="https://twitter.com/starkarcade"
-            target="_blank"
-            alignSelf="center"
-            display="flex"
-            transition="all .4s"
-            _hover={{
-              color: "#33C7F1",
-            }}
-          >
-            <Icon as={DiscordIcon} height={12} w={12} />
-          </Link>
-          <Link
-            target="_blank"
-            height="full"
-            href="https://discord.gg/n93qp8AW"
-            alignSelf="center"
-            display="flex"
-            transition="all .4s"
-            _hover={{
-              color: "#33C7F1",
-            }}
-          >
-            <Icon as={TwitterIcon} height={12} w={12} />
-          </Link>
-        </HStack>
+        <Link
+          href="https://twitter.com/starkarcade"
+          target="_blank"
+          alignSelf="center"
+          display="flex"
+          transition="all .4s"
+          _hover={{
+            color: "#33C7F1",
+          }}
+        >
+          <Icon as={TwitterIcon} height={12} w={12} />
+        </Link>
+        <Link
+          target="_blank"
+          height="full"
+          href="https://discord.gg/n93qp8AW"
+          alignSelf="center"
+          display="flex"
+          transition="all .4s"
+          _hover={{
+            color: "#33C7F1",
+          }}
+        >
+          <Icon as={DiscordIcon} height={12} w={12} />
+        </Link>
+
         <Link href="https://www.decolgenlabs.com/" target="_blank">
           <Button
             role="group"

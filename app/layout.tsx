@@ -7,7 +7,8 @@ const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 import Favicon from "@/app/favicon.ico";
 export const metadata: Metadata = {
   title: "StarkArcade Hub | DecolgenLabs",
-  description: "Keep Building Work Hard",
+  description:
+    "Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens. The first product with upcominng Beta will be a CoinFlip game, allowing folks to place bets and multiply their $ETH holdings on Starknet",
   icons: {
     icon: Favicon.src,
     shortcut: Favicon.src,

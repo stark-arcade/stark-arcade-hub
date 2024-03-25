@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Grid, HStack, Image, Text } from "@chakra-ui/react";
+import { Flex, Grid, HStack, Image, Text } from "@chakra-ui/react";
 
 interface ICardProps {
   image: string;
@@ -33,7 +33,7 @@ export default function Home() {
     },
     {
       image: "/assets/art/stark-pot.svg",
-      title: "StarkPot",
+      title: "StarkPot 6/45",
       content:
         "Jackpot dreams crystallized on the Starknet. Each spin births a new Stark whale, chasing generational wealth with every decentralized draw. The numbers await - deploy your degen strategies and claim your destined wealth.",
       link: "https://lottery.starkarcade.com/",
@@ -42,7 +42,7 @@ export default function Home() {
     },
     {
       image: "/assets/art/coming.svg",
-      title: "Coming",
+      title: "Coming Moon",
       content: "We are Coming!",
       theme: "#8F7729",
       hoverColor: "#E4CB4A",
