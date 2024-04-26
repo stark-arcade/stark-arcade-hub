@@ -27,7 +27,7 @@ export default function Home() {
       title: "StarkBet",
       content:
         "Put your sports alpha to the ultimate test for a shot in the most sporty realm on Starknet. This battle-hardened arena separates the plebs & jeeters from the real chads.",
-      link: "https://sports.decolgenlabs.com/",
+      // link: "https://sports.decolgenlabs.com/",
       theme: "#619C03",
       hoverColor: "#7BBA16",
     },
@@ -36,7 +36,7 @@ export default function Home() {
       title: "StarkPot 6/45",
       content:
         "Jackpot dreams crystallized on the Starknet. Each spin births a new Stark whale, chasing generational wealth with every decentralized draw. The numbers await - deploy your degen strategies and claim your destined wealth.",
-      link: "https://lottery.starkarcade.com/",
+      link: "https://starkpot.starkarcade.com/",
       theme: "#062451",
       hoverColor: "#174282",
     },
@@ -77,6 +77,7 @@ export default function Home() {
             flexWrap={{ md: "nowrap", base: "wrap" }}
           >
             <Image
+              aria-label="Starknet Arcade Hub"
               src={item.image}
               width={{ md: "320px", base: "full" }}
               height={{ md: "320px", base: "300px" }}

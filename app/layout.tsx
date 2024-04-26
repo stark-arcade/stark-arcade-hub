@@ -6,7 +6,7 @@ import "./global.css";
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 import Favicon from "@/app/favicon.ico";
 export const metadata: Metadata = {
-  title: "StarkArcade Hub | DecolgenLabs",
+  title: "StarkArcade Hub",
   description:
     "Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens. The first product with upcominng Beta will be a CoinFlip game, allowing folks to place bets and multiply their $ETH holdings on Starknet",
   icons: {
@@ -16,6 +16,19 @@ export const metadata: Metadata = {
     other: { rel: "apple-touch-icon-precomposed", url: Favicon.src },
   },
   keywords: ["StarkArcade", "What is StarkArcade"],
+  openGraph: {
+    title: "StarkArcade Hub",
+    description:
+      "Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens. The first product with upcominng Beta will be a CoinFlip game, allowing folks to place bets and multiply their $ETH holdings on Starknet",
+    images: [
+      {
+        url: "./public/assets/banner/banner.png",
+        width: 1200,
+        height: 600,
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
