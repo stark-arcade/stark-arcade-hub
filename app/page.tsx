@@ -14,22 +14,31 @@ interface ICardProps {
 export default function Home() {
   const ListCard: ICardProps[] = [
     {
+      image: "/assets/art/tetris.png",
+      title: "Tetris",
+      content:
+        "Get ready to twist, turn, and drop your way to high scores in this timeless classic, now reimagined on the blockchain. ",
+      link: "https://tetris-game.starkarcade.com/",
+      theme: "#6322CB",
+      hoverColor: "#8E57E2",
+    },
+    {
+      image: "/assets/art/2048.png",
+      title: "2048",
+      content:
+        "Dive into the numbers and challenge your strategic skills with StarkArcade's on-chain 2048 game.",
+      link: "https://2048-game.starkarcade.com/",
+      theme: "#098284",
+      hoverColor: "#17AB93",
+    },
+    {
       image: "/assets/art/stark-flip.svg",
       title: "StarkFlip",
       content:
-        "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
-      link: "https://coinflip.decolgenlabs.com/",
+        "The simplest Game, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+      link: "https://starkflip.starkarcade.com/",
       theme: "#0F8662",
       hoverColor: "#15B484",
-    },
-    {
-      image: "/assets/art/stark-bet.svg",
-      title: "StarkBet",
-      content:
-        "Put your sports alpha to the ultimate test for a shot in the most sporty realm on Starknet. This battle-hardened arena separates the plebs & jeeters from the real chads.",
-      // link: "https://sports.decolgenlabs.com/",
-      theme: "#619C03",
-      hoverColor: "#7BBA16",
     },
     {
       image: "/assets/art/stark-pot.svg",
