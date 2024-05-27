@@ -1,10 +1,11 @@
 import DefaultLayout from "@/components/DefaultLayout";
-import ChakraProvider from "@/providers/ChakraProvider";
+
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./global.css";
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 import Favicon from "@/app/favicon.ico";
+import ProviderApp from "@/providers/ProviderApp";
 export const metadata: Metadata = {
   title: "StarkArcade Hub",
   description:
@@ -45,9 +46,9 @@ export default function RootLayout({
         />
       </head>
       <body className={nunitoSans.className}>
-        <ChakraProvider>
+        <ProviderApp>
           <DefaultLayout>{children}</DefaultLayout>
-        </ChakraProvider>
+        </ProviderApp>
       </body>
     </html>
   );

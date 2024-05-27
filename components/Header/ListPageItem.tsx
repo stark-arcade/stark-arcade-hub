@@ -13,37 +13,78 @@ import React from "react";
 import LogoIcon from "@/public/assets/logo/logo-lab.svg";
 import DiscordIcon from "@/public/general/discord.svg";
 import TwitterIcon from "@/public/general/twitter.svg";
-
+import ConnectWallet from "../ConnectWallet";
+import { useWalletContext } from "@/providers/ProviderContext";
+import ProfileDrawer from "../Profile/ProfileDrawer";
+interface ILinkProps {
+  link: string;
+  content: string;
+  isDisabled?: boolean;
+}
 const ListPageItem = () => {
+  const { address } = useWalletContext();
+  const ListLink: ILinkProps[] = [
+    {
+      link: "/",
+      content: "LeaderBoard",
+      isDisabled: true,
+    },
+    {
+      link: "/roadmap",
+      content: "Roadmap",
+      isDisabled: true,
+    },
+    {
+      link: "/faq",
+      content: "FAQ",
+      isDisabled: true,
+    },
+  ];
   return (
     <>
       <HStack gap={{ lg: 6, base: 4 }}>
-        {/* <HStack
+        <HStack
           gap={{ lg: 12, md: 8 }}
           py={6}
           display={{ md: "flex", base: "none" }}
           fontSize="xl"
         >
           {ListLink.map((item) => (
-            <Link
-              key={item.link}
-              href={item.link}
-              target={`${item.link == "/" ? "" : "_blank"}`}
-              textDecoration="none!important"
-            >
-              <Text
-                fontWeight="800"
-                fontSize="xl"
-                transition="all .4s"
-                _hover={{
-                  color: "#33C7F1",
-                }}
-              >
-                {item.content}
-              </Text>
-            </Link>
+            <>
+              {item.isDisabled ? (
+                <Button
+                  isDisabled
+                  variant="unstyled"
+                  fontWeight="800"
+                  fontSize="xl"
+                  color="#FFFFFF"
+                  key={item.link}
+                  opacity={0.5}
+                >
+                  {item.content}
+                </Button>
+              ) : (
+                <Link
+                  key={item.link}
+                  href={item.link}
+                  textDecoration="none!important"
+                >
+                  <Text
+                    fontWeight="800"
+                    fontSize="xl"
+                    color="#FFFFFF"
+                    transition="all .4s"
+                    _hover={{
+                      color: "#33C7F1",
+                    }}
+                  >
+                    {item.content}
+                  </Text>
+                </Link>
+              )}
+            </>
           ))}
-        </HStack> */}
+        </HStack>
 
         <Link
           href="https://twitter.com/starkarcade"
@@ -70,8 +111,9 @@ const ListPageItem = () => {
         >
           <Icon as={DiscordIcon} height={12} w={12} />
         </Link>
+        {address ? <ProfileDrawer /> : <ConnectWallet />}
 
-        <Link href="https://www.decolgenlabs.com/" target="_blank">
+        {/* <Link href="https://www.decolgenlabs.com/" target="_blank">
           <Button
             role="group"
             leftIcon={
@@ -94,7 +136,7 @@ const ListPageItem = () => {
           >
             Lab
           </Button>
-        </Link>
+        </Link> */}
       </HStack>
     </>
   );
