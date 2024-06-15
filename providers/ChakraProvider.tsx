@@ -1,8 +1,6 @@
 /* eslint-disable react/display-name */
 "use client";
 
-import GoogleAnalytics from "@/components/SEO/GoogleAnalytics";
-
 import theme from "@/themes";
 import { ChakraProvider } from "@chakra-ui/react";
 

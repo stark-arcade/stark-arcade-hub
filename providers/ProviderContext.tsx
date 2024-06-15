@@ -12,7 +12,7 @@ interface IWalletConnectionProps {
   connectWallet: (index: number) => void;
   disconnectWallet: () => void;
   address?: string;
-  chain_id?: number; // SNIPPET chain ID is Argentx or Bravoos
+  chain_id?: number;
 }
 const initalValue: IWalletConnectionProps = {
   connectWallet: () => {},
@@ -49,7 +49,6 @@ const ProviderWalletContext = ({ children }: PropsWithChildren) => {
   const connectWallet = async (index: number) => {
     try {
       connect({ connector: connectors[index] });
-
       setChainId(index);
     } catch (error) {
       toast({
