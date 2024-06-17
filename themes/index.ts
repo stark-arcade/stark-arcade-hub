@@ -20,7 +20,7 @@ const styles = {
   // eslint-disable-next-line no-unused-vars
   global: () => ({
     body: {
-      bg: "##18181B",
+      bg: "#18181B",
       color: "white",
     },
   }),

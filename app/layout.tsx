@@ -5,6 +5,7 @@ import "./globals.css";
 const nuto = Nunito_Sans({ subsets: ["latin"] });
 import Favicon from "@/app/favicon.ico";
 import ProviderApp from "@/provider";
+import DefaultLayout from "@/layouts/default";
 export const metadata: Metadata = {
   title: "StarkArcade Hub",
   description:
@@ -31,7 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nuto.className}>
-        <ProviderApp>{children}</ProviderApp>
+        <ProviderApp>
+          <DefaultLayout>{children}</DefaultLayout>
+        </ProviderApp>
       </body>
     </html>
   );

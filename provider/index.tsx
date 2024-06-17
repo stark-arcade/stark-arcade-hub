@@ -1,3 +1,4 @@
+"use client";
 import React, { PropsWithChildren } from "react";
 import ProviderChakra from "./ProviderChakra";
 import ProviderStarknet from "./ProviderStarknet";
