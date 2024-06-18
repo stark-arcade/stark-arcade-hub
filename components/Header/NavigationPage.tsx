@@ -48,6 +48,7 @@ const NavigationPage = () => {
 
                 "&:hover": {
                   textDecoration: "none",
+                  color: "primary.600",
                 },
               }}
             >

@@ -9,6 +9,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { useAccount, useConnect } from "@starknet-react/core";
 import { useDispatch } from "react-redux";
 import { setUserAdress } from "@/redux/user/user-slice";
+import ButonDecolgenLab from "../Button/ButonDecolgenLab";
+import ProfileAccount from "../Account/ProfileAccount";
 
 const Header = () => {
   const { userAddress, prevConnector } = useAuth();
@@ -56,6 +58,8 @@ const Header = () => {
     <HStack
       as="header"
       px={10}
+      zIndex={99}
+      position="sticky"
       py={5}
       background="shader.800"
       justifyContent="space-between"
@@ -70,7 +74,13 @@ const Header = () => {
         />
       </HStack>
       <NavigationPage />
-      <ConnectWallet />
+      <HStack gap={6}>
+        <ButonDecolgenLab />
+        {
+          // eslint-disable-next-line no-nested-ternary
+          userAddress ? <ProfileAccount /> : <ConnectWallet />
+        }
+      </HStack>
     </HStack>
   );
 };

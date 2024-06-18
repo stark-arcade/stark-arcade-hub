@@ -32,7 +32,21 @@ export const colors = {
 
 const Button: ComponentStyleConfig = {
   variants: {
-    primary: {},
+    primary: {
+      background: "shader.500",
+      py: 2,
+      px: 6,
+      borderRadius: "100px",
+    },
+  },
+};
+const Text: ComponentStyleConfig = {
+  variants: {
+    gradient_text: {
+      background: "gradient.100",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    },
   },
 };
 const styles = {
@@ -44,11 +58,50 @@ const styles = {
     },
   }),
 };
+
+export const Menu: ComponentStyleConfig = {
+  variants: {
+    profile: {
+      list: {
+        // this will style the MenuList component
+        py: "4",
+
+        borderRadius: "xl",
+        border: "none",
+        bg: "shader.700",
+      },
+      item: {
+        bg: "inherit",
+        color: "shader.500",
+        pl: 5,
+        display: "flex",
+        gap: 4,
+        _hover: {
+          bg: "primary.600",
+          color: "white",
+        },
+      },
+      command: {
+        opacity: "0.8",
+        fontFamily: "mono",
+        fontSize: "sm",
+        letterSpacing: "tighter",
+        pl: "4",
+      },
+      divider: {
+        // this will style the MenuDivider component
+        my: "4",
+      },
+    },
+  },
+};
 const theme = extendTheme({
   colors,
   styles,
   components: {
     Button,
+    Text,
+    Menu,
   },
 });
 
