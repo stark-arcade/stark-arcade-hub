@@ -63,9 +63,8 @@ export const Menu: ComponentStyleConfig = {
   variants: {
     profile: {
       list: {
-        // this will style the MenuList component
-        py: "4",
-
+        py: 4,
+        px: 2,
         borderRadius: "xl",
         border: "none",
         bg: "shader.700",
@@ -73,8 +72,11 @@ export const Menu: ComponentStyleConfig = {
       item: {
         bg: "inherit",
         color: "shader.500",
-        pl: 5,
+        py: 2,
+        px: 4,
+        borderRadius: "2xl",
         display: "flex",
+        fontWeight: "700",
         gap: 4,
         _hover: {
           bg: "primary.600",

@@ -4,19 +4,23 @@ import React from "react";
 import StarkArcadeTextLogo from "@/public/assets/logo/stark-text.svg";
 import StarkArcadeLogo from "@/public/assets/logo/logo.svg";
 import DecolgenLogo from "@/public/assets/logo/logo_decolgen.svg";
+import { colors } from "@/themes";
+import { convertHex } from "@/utils/convertHex";
 const HeroSection = () => {
   return (
-    <VStack flexDirection="column" position="relative" py={24}>
+    <VStack flexDirection="column" position="relative" pt={10}>
       <Box
-        background="gradient.100"
+        backgroundImage={`radial-gradient(closest-side, ${convertHex(
+          "#E3FF74",
+          1
+        )} ,${convertHex("#E37C39", 1)})`}
         height={400}
         width={400}
         borderRadius="100%"
         position="absolute"
         top={-100}
-        filter="blur(8px)" // Add this line to apply the blur effect
         zIndex={-2}
-        opacity={0.2}
+        filter="blur(320px)"
       />
       <Box textAlign="center" fontSize="40px" fontWeight="bold" width={620}>
         Accelerate the world's transition to 
@@ -50,7 +54,7 @@ const HeroSection = () => {
       <ScrollButton
         sx={{
           position: "absolute",
-          bottom: 0,
+          bottom: "20%",
         }}
       />
     </VStack>

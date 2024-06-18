@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import "./globals.css";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./global.css";
 const nuto = Nunito_Sans({ subsets: ["latin"] });
 import Favicon from "@/app/favicon.ico";
 import ProviderApp from "@/provider";

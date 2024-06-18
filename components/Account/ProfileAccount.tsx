@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WalletIcon from "@/public/assets/icons/wallet.svg";
 import VerifyIcon from "@/public/assets/icons/verified.svg";
+import ProfileIcon from "@/public/assets/icons/profile.svg";
 import LogoutIcon from "@/public/assets/icons/logout.svg";
 import FAQIcon from "@/public/assets/icons/anoymos.svg";
 import { useContractRead } from "@starknet-react/core";
@@ -12,7 +13,6 @@ import {
   Divider,
   HStack,
   Icon,
-  Link,
   Menu,
   MenuButton,
   MenuItem,
@@ -20,7 +20,9 @@ import {
   Skeleton,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { ellipseMiddle } from "@/utils/formatAddress";
+import { colors } from "@/themes";
 
 const ProfileAccount = () => {
   const { userAddress, disconnectWallet } = useAuth();
@@ -29,6 +31,7 @@ const ProfileAccount = () => {
     abi: ABIS.UserPointABI,
     args: [userAddress ? userAddress : ""],
     address: CONTRACT_ADDRESS.USER_POINT,
+    watch: false,
   });
   return (
     <Menu variant="profile" matchWidth={true}>
@@ -64,6 +67,26 @@ const ProfileAccount = () => {
         </HStack>
       </MenuButton>
       <MenuList>
+        <HStack justifyContent="center" mb={2}>
+          <Icon
+            as={VerifyIcon}
+            height={6}
+            width={6}
+            sx={{
+              path: {
+                _first: {
+                  fill: "url(#paint0_linear_746_1465)",
+                },
+                _last: {
+                  fill: "url(#paint1_linear_746_1465)",
+                },
+              },
+            }}
+          />
+          <Text fontWeight="bold" variant="gradient_text">
+            Rank: #1st
+          </Text>
+        </HStack>
         <MenuItem
           display={{
             xl: "none",
@@ -77,7 +100,7 @@ const ProfileAccount = () => {
                 {dataPoint && !isLoadingPoint ? (
                   dataPoint.toString()
                 ) : (
-                  <Skeleton>00</Skeleton>
+                  <Skeleton>0</Skeleton>
                 )}
               </Box>
             </HStack>
@@ -88,10 +111,19 @@ const ProfileAccount = () => {
         </MenuItem>
 
         <Link href="/setting-profile">
-          <MenuItem>Setting Profile</MenuItem>
+          <MenuItem isDisabled>
+            <Icon as={ProfileIcon} h={6} w={6} />
+            <Text>Setting Profile</Text>
+          </MenuItem>
         </Link>
-        <MenuItem isDisabled>Report Bug</MenuItem>
-        <MenuItem isDisabled>FAQ Support</MenuItem>
+        <MenuItem isDisabled>
+          <Icon as={FAQIcon} h={6} w={6} />
+          <Text>Report Bug</Text>
+        </MenuItem>
+        <MenuItem isDisabled>
+          <Icon as={FAQIcon} h={6} w={6} />
+          <Text>FAQ Support</Text>
+        </MenuItem>
 
         <MenuItem
           onClick={async () => {
@@ -99,7 +131,7 @@ const ProfileAccount = () => {
           }}
         >
           <Icon as={LogoutIcon} h={6} w={6} />
-          <Text fontSize="lg">Logout</Text>
+          <Text>Logout</Text>
         </MenuItem>
       </MenuList>
     </Menu>
