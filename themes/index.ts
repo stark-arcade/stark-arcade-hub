@@ -1,4 +1,3 @@
-import { convertHex } from "@/utils/convertHex";
 import { ComponentStyleConfig, extendTheme } from "@chakra-ui/react";
 
 export const colors = {
@@ -122,7 +121,25 @@ export const Tabs: ComponentStyleConfig = {
     },
   },
 };
-
+export const Tag: ComponentStyleConfig = {
+  variants: {
+    primary: {
+      container: {
+        border: "1px solid",
+        borderColor: "shader.300",
+        bg: "#FAFAFA33",
+        px: 4,
+        borderRadius: "24px",
+      },
+      label: {
+        fontSize: "xs",
+        fontWeight: 800,
+        textTransform: "capitalize",
+        color: "white",
+      },
+    },
+  },
+};
 const theme = extendTheme({
   colors,
   styles,

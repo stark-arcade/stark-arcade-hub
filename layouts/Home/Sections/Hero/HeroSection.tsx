@@ -51,12 +51,12 @@ const HeroSection = () => {
         width={1024}
         bgRepeat="no-repeat"
       ></Box>
-      <ScrollButton
+      {/* <ScrollButton
         sx={{
           position: "absolute",
           bottom: "20%",
         }}
-      />
+      /> */}
     </VStack>
   );
 };

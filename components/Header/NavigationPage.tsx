@@ -13,10 +13,12 @@ const NavigationPage = () => {
     {
       label: "Games",
       link: "/games",
+      isDisbaled: true,
     },
     {
       label: "Leaderboard",
       link: "/leaderboard",
+      isDisbaled: true,
     },
     {
       label: "Services",
