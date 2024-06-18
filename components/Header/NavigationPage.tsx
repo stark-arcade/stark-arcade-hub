@@ -1,4 +1,4 @@
-import { HStack, Link as ChakraLink } from "@chakra-ui/react";
+import { HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 import React from "react";
@@ -23,23 +23,38 @@ const NavigationPage = () => {
       link: "/service",
       isDisbaled: true,
     },
+    {
+      label: "Others",
+      link: "/others",
+      isDisbaled: true,
+    },
   ];
   return (
-    <HStack>
-      {ListPage.map((item, index) => (
-        <ChakraLink
-          as={Link}
-          key={item.label}
-          href={item.link}
-          sx={{
-            color: item.isDisbaled ? "gray.500" : "black",
-            cursor: item.isDisbaled ? "not-allowed" : "pointer",
-            textDecoration: "none",
-            "&:hover": {
-              color: item.isDisbaled ? "gray.500" : "blue.500",
-            },
-          }}
-        ></ChakraLink>
+    <HStack gap={10}>
+      {ListPage.map((item) => (
+        <>
+          {item.isDisbaled ? (
+            <Text fontWeight="bold" opacity={0.6} cursor="not-allowed">
+              {item.label}
+            </Text>
+          ) : (
+            <ChakraLink
+              as={Link}
+              key={item.label}
+              href={item.link}
+              fontWeight="bold"
+              sx={{
+                textDecoration: "none",
+
+                "&:hover": {
+                  textDecoration: "none",
+                },
+              }}
+            >
+              {item.label}
+            </ChakraLink>
+          )}
+        </>
       ))}
     </HStack>
   );
