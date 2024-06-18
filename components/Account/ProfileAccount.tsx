@@ -22,7 +22,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { ellipseMiddle } from "@/utils/formatAddress";
-import { colors } from "@/themes";
 
 const ProfileAccount = () => {
   const { userAddress, disconnectWallet } = useAuth();
@@ -67,7 +66,7 @@ const ProfileAccount = () => {
         </HStack>
       </MenuButton>
       <MenuList>
-        <HStack justifyContent="center" mb={2}>
+        {/* <HStack justifyContent="center" mb={2}>
           <Icon
             as={VerifyIcon}
             height={6}
@@ -86,7 +85,7 @@ const ProfileAccount = () => {
           <Text fontWeight="bold" variant="gradient_text">
             Rank: #1st
           </Text>
-        </HStack>
+        </HStack> */}
         <MenuItem
           display={{
             xl: "none",

@@ -1,6 +1,6 @@
 import LogoStark from "@/public/assets/logo/logo.svg";
 import StarkText from "@/public/assets/logo/stark-text.svg";
-import { Box, HStack, Icon } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import NavigationPage from "./NavigationPage";
 import ConnectWallet from "../ConnectWallet";

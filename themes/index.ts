@@ -1,3 +1,4 @@
+import { convertHex } from "@/utils/convertHex";
 import { ComponentStyleConfig, extendTheme } from "@chakra-ui/react";
 
 export const colors = {
@@ -97,6 +98,31 @@ export const Menu: ComponentStyleConfig = {
     },
   },
 };
+export const Tabs: ComponentStyleConfig = {
+  variants: {
+    unstyled: {
+      tablist: {
+        background: `#FAFAFA33`,
+        width: "fit-content",
+        borderRadius: "24px",
+      },
+      tab: {
+        px: 4,
+        py: 2,
+        fontSize: "sm",
+        borderRadius: "24px",
+        fontWeight: "bold",
+        color: "white",
+        _selected: {
+          color: "white",
+          border: "unset",
+          background: "primary.500",
+        },
+      },
+    },
+  },
+};
+
 const theme = extendTheme({
   colors,
   styles,
@@ -104,6 +130,7 @@ const theme = extendTheme({
     Button,
     Text,
     Menu,
+    Tabs,
   },
 });
 

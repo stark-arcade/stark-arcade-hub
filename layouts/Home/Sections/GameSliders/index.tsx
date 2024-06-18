@@ -31,7 +31,6 @@ const GameSliders = () => {
     adaptiveHeight: true,
     fade: true,
     waitForAnimate: false,
-
     appendDots: (dots: any) => <ul>{dots}</ul>,
     customPaging: () => (
       <div className="ft-slick__dots--custom">
@@ -65,7 +64,7 @@ const GameSliders = () => {
                   >
                     <Box>
                       <HStack gap={3} mb={10} flexWrap="wrap">
-                        {game.type.map((t, index) => (
+                        {game.tags.map((t, index) => (
                           <Box
                             border="1px solid"
                             borderColor="shader.300"
