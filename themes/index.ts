@@ -2,13 +2,14 @@ import { ComponentStyleConfig, extendTheme } from "@chakra-ui/react";
 
 export const colors = {
   shader: {
-    100: "#A0CBD9",
-    200: "#333D7E",
-    300: "#33C7F1",
-    400: "#85D4F0",
-    500: "#13359A",
-    600: "#694158",
-    700: "",
+    50: "#FAFAFA",
+    100: "#F4F4F5",
+    200: "#E4E4E7",
+    300: "#D4D4D8",
+    400: "#A1A1AA",
+    500: "#71717A",
+    600: "#52525B",
+    700: "#3F3F46",
     800: "#27272A",
     900: "#18181B",
   },
@@ -23,6 +24,9 @@ export const colors = {
     700: "#897941",
     800: "#7B6929",
     900: "#6C5811",
+  },
+  gradient: {
+    100: "linear-gradient(180deg, #E3FF74 0%, #E37C39 100%)",
   },
 };
 
