@@ -15,33 +15,33 @@ export enum LABEL_GAMES {
 export enum CATEGORY_GAME {}
 export const ListGame: GameProps[] = [
   {
+    name: "2048",
+    description:
+      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+    tags: ["FlipGame", "coin", "reward"],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    link: "https://2048-game.starkarcade.com",
+    banner: "/assets/games/2048.png",
+    thumbnail: "/assets/games/comming_start.svg",
+  },
+  {
+    name: "Tetris",
+    description:
+      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+    tags: ["FlipGame", "coin", "reward"],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    link: "https://tetris-game.starkarcade.com",
+    banner: "/assets/games/tetris.png",
+    thumbnail: "/assets/games/comming_start.svg",
+  },
+  {
     name: "Starkflip",
     description:
       "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
     tags: ["FlipGame", "coin", "reward"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
     link: "/game/starkflip",
-    banner: "/assets/games/flip.png",
-    thumbnail: "/assets/games/comming_start.svg",
-  },
-  {
-    name: "2048",
-    description:
-      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
-    tags: ["FlipGame", "coin", "reward"],
-    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: "/game/starkflip",
-    banner: "/assets/games/2048.png",
-    thumbnail: "/assets/games/comming_start.svg",
-  },
-  {
-    name: "2048",
-    description:
-      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
-    tags: ["FlipGame", "coin", "reward"],
-    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: "/game/starkflip",
-    banner: "/assets/games/2048.png",
+    banner: "/assets/games/stark_flip.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
   {
@@ -55,13 +55,13 @@ export const ListGame: GameProps[] = [
     thumbnail: "/assets/games/comming_start.svg",
   },
   {
-    name: "Starkflip",
+    name: "Starkpot",
     description:
       "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
     tags: ["FlipGame", "coin", "reward"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: "/game/starkflip",
-    banner: "/assets/games/flip.png",
+    link: "https://starkpot.starkarcade.com",
+    banner: "/assets/games/starkpot.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
 ];

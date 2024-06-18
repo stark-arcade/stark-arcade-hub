@@ -1,6 +1,18 @@
-import { HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
+import {
+  HStack,
+  Link as ChakraLink,
+  Text,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Icon,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 import Link from "next/link";
-
+import TwitterIcon from "@/public/assets/icons/twitter.svg";
+import DiscordIcon from "@/public/assets/icons/discord.svg";
 import React from "react";
 interface LinkProps {
   label: string;
@@ -31,6 +43,7 @@ const NavigationPage = () => {
       isDisbaled: true,
     },
   ];
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <HStack gap={10}>
       {ListPage.map((item) => (
@@ -59,6 +72,34 @@ const NavigationPage = () => {
           )}
         </>
       ))}
+
+      <Menu variant="profile" isOpen={isOpen} onClose={onClose}>
+        <MenuButton
+          fontWeight="bold"
+          onMouseOver={onOpen}
+          as={Button}
+          variant="unstyled"
+          _hover={{
+            color: "primary.600",
+          }}
+        >
+          Social
+        </MenuButton>
+        <MenuList minWidth="80px" fontWeight="bold">
+          <Link href="https://twitter.com/starkarcade" target="_blank">
+            <MenuItem gap={2}>
+              <Icon as={TwitterIcon} h={6} w={6} />
+              <Text>Twitter</Text>
+            </MenuItem>
+          </Link>
+          <Link href="https://discord.gg/n93qp8AW" target="_blank">
+            <MenuItem>
+              <Icon as={DiscordIcon} h={6} w={6} />
+              <Text>Discord</Text>
+            </MenuItem>
+          </Link>
+        </MenuList>
+      </Menu>
     </HStack>
   );
 };

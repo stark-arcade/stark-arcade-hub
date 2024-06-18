@@ -74,7 +74,7 @@ const Header = () => {
         />
       </HStack>
       <NavigationPage />
-      <HStack gap={6}>
+      <HStack gap={4}>
         <ButonDecolgenLab />
         {
           // eslint-disable-next-line no-nested-ternary

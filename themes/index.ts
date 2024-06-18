@@ -104,11 +104,12 @@ export const Tabs: ComponentStyleConfig = {
         background: `#FAFAFA33`,
         width: "fit-content",
         borderRadius: "24px",
+        py: 2,
       },
       tab: {
         px: 4,
         py: 2,
-        fontSize: "sm",
+        fontSize: "lg",
         borderRadius: "24px",
         fontWeight: "bold",
         color: "white",

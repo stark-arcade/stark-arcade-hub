@@ -11,7 +11,7 @@ const CardGame = ({ name, tags, banner, link }: GameProps) => {
         <Text mb={4} fontSize="24px">
           {name}
         </Text>
-        <HStack gap={3} flexWrap="wrap">
+        <HStack gap={3} flexWrap="wrap" justifyContent="center">
           {tags.map((tag, index) => (
             <Text
               border="1px solid"

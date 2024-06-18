@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import LaunchIcon from "@/public/assets/icons/launch.svg";
+import Link from "next/link";
 
 const GameSliders = () => {
   let sliderRef = useRef<Slider>(null);
@@ -48,6 +49,7 @@ const GameSliders = () => {
                 <GridItem
                   backgroundImage={`url(${game.banner})`}
                   backgroundRepeat="no-repeat"
+                  backgroundPosition="center"
                   objectFit="contain"
                   backgroundSize="cover"
                   borderRadius="24px"
@@ -84,15 +86,16 @@ const GameSliders = () => {
                       </Text>
                       <Text maxW={693}>{game.description}</Text>
                     </Box>
-
-                    <Button
-                      variant="primary"
-                      width="fit-content"
-                      bg="primary.500"
-                      leftIcon={<Icon as={LaunchIcon} h={6} w={6} />}
-                    >
-                      Play
-                    </Button>
+                    <Link href={game.link} target="_blank">
+                      <Button
+                        variant="primary"
+                        width="fit-content"
+                        bg="primary.500"
+                        leftIcon={<Icon as={LaunchIcon} h={6} w={6} />}
+                      >
+                        Play
+                      </Button>
+                    </Link>
                   </Flex>
                   <Flex padding={6} bg="shader.800" borderRadius="24px" gap={4}>
                     <Image

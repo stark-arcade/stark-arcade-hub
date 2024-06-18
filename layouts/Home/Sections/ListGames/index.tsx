@@ -14,7 +14,7 @@ const ListGameSection = () => {
   return (
     <Box>
       <Tabs variant="unstyled" defaultIndex={1}>
-        <Center>
+        <Center mb={10}>
           <TabList>
             <Tab isDisabled>Free to earn</Tab>
             <Tab>Free to play</Tab>
