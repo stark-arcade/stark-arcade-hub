@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WalletIcon from "@/public/assets/icons/wallet.svg";
 import VerifyIcon from "@/public/assets/icons/verified.svg";
 import ProfileIcon from "@/public/assets/icons/profile.svg";
