@@ -7,8 +7,13 @@ const Footer = () => {
       justifyContent="space-between"
       px={10}
       py={5}
-      fontSize="sm"
-      fontWeight={600}
+      fontSize="xs"
+      fontWeight={800}
+      columnGap={4}
+      flexDirection={{
+        md: "row",
+        base: "column",
+      }}
     >
       <Text>COPYRIGHT 2024 © STARKARCADE</Text>
       <Icon as={LogoIcon} h={8} w={8} />

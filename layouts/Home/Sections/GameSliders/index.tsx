@@ -45,13 +45,24 @@ const GameSliders = () => {
         <Slider ref={(slider: any) => (sliderRef = slider)} {...settings}>
           {ListGame.map((game) => (
             <Box>
-              <Grid key={game.name} templateColumns="repeat(2, 1fr)" gap={4}>
+              <Grid
+                key={game.name}
+                templateColumns={{
+                  lg: "repeat(2, 1fr)",
+                  base: "repeat(1, 1fr)",
+                }}
+                gap={4}
+              >
                 <GridItem
                   backgroundImage={`url(${game.banner})`}
                   backgroundRepeat="no-repeat"
                   backgroundPosition="center"
                   objectFit="contain"
                   backgroundSize="cover"
+                  height={{
+                    lg: "full",
+                    md: 400,
+                  }}
                   borderRadius="24px"
                 ></GridItem>
                 <GridItem>
@@ -86,16 +97,18 @@ const GameSliders = () => {
                       </Text>
                       <Text maxW={693}>{game.description}</Text>
                     </Box>
-                    <Link href={game.link} target="_blank">
-                      <Button
-                        variant="primary"
-                        width="fit-content"
-                        bg="primary.500"
-                        leftIcon={<Icon as={LaunchIcon} h={6} w={6} />}
-                      >
-                        Play
-                      </Button>
-                    </Link>
+                    {game.link && (
+                      <Link href={game.link} target="_blank">
+                        <Button
+                          variant="primary"
+                          width="fit-content"
+                          bg="primary.500"
+                          leftIcon={<Icon as={LaunchIcon} h={6} w={6} />}
+                        >
+                          Play
+                        </Button>
+                      </Link>
+                    )}
                   </Flex>
                   <Flex padding={6} bg="shader.800" borderRadius="24px" gap={4}>
                     <Image
@@ -113,7 +126,9 @@ const GameSliders = () => {
                       <Text fontSize="24px" fontWeight="700">
                         Next
                       </Text>
-                      <Text fontSize="32px">Up Comming</Text>
+                      <Text fontSize="28px" fontWeight="bold">
+                        Up Comming
+                      </Text>
                     </Box>
                   </Flex>
                 </GridItem>

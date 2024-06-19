@@ -4,7 +4,7 @@ import React from "react";
 import StarkArcadeTextLogo from "@/public/assets/logo/stark-text.svg";
 import StarkArcadeLogo from "@/public/assets/logo/logo.svg";
 import DecolgenLogo from "@/public/assets/logo/logo_decolgen.svg";
-import { colors } from "@/themes";
+
 import { convertHex } from "@/utils/convertHex";
 const HeroSection = () => {
   return (

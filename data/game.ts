@@ -2,7 +2,7 @@ export interface GameProps {
   name: string;
   description: string;
   tags: string[];
-  link: string;
+  link?: string;
   banner: string;
   thumbnail: string;
   typeGame?: LABEL_GAMES[];
@@ -40,7 +40,7 @@ export const ListGame: GameProps[] = [
       "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
     tags: ["FlipGame", "coin", "reward"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: "/game/starkflip",
+    link: "https://coinflip.decolgenlabs.com",
     banner: "/assets/games/stark_flip.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
@@ -62,6 +62,33 @@ export const ListGame: GameProps[] = [
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
     link: "https://starkpot.starkarcade.com",
     banner: "/assets/games/starkpot.png",
+    thumbnail: "/assets/games/comming_start.svg",
+  },
+  {
+    name: "StarkVoyager",
+    description:
+      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+    tags: ["StarkVoyager", "coin", "reward"],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    banner: "/assets/games/stark_live.png",
+    thumbnail: "/assets/games/comming_start.svg",
+  },
+  {
+    name: "Brush Hit",
+    description:
+      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+    tags: ["Brush Hit", "coin", "reward"],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    banner: "/assets/games/stark_live.png",
+    thumbnail: "/assets/games/comming_start.svg",
+  },
+  {
+    name: "Beer Catcher",
+    description:
+      "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
+    tags: ["Brush Hit", "coin", "reward"],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    banner: "/assets/games/stark_live.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
 ];
