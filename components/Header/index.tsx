@@ -1,6 +1,6 @@
 import LogoStark from "@/public/assets/logo/logo.svg";
 import StarkText from "@/public/assets/logo/stark-text.svg";
-import { HStack, Icon } from "@chakra-ui/react";
+import { Box, HStack, Icon } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import NavigationPage from "./NavigationPage";
 import ConnectWallet from "../ConnectWallet";
@@ -73,7 +73,10 @@ const Header = () => {
           display={{ md: "block", base: "none" }}
         />
       </HStack>
-      <NavigationPage />
+      <Box display={{ md: "block", base: "none" }}>
+        <NavigationPage />
+      </Box>
+
       <HStack gap={4}>
         <ButonDecolgenLab />
         {

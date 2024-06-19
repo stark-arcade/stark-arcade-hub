@@ -3,19 +3,13 @@ import { useAccount, useConnect, useDisconnect } from "@starknet-react/core";
 import { useTypedSelector } from "./useTypedSelector";
 
 import { useDispatch } from "react-redux";
-import {
-  logout,
-  setConnector,
-  setUserAdress,
-  setUserLoading,
-} from "@/redux/user/user-slice";
+import { logout, setConnector, setUserLoading } from "@/redux/user/user-slice";
 
-import { AccountInterface } from "starknet";
 import { useToast } from "@chakra-ui/react";
 
 export const useAuth = () => {
   const user = useTypedSelector((state) => state.user);
-  const { address: addressWallet, account } = useAccount();
+
   const { connect, connectors } = useConnect();
   const dispatch = useDispatch();
   const { disconnect } = useDisconnect();

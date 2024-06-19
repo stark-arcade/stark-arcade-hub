@@ -4,6 +4,7 @@ import VerifyIcon from "@/public/assets/icons/verified.svg";
 import ProfileIcon from "@/public/assets/icons/profile.svg";
 import LogoutIcon from "@/public/assets/icons/logout.svg";
 import FAQIcon from "@/public/assets/icons/anoymos.svg";
+import BugIcon from "@/public/assets/icons/bug.svg";
 import { useContractRead } from "@starknet-react/core";
 import { ABIS } from "@/abis";
 import { useAuth } from "@/hooks/useAuth";
@@ -116,7 +117,7 @@ const ProfileAccount = () => {
           </MenuItem>
         </Link>
         <MenuItem isDisabled>
-          <Icon as={FAQIcon} h={6} w={6} />
+          <Icon as={BugIcon} h={6} w={6} />
           <Text>Report Bug</Text>
         </MenuItem>
         <MenuItem isDisabled>

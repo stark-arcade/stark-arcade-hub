@@ -28,7 +28,7 @@ const HeroSection = () => {
           fully on-chain gaming{" "}
         </Text>
       </Box>
-      <Text fontWeight="bold" fontSize="sm" color="shader.200">
+      <Text fontWeight="bold" fontSize="sm" color="shader.200" my={2}>
         Bridging Gamers and Developers for a Thriving Crypto Gaming Ecosystem.
       </Text>
       <HStack
@@ -47,8 +47,10 @@ const HeroSection = () => {
       </HStack>
       <Box
         backgroundImage="url('/assets/arts/hero_section.png')"
-        height={600}
-        width={1024}
+        backgroundPosition="center"
+        height={{ md: 600, base: 300 }}
+        // width={{ lg: 1024, base: "full" }}
+        width="full"
         bgRepeat="no-repeat"
       ></Box>
       {/* <ScrollButton

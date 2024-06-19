@@ -45,7 +45,7 @@ const NavigationPage = () => {
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <HStack gap={10}>
+    <HStack gap={{ lg: 10, md: 6 }}>
       {ListPage.map((item) => (
         <>
           {item.isDisbaled ? (
