@@ -28,7 +28,7 @@ import ProfileDrawer from './ProfileDrawer';
 
 const ProfileAccount = () => {
   const { userAddress, disconnectWallet } = useAuth();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const { data: dataPoint, isLoading: isLoadingPoint } = useContractRead({
     functionName: 'getUserPoint',
     abi: ABIS.UserPointABI,
@@ -147,7 +147,7 @@ const ProfileAccount = () => {
         </MenuList>
       </Menu>
       <HStack
-        onClick={onOpen}
+        onClick={onToggle}
         background="shader.500"
         borderRadius="100px"
         fontWeight="700"

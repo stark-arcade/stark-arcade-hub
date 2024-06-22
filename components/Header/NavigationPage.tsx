@@ -9,44 +9,48 @@ import {
   Icon,
   useDisclosure,
   Button,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import TwitterIcon from "@/public/assets/icons/twitter.svg";
-import DiscordIcon from "@/public/assets/icons/discord.svg";
-import React from "react";
+  StackProps,
+} from '@chakra-ui/react';
+import Link from 'next/link';
+import TwitterIcon from '@/public/assets/icons/twitter.svg';
+import DiscordIcon from '@/public/assets/icons/discord.svg';
+import React from 'react';
 interface LinkProps {
   label: string;
   link: string;
   target?: boolean;
   isDisbaled?: boolean;
 }
-const NavigationPage = () => {
+interface IProps {
+  sx?: StackProps;
+}
+const NavigationPage = ({ sx }: IProps) => {
   const ListPage: LinkProps[] = [
     {
-      label: "Games",
-      link: "/games",
+      label: 'Games',
+      link: '/games',
       isDisbaled: true,
     },
     {
-      label: "Leaderboard",
-      link: "/leaderboard",
+      label: 'Leaderboard',
+      link: '/leaderboard',
       isDisbaled: true,
     },
     {
-      label: "Services",
-      link: "/service",
+      label: 'Services',
+      link: '/service',
       isDisbaled: true,
     },
     {
-      label: "Others",
-      link: "/others",
+      label: 'Others',
+      link: '/others',
       isDisbaled: true,
     },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <HStack gap={{ lg: 10, md: 6 }}>
-      {ListPage.map((item) => (
+    <HStack gap={{ lg: 10, md: 6 }} {...sx}>
+      {ListPage.map(item => (
         <>
           {item.isDisbaled ? (
             <Text fontWeight="bold" opacity={0.6} cursor="not-allowed">
@@ -59,11 +63,11 @@ const NavigationPage = () => {
               href={item.link}
               fontWeight="bold"
               sx={{
-                textDecoration: "none",
+                textDecoration: 'none',
 
-                "&:hover": {
-                  textDecoration: "none",
-                  color: "primary.600",
+                '&:hover': {
+                  textDecoration: 'none',
+                  color: 'primary.600',
                 },
               }}
             >
@@ -80,7 +84,7 @@ const NavigationPage = () => {
           as={Button}
           variant="unstyled"
           _hover={{
-            color: "primary.600",
+            color: 'primary.600',
           }}
         >
           Social

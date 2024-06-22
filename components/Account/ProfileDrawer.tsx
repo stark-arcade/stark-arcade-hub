@@ -27,9 +27,7 @@ const ProfileDrawer = ({ isOpen, onClose }: IProps) => {
     <>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent bg="shader.800">
-          <DrawerCloseButton />
-
+        <DrawerContent bg="shader.800" marginTop={'80px'}>
           <DrawerBody py={10} display="flex" flexDirection="column" gap={6}>
             <HStack opacity={0.4} cursor="not-allowed">
               <Icon as={ProfileIcon} h={6} w={6} />

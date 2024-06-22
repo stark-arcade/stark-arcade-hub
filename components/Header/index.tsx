@@ -12,6 +12,7 @@ import { setUserAdress } from '@/redux/user/user-slice';
 import ButonDecolgenLab from '../Button/ButonDecolgenLab';
 import ProfileAccount from '../Account/ProfileAccount';
 import ProfileDrawer from '../Account/ProfileDrawer';
+import ListPageDrawer from './ListPageDrawer';
 
 const Header = () => {
   const { userAddress, prevConnector } = useAuth();
@@ -61,12 +62,16 @@ const Header = () => {
     <HStack
       as="header"
       px={{ md: 10, base: 4 }}
-      zIndex={99}
+      zIndex={'popover'}
       position="sticky"
       py={5}
       background="shader.800"
       justifyContent="space-between"
     >
+      <Box display={{ md: 'none', base: 'block' }}>
+        <ListPageDrawer />
+      </Box>
+
       <HStack as={Link} href="/">
         <Icon as={LogoStark} height={8} width={8} />
         <Icon

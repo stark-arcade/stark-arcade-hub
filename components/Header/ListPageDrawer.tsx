@@ -3,24 +3,27 @@ import HamburgerIcon from '@/public/assets/icons/hamburger.svg';
 import {
   Drawer,
   DrawerBody,
-  DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
   Icon,
   useDisclosure,
 } from '@chakra-ui/react';
+import NavigationPage from './NavigationPage';
 const ListPageDrawer = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   return (
     <>
-      <Icon as={HamburgerIcon} height={6} width={6} onClick={onOpen} />
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+      <Icon as={HamburgerIcon} height={6} width={6} onClick={onToggle} />
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="full">
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-
+        <DrawerContent bg="shader.800" mt="80px">
           <DrawerBody py={10} display="flex" flexDirection="column" gap={6}>
-            dsadasd
+            <NavigationPage
+              sx={{
+                flexDirection: 'column',
+                gap: 8,
+              }}
+            />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
