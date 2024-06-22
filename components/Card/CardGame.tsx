@@ -1,17 +1,9 @@
-import { GameProps } from "@/data/game";
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  Icon,
-  IconButton,
-  Text,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import React from "react";
-import SocketIcon from "@/public/assets/icons/launch.svg";
-import Link from "next/link";
+import { GameProps } from '@/data/game';
+import { Box, Button, Center, HStack, Icon, Text } from '@chakra-ui/react';
+import Image from 'next/image';
+import React from 'react';
+import SocketIcon from '@/public/assets/icons/launch.svg';
+import Link from 'next/link';
 const CardGame = ({ name, tags, banner, link }: GameProps) => {
   return (
     <Box
@@ -28,8 +20,8 @@ const CardGame = ({ name, tags, banner, link }: GameProps) => {
           transition="all 0.3s"
           zIndex={1}
           _groupHover={{
-            bottom: "10",
-            translateY: "10%",
+            bottom: '10',
+            translateY: '10%',
           }}
         >
           {link && (

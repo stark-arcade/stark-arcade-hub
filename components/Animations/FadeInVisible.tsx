@@ -1,5 +1,5 @@
-import { motion, useAnimation, useInView } from "framer-motion";
-import React, { PropsWithChildren, useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { PropsWithChildren, useEffect, useRef } from 'react';
 
 const FadeInVisible = ({ children }: PropsWithChildren) => {
   const ref = useRef(null);
@@ -7,9 +7,9 @@ const FadeInVisible = ({ children }: PropsWithChildren) => {
   const controls = useAnimation();
   useEffect(() => {
     if (isInview) {
-      controls.start("visible");
+      controls.start('visible');
     }
-  }, [isInview]);
+  }, [isInview, controls]);
   return (
     <motion.div
       ref={ref}
