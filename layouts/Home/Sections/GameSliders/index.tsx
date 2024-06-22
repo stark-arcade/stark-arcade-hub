@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import Slider from "react-slick";
-import { ListGame } from "@/data/game";
+import React, { useRef } from 'react';
+import Slider from 'react-slick';
+import { ListGame } from '@/data/game';
 import {
   Box,
   Button,
@@ -10,10 +10,10 @@ import {
   HStack,
   Icon,
   Text,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import LaunchIcon from "@/public/assets/icons/launch.svg";
-import Link from "next/link";
+} from '@chakra-ui/react';
+import Image from 'next/image';
+import LaunchIcon from '@/public/assets/icons/launch.svg';
+import Link from 'next/link';
 
 const GameSliders = () => {
   let sliderRef = useRef<Slider>(null);
@@ -43,13 +43,13 @@ const GameSliders = () => {
     <div className="slider-container">
       {sliderRef != null && (
         <Slider ref={(slider: any) => (sliderRef = slider)} {...settings}>
-          {ListGame.map((game) => (
-            <Box>
+          {ListGame.map((game, index) => (
+            <Box key={`Game-${game.name}`}>
               <Grid
                 key={game.name}
                 templateColumns={{
-                  lg: "repeat(2, 1fr)",
-                  base: "repeat(1, 1fr)",
+                  lg: 'repeat(2, 1fr)',
+                  base: 'repeat(1, 1fr)',
                 }}
                 gap={4}
               >
@@ -60,8 +60,8 @@ const GameSliders = () => {
                   objectFit="contain"
                   backgroundSize="cover"
                   height={{
-                    lg: "full",
-                    md: 400,
+                    lg: 'full',
+                    base: 400,
                   }}
                   borderRadius="24px"
                 ></GridItem>
@@ -70,7 +70,7 @@ const GameSliders = () => {
                     flexDirection="column"
                     justifyContent="space-between"
                     bg="shader.800"
-                    padding={8}
+                    padding={{ md: 8, base: 6 }}
                     mb={4}
                     borderRadius="24px"
                     minH={400}
@@ -110,13 +110,31 @@ const GameSliders = () => {
                       </Link>
                     )}
                   </Flex>
-                  <Flex padding={6} bg="shader.800" borderRadius="24px" gap={4}>
-                    <Image
-                      src={game.thumbnail}
-                      alt={game.name}
-                      height={197}
-                      width={197}
-                    />
+                  <Flex
+                    padding={6}
+                    bg="shader.800"
+                    borderRadius="24px"
+                    gap={4}
+                    display={{ md: 'flex', base: 'none' }}
+                    flexWrap="wrap"
+                  >
+                    {index !== ListGame.length - 1 && (
+                      <Image
+                        src={ListGame[index + 1].banner}
+                        alt={game.name}
+                        height={197}
+                        width={197}
+                      />
+                    )}
+                    {index === ListGame.length - 1 && (
+                      <Image
+                        src={ListGame[0].banner}
+                        alt={game.name}
+                        height={197}
+                        width={197}
+                      />
+                    )}
+
                     <Box
                       bg="shader.700"
                       padding={8}
@@ -126,9 +144,16 @@ const GameSliders = () => {
                       <Text fontSize="24px" fontWeight="700">
                         Next
                       </Text>
-                      <Text fontSize="28px" fontWeight="bold">
-                        Up Comming
-                      </Text>
+                      {index !== ListGame.length - 1 && (
+                        <Text fontSize="28px" fontWeight="bold">
+                          {ListGame[index + 1].name}
+                        </Text>
+                      )}
+                      {index == ListGame.length - 1 && (
+                        <Text fontSize="28px" fontWeight="bold">
+                          {ListGame[0].name}
+                        </Text>
+                      )}
                     </Box>
                   </Flex>
                 </GridItem>
