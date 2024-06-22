@@ -1,6 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
 
-import { Button, ButtonProps, Icon } from '@chakra-ui/react';
+import { Button, ButtonProps, HStack, Icon, Text } from '@chakra-ui/react';
 import { useConnect } from '@starknet-react/core';
 import React from 'react';
 import { useStarknetkitConnectModal } from 'starknetkit';
@@ -30,13 +30,16 @@ const ConnectWallet = ({ sx }: IProps) => {
   };
 
   return (
-    <Button
-      variant="primary"
-      onClick={handleConnectWallet}
-      {...sx}
-      leftIcon={<Icon as={WalletIcon} h={6} w={6} />}
-    >
-      Connect to wallet
+    <Button variant="primary" onClick={handleConnectWallet} {...sx} as={HStack}>
+      <Icon as={WalletIcon} h={6} w={6} />
+      <Text
+        display={{
+          md: 'block',
+          base: 'none',
+        }}
+      >
+        Connect to wallet
+      </Text>
     </Button>
   );
 };

@@ -17,10 +17,10 @@ const CardGame = ({ name, tags, banner, link }: GameProps) => {
         <Center
           position="absolute"
           width="full"
-          transition="all 0.3s"
           zIndex={1}
           _groupHover={{
             bottom: '10',
+            transition: 'all 0.3s',
             translateY: '10%',
           }}
         >

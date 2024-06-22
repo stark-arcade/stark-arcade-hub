@@ -61,7 +61,7 @@ const GameSliders = () => {
                   backgroundSize="cover"
                   height={{
                     lg: 'full',
-                    md: 400,
+                    base: 400,
                   }}
                   borderRadius="24px"
                 ></GridItem>
@@ -70,7 +70,7 @@ const GameSliders = () => {
                     flexDirection="column"
                     justifyContent="space-between"
                     bg="shader.800"
-                    padding={8}
+                    padding={{ md: 8, base: 6 }}
                     mb={4}
                     borderRadius="24px"
                     minH={400}
@@ -110,7 +110,14 @@ const GameSliders = () => {
                       </Link>
                     )}
                   </Flex>
-                  <Flex padding={6} bg="shader.800" borderRadius="24px" gap={4}>
+                  <Flex
+                    padding={6}
+                    bg="shader.800"
+                    borderRadius="24px"
+                    gap={4}
+                    display={{ md: 'flex', base: 'none' }}
+                    flexWrap="wrap"
+                  >
                     {index !== ListGame.length - 1 && (
                       <Image
                         src={ListGame[index + 1].banner}

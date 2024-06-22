@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setUserAdress } from '@/redux/user/user-slice';
 import ButonDecolgenLab from '../Button/ButonDecolgenLab';
 import ProfileAccount from '../Account/ProfileAccount';
+import ProfileDrawer from '../Account/ProfileDrawer';
 
 const Header = () => {
   const { userAddress, prevConnector } = useAuth();
@@ -59,7 +60,7 @@ const Header = () => {
   return (
     <HStack
       as="header"
-      px={10}
+      px={{ md: 10, base: 4 }}
       zIndex={99}
       position="sticky"
       py={5}
