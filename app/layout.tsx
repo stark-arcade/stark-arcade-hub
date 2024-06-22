@@ -4,7 +4,11 @@ import { Nunito_Sans } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./global.css";
-const nuto = Nunito_Sans({ subsets: ["latin"] });
+const nuto = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+});
 import Favicon from "@/app/favicon.ico";
 import ProviderApp from "@/provider";
 import DefaultLayout from "@/layouts/default";
@@ -33,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nuto.className}>
+      <body className={`${nuto.className} ${nuto.style}`}>
         <ProviderApp>
           <DefaultLayout>{children}</DefaultLayout>
         </ProviderApp>

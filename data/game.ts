@@ -60,7 +60,7 @@ export const ListGame: GameProps[] = [
       "Spin the brush, paint the sticks, and stay dry in the thrilling challenge of Brush Hit!",
     tags: ["Casual", "Entertaining", "Testnet"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    banner: "/assets/games/stark_live.png",
+    banner: "/assets/games/brush_hit.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
   {
@@ -69,7 +69,7 @@ export const ListGame: GameProps[] = [
       "Navigate the bustling nightlife, master the taps and keep the party alive in Brewmaster’s Friday night ",
     tags: ["Casual", "Beer", "Bar", "Testnet"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    banner: "/assets/games/stark_live.png",
+    banner: "/assets/games/beer_catcher.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
   {
@@ -78,7 +78,7 @@ export const ListGame: GameProps[] = [
       "The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!",
     tags: ["Action", "RPG", "Adventure", "Tesnet"],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    banner: "/assets/games/stark_live.png",
+    banner: "/assets/games/stark_voyage.png",
     thumbnail: "/assets/games/comming_start.svg",
   },
 ];

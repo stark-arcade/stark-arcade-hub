@@ -1,6 +1,6 @@
 {
   "name": "stark-arcade-hub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -24,6 +24,7 @@
     "react-slick": "^0.30.2",
     "react-svg-loader": "^3.0.3",
     "redux-persist": "^6.0.0",
+    "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
     "starknet": "^6.9.0",
     "starknetkit": "^1.1.9"
