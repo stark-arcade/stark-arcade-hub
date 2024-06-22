@@ -1,11 +1,11 @@
-"use client";
-import { Box, Container, Flex } from "@chakra-ui/react";
-import React from "react";
-import HeroSection from "./Sections/Hero/HeroSection";
-import GameSliders from "./Sections/GameSliders";
+'use client';
+import { Box, Container, Flex } from '@chakra-ui/react';
+import React from 'react';
+import HeroSection from './Sections/Hero/HeroSection';
+import GameSliders from './Sections/GameSliders';
 
-import ListGameSection from "./Sections/ListGames";
-import FadeInVisible from "@/components/Animations/FadeInVisible";
+import ListGameSection from './Sections/ListGames';
+import FadeInVisible from '@/components/Animations/FadeInVisible';
 
 const HomePage = () => {
   return (
@@ -17,7 +17,7 @@ const HomePage = () => {
         backgroundRepeat="no-repeat"
         backgroundPosition="center"
       >
-        <Container maxWidth="container.xl">
+        <Container maxWidth="container.xl" px={4}>
           <FadeInVisible>
             <GameSliders />
           </FadeInVisible>
@@ -30,7 +30,7 @@ const HomePage = () => {
         backgroundPosition="center"
         py={10}
       >
-        <Container maxWidth="container.xl">
+        <Container maxWidth="container.xl" px={0}>
           <FadeInVisible>
             <ListGameSection />
           </FadeInVisible>

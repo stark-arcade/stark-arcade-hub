@@ -1,10 +1,9 @@
 import { RPC_PROVIDER } from "@/utils/constants";
-import { mainnet, sepolia } from "@starknet-react/chains";
+import { mainnet } from "@starknet-react/chains";
 import {
   InjectedConnector,
   StarknetConfig,
   jsonRpcProvider,
-  publicProvider,
 } from "@starknet-react/core";
 import React, { PropsWithChildren } from "react";
 import { ArgentMobileConnector } from "starknetkit/argentMobile";
