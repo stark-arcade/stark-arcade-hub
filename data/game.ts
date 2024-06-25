@@ -41,7 +41,7 @@ export const ListGame: GameProps[] = [
       'The simplest game, but the biggest thrill - one flip away to decrypt your fortune on Starknet. ',
     tags: ['Prediction', 'Coin Flip', 'Mainnet'],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: 'https://coinflip.decolgenlabs.com',
+    link: 'https://starkflip.starkarcade.com/',
     banner: '/assets/games/stark_flip.png',
     thumbnail: '/assets/games/comming_start.svg',
   },
