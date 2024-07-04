@@ -45,20 +45,20 @@ export const ListGame: GameProps[] = [
     banner: '/assets/games/stark_flip.png',
     thumbnail: '/assets/games/comming_start.svg',
   },
+  // {
+  //   name: 'Starkpot',
+  //   description:
+  //     'Test your foresight and hit the jackpot with our thrilling number prediction challenge!',
+  //   tags: ['Prediction', 'Raffle', 'Mainnet'],
+  //   typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+  //   link: 'https://starkpot.starkarcade.com',
+  //   banner: '/assets/games/starkpot.png',
+  //   thumbnail: '/assets/games/comming_start.svg',
+  // },
   {
-    name: 'Starkpot',
+    name: 'StarkSweep',
     description:
-      'Test your foresight and hit the jackpot with our thrilling number prediction challenge!',
-    tags: ['Prediction', 'Raffle', 'Mainnet'],
-    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    link: 'https://starkpot.starkarcade.com',
-    banner: '/assets/games/starkpot.png',
-    thumbnail: '/assets/games/comming_start.svg',
-  },
-  {
-    name: 'Brush Hit',
-    description:
-      'Spin the brush, paint the sticks, and stay dry in the thrilling challenge of Brush Hit!',
+      'Spin the brush, paint the sticks, and stay dry in the thrilling challenge of StarkSweep!',
     tags: ['Casual', 'Entertaining', 'Testnet'],
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
     banner: '/assets/games/brush_hit.png',
