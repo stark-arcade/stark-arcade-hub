@@ -1,21 +1,16 @@
-"use client";
-import { useAccount, useConnect, useDisconnect } from "@starknet-react/core";
-import { useTypedSelector } from "./useTypedSelector";
+'use client';
+import { useAccount, useConnect, useDisconnect } from '@starknet-react/core';
+import { useTypedSelector } from './useTypedSelector';
 
-import { useDispatch } from "react-redux";
-import { logout, setConnector, setUserLoading } from "@/redux/user/user-slice";
-
-import { useToast } from "@chakra-ui/react";
+import { useDispatch } from 'react-redux';
+import { logout, setConnector, setUserLoading } from '@/redux/user/user-slice';
 
 export const useAuth = () => {
-  const user = useTypedSelector((state) => state.user);
+  const user = useTypedSelector(state => state.user);
 
   const { connect, connectors } = useConnect();
   const dispatch = useDispatch();
   const { disconnect } = useDisconnect();
-  const toast = useToast({
-    position: "top-right",
-  });
 
   const connectWallet = async (index: number) => {
     await connect({ connector: connectors[index] });

@@ -16,8 +16,8 @@ const ListPageDrawer = () => {
     <>
       <Icon
         as={isOpen ? CloseIcon : HamburgerIcon}
-        height={6}
-        width={6}
+        height={8}
+        width={8}
         onClick={onToggle}
       />
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="full">

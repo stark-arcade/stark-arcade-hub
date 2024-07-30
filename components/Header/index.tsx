@@ -69,7 +69,7 @@ const Header = () => {
       justifyContent="space-between"
     >
       <HStack as={Link} href="/">
-        <Box display={{ md: 'none', base: 'block' }}>
+        <Box display={{ md: 'none', base: 'flex' }} alignItems="center">
           <ListPageDrawer />
         </Box>
         <Icon as={LogoStark} height={8} width={8} />

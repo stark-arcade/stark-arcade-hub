@@ -60,6 +60,7 @@ export const ListGame: GameProps[] = [
     description:
       'Spin the brush, paint the sticks, and stay dry in the thrilling challenge of StarkSweep!',
     tags: ['Casual', 'Entertaining', 'Testnet'],
+    link: 'https://starksweep.starkarcade.com',
     typeGame: [LABEL_GAMES.PLAY_TO_EARN],
     banner: '/assets/games/brush_hit.png',
     thumbnail: '/assets/games/comming_start.svg',

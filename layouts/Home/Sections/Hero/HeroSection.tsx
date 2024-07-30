@@ -24,13 +24,13 @@ const HeroSection = () => {
       />
       <Box
         textAlign="center"
-        fontSize={{ md: '40px', base: '32px' }}
-        fontWeight="bold"
+        fontSize={{ md: '40px', base: '24px' }}
+        fontWeight="800"
         width={{ md: 620, base: 'full' }}
       >
         Accelerate the world&apos;s transition to 
         <Text variant="gradient_text" as="span">
-          fully on-chain gaming{' '}
+          fully on-chain gaming
         </Text>
       </Box>
       <Text
