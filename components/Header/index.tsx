@@ -68,11 +68,10 @@ const Header = () => {
       background="shader.800"
       justifyContent="space-between"
     >
-      <Box display={{ md: 'none', base: 'block' }}>
-        <ListPageDrawer />
-      </Box>
-
       <HStack as={Link} href="/">
+        <Box display={{ md: 'none', base: 'block' }}>
+          <ListPageDrawer />
+        </Box>
         <Icon as={LogoStark} height={8} width={8} />
         <Icon
           as={StarkText}
