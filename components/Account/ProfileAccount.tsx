@@ -61,7 +61,7 @@ const ProfileAccount = () => {
           >
             <HStack>
               <Icon as={WalletIcon} height={6} width={6} />
-              <Text>{ellipseMiddle(userAddress || '', 8, 8)}</Text>
+              <Text>{ellipseMiddle(userAddress || '', 4, 4)}</Text>
             </HStack>
             <Divider orientation="vertical" h={4} />
             <HStack width="fit-content">
@@ -151,6 +151,10 @@ const ProfileAccount = () => {
         background="shader.500"
         borderRadius="100px"
         fontWeight="700"
+        display={{
+          md: 'none',
+          base: 'flex',
+        }}
         fontSize="sm"
         px={6}
         py={2}
