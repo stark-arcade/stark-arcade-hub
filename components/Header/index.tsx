@@ -64,6 +64,7 @@ const Header = () => {
       px={{ md: 10, base: 4 }}
       zIndex={'popover'}
       position="sticky"
+      top={0}
       py={5}
       background="shader.800"
       justifyContent="space-between"

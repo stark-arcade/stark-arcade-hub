@@ -45,6 +45,16 @@ const Button: ComponentStyleConfig = {
       px: 6,
       borderRadius: '100px',
     },
+    gradient_100: {
+      bg: 'gradient.100',
+      color: 'white',
+      py: 2,
+      px: 6,
+      borderRadius: '100px',
+      fontSize: 'sm',
+      fontWeight: 700,
+      _hover: {},
+    },
   },
 };
 const Text: ComponentStyleConfig = {
@@ -148,6 +158,57 @@ export const Tag: ComponentStyleConfig = {
     },
   },
 };
+
+export const Input: ComponentStyleConfig = {
+  variants: {
+    primary: {
+      field: {
+        bg: 'shader.800',
+        color: 'shader.400',
+        borderRadius: '12px',
+        fontWeight: 700,
+        fontSize: 'sm',
+        padding: 4,
+        border: '1px solid',
+        borderColor: 'shader.600',
+        _placeholder: {
+          color: 'shader.400',
+        },
+      },
+    },
+  },
+};
+const Form: ComponentStyleConfig = {
+  variants: {
+    submit_game: props => ({
+      container: {
+        _focusWithin: {},
+        'input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label':
+          {},
+        label: {
+          fontSize: 'sm',
+          color: 'shader.300',
+          fontWeight: 700,
+        },
+      },
+    }),
+  },
+  parts: [],
+};
+const Textarea: ComponentStyleConfig = {
+  variants: {
+    primary: {
+      background: 'shader.800',
+      color: 'shader.400',
+      borderRadius: '12px',
+      fontWeight: 700,
+      fontSize: 'sm',
+      padding: 4,
+      border: '1px solid',
+      borderColor: 'shader.600',
+    },
+  },
+};
 const theme = extendTheme({
   colors,
   styles,
@@ -156,6 +217,9 @@ const theme = extendTheme({
     Text,
     Menu,
     Tabs,
+    Input,
+    Form,
+    Textarea,
   },
 });
 
