@@ -8,7 +8,6 @@ import {
   Divider,
   HStack,
   Icon,
-  SlideFade,
   Text,
   useDisclosure,
   VStack,
@@ -25,12 +24,9 @@ const SubmitGamePage = () => {
     'If we are interested in the project, we will ask you for further information',
     'f not, we will not keep any of the data concerning it.',
   ];
-  const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
-  console.log('What', isOpen);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
-      h="100vh"
-      //   background={`linear-gradient(180deg, #18181B 31.85%, rgba(0, 0, 0, 0) 150.31%),url('/assets/arts/art_submit_form.jpeg')`}
       backgroundImage={`url('/assets/arts/art_submit_form.svg')`}
       backgroundRepeat="no-repeat"
       backgroundPosition="center"

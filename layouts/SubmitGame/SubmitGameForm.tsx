@@ -11,12 +11,15 @@ import {
   Textarea,
   useDisclosure,
   VStack,
+  Image,
+  Flex,
 } from '@chakra-ui/react';
 import React from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import ArrowIcon from '@/public/assets/icons/arrow.svg';
 import CloseIcon from '@/public/assets/icons/logout.svg';
+import UploadImage from '@/components/UploadImage';
 interface IGameSubmitProps {
   game_name: string;
   email: string;
@@ -24,6 +27,7 @@ interface IGameSubmitProps {
   long_description: string;
   game_url: string;
   game_banner: any;
+  game_avatar: any;
   link_source_game: string;
   token_name?: string;
   token_symbol?: string;
@@ -39,7 +43,8 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
     long_description: '',
     email: '',
     game_url: '',
-    game_banner: '',
+    game_banner: undefined,
+    game_avatar: undefined,
     link_source_game: '',
     token_name: '',
     token_symbol: '',
@@ -70,6 +75,7 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
     },
   });
   const { isOpen: isAdvance, onClose: onCloseAdvance } = useDisclosure();
+
   return (
     <Box px={4}>
       <form onSubmit={formik.handleSubmit}>
@@ -158,13 +164,102 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               </FormErrorMessage>
             )}
           </FormControl>
-
-          <HStack>
+          <FormControl variant="submit_game" position="relative">
+            <FormLabel>Game Media Kit</FormLabel>
+            <HStack>
+              <Box>
+                {form.game_avatar && (
+                  <Image
+                    src={URL.createObjectURL(form.game_avatar)}
+                    objectFit="cover"
+                    alt="Game Avatar"
+                  />
+                )}
+                <UploadImage
+                  imageFile={form.game_avatar}
+                  setImageFile={file => {
+                     updateFields({ game_avatar: file });
+                  }}
+                />
+              </Box>
+              <Box>
+                {form.game_banner && (
+                  <Image
+                    src={URL.createObjectURL(form.game_banner)}
+                    objectFit="cover"
+                    alt="Game Banner"
+                  />
+                )}
+                <UploadImage
+                  imageFile={form.game_banner}
+                  setImageFile={file => updateFields({ game_banner: file })}
+                />
+              </Box>
+            </HStack>
+          </FormControl>
+          <Flex flexDirection="column" width="full" gap={4}>
             <Text>Advanced (token if any)</Text>
-          </HStack>
+            <FormControl
+              variant="submit_game"
+              isRequired
+              isInvalid={
+                !!(formik.touched.game_name && formik.errors.game_name)
+              }
+            >
+              <FormLabel>Token Name</FormLabel>
+              <Input
+                variant="primary"
+                type="text"
+                placeholder="Ex: Starkarcade"
+              />
+              {formik.touched.token_name && formik.errors.token_name && (
+                <FormErrorMessage>
+                  <Text> {formik.errors.token_name as any}</Text>
+                </FormErrorMessage>
+              )}
+            </FormControl>
+            <FormControl
+              variant="submit_game"
+              isRequired
+              isInvalid={
+                !!(formik.touched.game_name && formik.errors.game_name)
+              }
+            >
+              <FormLabel>Token Symbol</FormLabel>
+              <Input
+                variant="primary"
+                type="text"
+                placeholder="Ex: Token Symbol"
+              />
+              {formik.touched.token_symbol && formik.errors.token_symbol && (
+                <FormErrorMessage>
+                  <Text> {formik.errors.token_symbol as any}</Text>
+                </FormErrorMessage>
+              )}
+            </FormControl>
+            <FormControl
+              variant="submit_game"
+              isRequired
+              isInvalid={
+                !!(formik.touched.game_name && formik.errors.game_name)
+              }
+            >
+              <FormLabel>Total Supply</FormLabel>
+              <Input variant="primary" type="text" placeholder="Ex: 100" />
+              {formik.touched.total_supply && formik.errors.total_supply && (
+                <FormErrorMessage>
+                  <Text> {formik.errors.total_supply as any}</Text>
+                </FormErrorMessage>
+              )}
+            </FormControl>
+          </Flex>
 
           <HStack>
-            <Button variant="primary" onClick={() => cancelSubmit()}>
+            <Button
+              leftIcon={<Icon as={CloseIcon} />}
+              variant="primary"
+              onClick={() => cancelSubmit()}
+            >
               Cancel
             </Button>
             <Button
