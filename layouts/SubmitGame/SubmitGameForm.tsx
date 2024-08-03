@@ -1,3 +1,4 @@
+'use client';
 import {
   Box,
   Button,
@@ -14,6 +15,7 @@ import {
   Image,
   Flex,
   Collapse,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import * as Yup from 'yup';
@@ -24,8 +26,10 @@ import UploadImage from '@/components/UploadImage';
 import { Switch } from '@chakra-ui/react';
 import { useMutation } from '@tanstack/react-query';
 import { axiosHandlerNoBearer } from '@/config/axiosConfig';
-import { imageWidthAndHeight, uploadFileIPFS } from '@/utils/helper';
-import { CONTRACT_ADDRESS } from '@/utils/constants';
+import { Select } from 'chakra-react-select';
+import { uploadFileIPFS } from '@/utils/helper';
+import { CONTRACT_ADDRESS, tokenInfos } from '@/utils/constants';
+import { SelectReactCustom } from '@/themes';
 interface IGameSubmitProps {
   name: string;
   email: string;
@@ -35,7 +39,7 @@ interface IGameSubmitProps {
   banner: any;
   logo: any;
   sourceUrl: string;
-  tokens?: string[];
+  tokens?: any[];
   totalSupply?: number;
 }
 interface IProps {
@@ -62,7 +66,10 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
     banner: undefined,
     logo: undefined,
     sourceUrl: '',
-    tokens: [CONTRACT_ADDRESS.STRK, CONTRACT_ADDRESS.ETH],
+    tokens: [
+      { value: CONTRACT_ADDRESS.STRK, label: 'STRK' },
+      { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
+    ],
     totalSupply: 0,
   };
   Yup.addMethod(Yup.mixed, 'fileRequired', function (message) {
@@ -74,38 +81,73 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
       return true;
     });
   });
-
-  const imageDimensionCheck: any = Yup.addMethod(
+  const imageWidthAndHeight = (
+    file: File
+  ): Promise<{ width: number; height: number }> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = event => {
+        const img = new window.Image();
+        img.onload = () => {
+          resolve({ width: img.width, height: img.height });
+        };
+        img.onerror = () => {
+          reject(new Error('Failed to load image.'));
+        };
+        img.src = event.target?.result as string;
+      };
+      reader.onerror = () => {
+        reject(new Error('Failed to read file.'));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+  Yup.addMethod<Yup.MixedSchema>(
     Yup.mixed,
     'imageDimensionCheck',
-    function (message, requiredWidth, requiredHeight) {
+    function (message: string, requiredWidth: number, requiredHeight: number) {
       return this.test(
-        'image-width-height-check',
+        'image-dimension-check',
         message,
-        function (value: any) {
+        async function (value: any) {
+          // use `any` for the value type
           const { path, createError } = this;
 
           if (!value) {
-            return;
+            return true; // No file provided, so validation passes
           }
 
-          const imgDimensions: any = imageWidthAndHeight(value);
-
-          if (imgDimensions.width !== requiredWidth) {
+          if (!(value instanceof File)) {
             return createError({
               path,
-              message: `The file width needs to be ${requiredWidth}px!`,
+              message: 'The provided value is not a valid file.',
             });
           }
 
-          if (imgDimensions.height !== requiredHeight) {
+          try {
+            const imgDimensions = await imageWidthAndHeight(value);
+
+            if (imgDimensions.width !== requiredWidth) {
+              return createError({
+                path,
+                message: `The file width needs to be ${requiredWidth}px!`,
+              });
+            }
+
+            if (imgDimensions.height !== requiredHeight) {
+              return createError({
+                path,
+                message: `The file height needs to be ${requiredHeight}px!`,
+              });
+            }
+
+            return true;
+          } catch (error) {
             return createError({
               path,
-              message: `The file height needs to be ${requiredHeight}px!`,
+              message: 'Failed to validate image dimensions.',
             });
           }
-
-          return true;
         }
       );
     }
@@ -113,15 +155,30 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Game name is required'),
-    shortDescription: Yup.string().required('Short description is required'),
-    longDescription: Yup.string().required('Long description is required'),
-    gameUrl: Yup.string().required('Game url is required'),
-    logo: (Yup as any).mixed().fileRequired('Game avatar is required'),
-    banner: (Yup as any).mixed().fileRequired('Game banner is required'),
-    sourceUrl: Yup.string().required('Link source game is required'),
-    totalSupply: Yup.number(),
+    shortDescription: Yup.string()
+      .required('Short description is required')
+      .min(3, 'Short description must be at least 3 characters')
+      .max(50, 'Short description must be at most 50 characters'),
+    longDescription: Yup.string()
+      .required('Long description is required')
+      .min(3, 'Long description must be at least 3 characters')
+      .max(255, 'Long description must be at most 50 characters'),
+    gameUrl: Yup.string()
+      .required('Game url is required')
+      .url('Game URL must be a valid URL'),
+    logo: (Yup as any)
+      .mixed()
+      .fileRequired('Game avatar is required')
+      .imageDimensionCheck('The file width needs to be 300x300', 300, 300),
+    banner: (Yup as any)
+      .mixed()
+      .fileRequired('Game banner is required')
+      .imageDimensionCheck('The file width needs to be 1920x400', 1920, 400),
+    sourceUrl: Yup.string()
+      .required('Link source game is required')
+      .url('Source URL must be a valid URL'),
   });
-
+  const toast = useToast();
   const handleSubmitGame = useMutation({
     mutationFn: async (form: any) => {
       const { data } = await axiosHandlerNoBearer.post(
@@ -130,27 +187,58 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
       );
       return data;
     },
-    onError: () => {},
+    onError: () => {
+      toast({
+        title: 'Error',
+        description: 'Error submitting game',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    },
+    onSuccess: () => {
+      toast({
+        title: 'Success',
+        description: 'Game submitted successfully',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+    },
   });
-
+  const { isOpen: isAdvance, onToggle: onToggleAdvance } = useDisclosure();
+  const { isOpen: isOwnToken, onToggle: onToggleOwnToken } = useDisclosure();
   const formik = useFormik({
     initialValues: inititalValues,
     validationSchema: validationSchema,
     onSubmit: async values => {
+      toast({
+        title: 'Uploading files...',
+        description: 'Your files are being uploaded.',
+        status: 'info',
+        duration: null, // Keep it visible until the upload is complete
+        isClosable: false,
+      });
       const dataLogoIPFS = await uploadFileIPFS(formik.values.logo);
       const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
-      handleSubmitGame.mutate({
+      if (isAdvance && isOwnToken && values.tokens) {
+        values.tokens = values.tokens.map((token: any) => token.value);
+      }
+      await handleSubmitGame.mutate({
         ...values,
         banner: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataBannerIPFS}`,
         logo: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataLogoIPFS}`,
       });
+      toast({
+        title: 'Uploading files...',
+        description: 'Your files are being uploaded.',
+        status: 'info',
+        duration: null, // Keep it visible until the upload is complete
+        isClosable: false,
+      });
+      formik.resetForm();
     },
   });
-  const {
-    isOpen: isAdvance,
-    onClose: onCloseAdvance,
-    onToggle: onToggleAdvance,
-  } = useDisclosure();
 
   return (
     <Box px={4}>
@@ -168,12 +256,7 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               placeholder="Ex: Starkarcade"
               id="name"
               value={formik.values.name}
-              onChange={e => {
-                formik.handleChange(e);
-                // updateFields({
-                //   name: e.target.value,
-                // });
-              }}
+              onChange={formik.handleChange}
             />
             {formik.touched.name && formik.errors.name && (
               <FormErrorMessage>
@@ -402,13 +485,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
           </FormControl>
 
           <Flex flexDirection="column" width="full" gap={4}>
-            {/* <Text
-              onClick={() => {
-                onToggleAdvance();
-              }}
-            >
-              Advanced (token if any)
-            </Text> */}
             <FormControl display="flex" alignItems="center">
               <FormLabel htmlFor="advance" mb="0">
                 Advanced (token if any)
@@ -416,19 +492,80 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               <Switch id="advance" onChange={onToggleAdvance} />
             </FormControl>
 
-            <Collapse in={isAdvance} animateOpacity>
-              <FormControl
-                variant="submit_game"
-                isInvalid={!!(formik.touched.name && formik.errors.name)}
-              >
-                <FormLabel>Total Supply</FormLabel>
-                <Input variant="primary" type="text" placeholder="Ex: 100" />
-                {formik.touched.totalSupply && formik.errors.totalSupply && (
-                  <FormErrorMessage>
-                    <Text> {formik.errors.totalSupply as any}</Text>
-                  </FormErrorMessage>
-                )}
-              </FormControl>
+            <Collapse
+              in={isAdvance}
+              animateOpacity
+              style={{
+                overflow: isAdvance ? 'visible' : 'hidden',
+              }}
+            >
+              <Flex flexDirection="column" gap={6}>
+                <FormControl
+                  variant="submit_game"
+                  isRequired={isAdvance}
+                  isInvalid={
+                    !!(formik.touched.totalSupply && formik.errors.totalSupply)
+                  }
+                >
+                  <HStack justifyContent="space-between">
+                    <FormLabel>Token Info</FormLabel>
+                    <HStack mb={4}>
+                      <Text
+                        as={'label'}
+                        htmlFor="ownToken"
+                        style={{
+                          fontSize: '12px',
+                        }}
+                      >
+                        Use Own Token
+                      </Text>
+                      <Switch id="ownToken" onChange={onToggleOwnToken} />
+                    </HStack>
+                  </HStack>
+
+                  {isOwnToken ? (
+                    <Input placeholder="Type Contract Address" />
+                  ) : (
+                    <Select
+                      isMulti
+                      variant="outline"
+                      chakraStyles={SelectReactCustom}
+                      placeholder="Ex: STRK, ETH"
+                      name="tokens"
+                      options={tokenInfos as any}
+                      value={formik.values.tokens}
+                      onChange={e =>
+                        formik.handleChange({
+                          target: {
+                            name: 'tokens',
+                            value: e,
+                          },
+                        })
+                      }
+                    />
+                  )}
+                  {formik.touched.tokens && formik.errors.tokens && (
+                    <FormErrorMessage>
+                      <Text> {formik.errors.tokens as any}</Text>
+                    </FormErrorMessage>
+                  )}
+                </FormControl>
+                <FormControl
+                  variant="submit_game"
+                  isRequired={isAdvance}
+                  isInvalid={
+                    !!(formik.touched.totalSupply && formik.errors.totalSupply)
+                  }
+                >
+                  <FormLabel>Total Supply</FormLabel>
+                  <Input variant="primary" type="text" placeholder="Ex: 100" />
+                  {formik.touched.totalSupply && formik.errors.totalSupply && (
+                    <FormErrorMessage>
+                      <Text> {formik.errors.totalSupply as any}</Text>
+                    </FormErrorMessage>
+                  )}
+                </FormControl>
+              </Flex>
             </Collapse>
           </Flex>
 

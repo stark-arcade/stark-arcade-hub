@@ -1,4 +1,9 @@
-import { ComponentStyleConfig, extendTheme } from '@chakra-ui/react';
+import {
+  background,
+  ComponentStyleConfig,
+  extendTheme,
+} from '@chakra-ui/react';
+import { ChakraStylesConfig } from 'chakra-react-select';
 
 export const colors = {
   shader: {
@@ -212,6 +217,33 @@ const Textarea: ComponentStyleConfig = {
       },
     },
   },
+};
+
+export const SelectReactCustom: ChakraStylesConfig = {
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    background: state.isFocused ? 'shader.400' : 'shader.800',
+    p: 0,
+    w: '40px',
+  }),
+  menu: provided => ({
+    ...provided,
+  }),
+  menuList: provided => ({
+    ...provided,
+    background: 'shader.800',
+    color: 'shader.800',
+  }),
+  valueContainer: provided => ({
+    ...provided,
+    // background: 'shader.800',
+    // color: 'shader.400',
+  }),
+  container: provided => ({
+    ...provided,
+    background: 'shader.800',
+    color: 'shader.400',
+  }),
 };
 const theme = extendTheme({
   colors,
