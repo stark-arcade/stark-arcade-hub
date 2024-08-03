@@ -25,7 +25,7 @@ const SubmitGamePage = () => {
     'f not, we will not keep any of the data concerning it.',
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [isSubmited, setIsSubmited] = React.useState(false);
   return (
     <Box
       backgroundImage={`url('/assets/arts/art_submit_form.svg')`}
@@ -77,11 +77,20 @@ const SubmitGamePage = () => {
             onClick={() => onOpen()}
             leftIcon={<Icon as={ArrowIcon} />}
           >
-            {isOpen ? 'Policy' : 'Submit a game'}
+            {'Submit a game'}
           </Button>
         </HStack>
         <Collapse in={isOpen} animateOpacity>
-          <SubmitGameForm cancelSubmit={onClose} />
+          {isSubmited ? (
+            <Box>
+              <Text>Thanks For Apply , Please Check Your Email...</Text>
+            </Box>
+          ) : (
+            <SubmitGameForm
+              cancelSubmit={onClose}
+              setIsSubmited={setIsSubmited}
+            />
+          )}
         </Collapse>
       </Container>
     </Box>

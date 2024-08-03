@@ -27,7 +27,7 @@ import { Switch } from '@chakra-ui/react';
 import { useMutation } from '@tanstack/react-query';
 import { axiosHandlerNoBearer } from '@/config/axiosConfig';
 import { Select } from 'chakra-react-select';
-import { uploadFileIPFS } from '@/utils/helper';
+import { delay, uploadFileIPFS } from '@/utils/helper';
 import { CONTRACT_ADDRESS, tokenInfos } from '@/utils/constants';
 import { SelectReactCustom } from '@/themes';
 interface IGameSubmitProps {
@@ -44,6 +44,7 @@ interface IGameSubmitProps {
 }
 interface IProps {
   cancelSubmit: () => void;
+  setIsSubmited: (isSubmited: boolean) => void;
 }
 declare module 'yup' {
   interface MixedSchema {
@@ -56,7 +57,9 @@ declare module 'yup' {
   }
 }
 
-const SubmitGameForm = ({ cancelSubmit }: IProps) => {
+const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
+  const { isOpen: isAdvance, onToggle: onToggleAdvance } = useDisclosure();
+  const { isOpen: isOwnToken, onToggle: onToggleOwnToken } = useDisclosure();
   const inititalValues: IGameSubmitProps = {
     name: '',
     shortDescription: '',
@@ -177,6 +180,30 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
     sourceUrl: Yup.string()
       .required('Link source game is required')
       .url('Source URL must be a valid URL'),
+    tokens: Yup.array().when('isOwnToken', (isOwnToken, schema) => {
+      if (isOwnToken) {
+        return schema
+          .of(
+            Yup.string()
+              .required('Token address is required')
+              .matches(/^0x[0-9a-fA-F]/, 'Invalid token address')
+          )
+          .test(
+            'unique',
+            'Token addresses must be unique',
+            value => value && value.length === new Set(value).size
+          );
+      } else {
+        return schema
+          .of(
+            Yup.object().shape({
+              value: Yup.string().required(),
+              label: Yup.string().required(),
+            })
+          )
+          .required('Tokens are required');
+      }
+    }),
   });
   const toast = useToast();
   const handleSubmitGame = useMutation({
@@ -187,58 +214,77 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
       );
       return data;
     },
-    onError: () => {
-      toast({
-        title: 'Error',
-        description: 'Error submitting game',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-    },
-    onSuccess: () => {
-      toast({
-        title: 'Success',
-        description: 'Game submitted successfully',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      });
-    },
   });
-  const { isOpen: isAdvance, onToggle: onToggleAdvance } = useDisclosure();
-  const { isOpen: isOwnToken, onToggle: onToggleOwnToken } = useDisclosure();
+
   const formik = useFormik({
     initialValues: inititalValues,
     validationSchema: validationSchema,
     onSubmit: async values => {
-      toast({
-        title: 'Uploading files...',
-        description: 'Your files are being uploaded.',
-        status: 'info',
-        duration: null, // Keep it visible until the upload is complete
-        isClosable: false,
+      const submitGameWork = (async () => {
+        try {
+          // Upload files to IPFS
+          const dataLogoIPFS = await uploadFileIPFS(formik.values.logo);
+          const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
+
+          // Process tokens if necessary
+          if (values.tokens && !isAdvance) {
+            values.tokens = values.tokens.map((token: any) => token.value);
+          }
+
+          // Make the API call
+          await handleSubmitGame.mutateAsync({
+            ...values,
+            banner: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataBannerIPFS}`,
+            logo: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataLogoIPFS}`,
+          });
+
+          // Reset form on success
+          formik.resetForm();
+          setIsSubmited(true);
+          return 'Success'; // Resolve the promise
+        } catch (error) {
+          throw new Error((error as Error).message); // Reject the promise
+        }
+      })();
+
+      toast.promise(submitGameWork, {
+        success: {
+          title: 'Submit resolved',
+          description: 'Submit Success',
+        },
+        error: error => ({
+          title: 'Submit Error',
+          description: error.message,
+        }),
+        loading: {
+          title: 'Upload Form pending',
+          description: 'Please wait verify.....',
+        },
       });
-      const dataLogoIPFS = await uploadFileIPFS(formik.values.logo);
-      const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
-      if (isAdvance && isOwnToken && values.tokens) {
-        values.tokens = values.tokens.map((token: any) => token.value);
-      }
-      await handleSubmitGame.mutate({
-        ...values,
-        banner: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataBannerIPFS}`,
-        logo: `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${dataLogoIPFS}`,
-      });
-      toast({
-        title: 'Uploading files...',
-        description: 'Your files are being uploaded.',
-        status: 'info',
-        duration: null, // Keep it visible until the upload is complete
-        isClosable: false,
-      });
-      formik.resetForm();
     },
   });
+
+  const [ownTokens, setOwnTokens] = React.useState<string[]>(['']);
+  const handleOwnTokenChange = (index: number, value: string) => {
+    const newTokens = [...ownTokens];
+    newTokens[index] = value;
+    setOwnTokens(newTokens);
+    formik.setFieldValue('tokens', newTokens);
+  };
+
+  const addTokenInput = () => {
+    if (ownTokens.length < 10) {
+      setOwnTokens([...ownTokens, '']);
+    }
+  };
+
+  const removeTokenInput = (index: number) => {
+    setOwnTokens(ownTokens.filter((_, i) => i !== index));
+    formik.setFieldValue(
+      'tokens',
+      ownTokens.filter((_, i) => i !== index)
+    );
+  };
 
   return (
     <Box px={4}>
@@ -278,9 +324,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               value={formik.values.email}
               onChange={e => {
                 formik.handleChange(e);
-                // updateFields({
-                //   email: e.target.value,
-                // });
               }}
             />
             {formik.touched.email && formik.errors.email && (
@@ -303,9 +346,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               value={formik.values.shortDescription}
               onChange={e => {
                 formik.handleChange(e);
-                // updateFields({
-                //   shortDescription: e.target.value,
-                // });
               }}
             />
             {formik.touched.shortDescription &&
@@ -333,9 +373,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               value={formik.values.longDescription}
               onChange={e => {
                 formik.handleChange(e);
-                // updateFields({
-                //   longDescription: e.target.value,
-                // });
               }}
             />
             {formik.touched.longDescription &&
@@ -348,7 +385,7 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
           <FormControl
             variant="submit_game"
             isRequired
-            isInvalid={!!(formik.touched.name && formik.errors.name)}
+            isInvalid={!!(formik.touched.gameUrl && formik.errors.gameUrl)}
           >
             <FormLabel>Game URL</FormLabel>
             <Input
@@ -359,9 +396,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               value={formik.values.gameUrl}
               onChange={e => {
                 formik.handleChange(e);
-                // updateFields({
-                //   gameUrl: e.target.value,
-                // });
               }}
             />
             {formik.touched.gameUrl && formik.errors.gameUrl && (
@@ -384,9 +418,6 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               value={formik.values.sourceUrl}
               onChange={e => {
                 formik.handleChange(e);
-                // updateFields({
-                //   sourceUrl: e.target.value,
-                // });
               }}
             />
             {formik.touched.sourceUrl && formik.errors.sourceUrl && (
@@ -500,13 +531,7 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
               }}
             >
               <Flex flexDirection="column" gap={6}>
-                <FormControl
-                  variant="submit_game"
-                  isRequired={isAdvance}
-                  isInvalid={
-                    !!(formik.touched.totalSupply && formik.errors.totalSupply)
-                  }
-                >
+                <FormControl variant="submit_game">
                   <HStack justifyContent="space-between">
                     <FormLabel>Token Info</FormLabel>
                     <HStack mb={4}>
@@ -519,12 +544,95 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
                       >
                         Use Own Token
                       </Text>
-                      <Switch id="ownToken" onChange={onToggleOwnToken} />
+                      <Switch
+                        id="ownToken"
+                        onChange={() => {
+                          const newOwnToken = !isOwnToken;
+                          onToggleOwnToken();
+                          formik.setFieldValue('isOwnToken', newOwnToken);
+                          formik.setFieldValue(
+                            'tokens',
+                            newOwnToken
+                              ? [...ownTokens]
+                              : [
+                                  {
+                                    value: CONTRACT_ADDRESS.STRK,
+                                    label: 'STRK',
+                                  },
+                                  { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
+                                ]
+                          );
+                          // formik.validateField('tokens');
+                        }}
+                      />
                     </HStack>
                   </HStack>
 
                   {isOwnToken ? (
-                    <Input placeholder="Type Contract Address" />
+                    <Flex flexDirection="column" gap={6}>
+                      {ownTokens.length &&
+                        ownTokens.map((token, index) => (
+                          <FormControl
+                            key={index}
+                            isInvalid={
+                              !!(
+                                isOwnToken &&
+                                formik.errors.tokens &&
+                                formik.errors.tokens[index]
+                              )
+                            }
+                          >
+                            <HStack mb={2}>
+                              <Input
+                                placeholder="Type Contract Address"
+                                variant="primary"
+                                value={token}
+                                onChange={e => {
+                                  handleOwnTokenChange(index, e.target.value);
+                                  formik.setFieldValue(
+                                    `tokens[${index}]`,
+                                    e.target.value
+                                  );
+                                  formik.validateField(`tokens[${index}]`);
+                                }}
+                              />
+                              <Button
+                                onClick={() => {
+                                  removeTokenInput(index);
+                                  formik.setFieldValue(
+                                    'tokens',
+                                    formik.values.tokens &&
+                                      formik.values.tokens.filter(
+                                        (_, i) => i !== index
+                                      )
+                                  );
+                                  formik.validateField('tokens');
+                                }}
+                                colorScheme="red"
+                                size="sm"
+                              >
+                                Remove
+                              </Button>
+                            </HStack>
+                            {isOwnToken &&
+                              formik.errors.tokens &&
+                              formik.errors.tokens[index] && (
+                                <FormErrorMessage>
+                                  {formik.errors.tokens[index]}
+                                </FormErrorMessage>
+                              )}
+                          </FormControl>
+                        ))}
+                      {ownTokens.length < 10 && (
+                        <Button
+                          onClick={addTokenInput}
+                          variant="outline"
+                          colorScheme="blue"
+                        >
+                          Add Token
+                        </Button>
+                      )}
+                    </Flex>
                   ) : (
                     <Select
                       isMulti
@@ -534,16 +642,10 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
                       name="tokens"
                       options={tokenInfos as any}
                       value={formik.values.tokens}
-                      onChange={e =>
-                        formik.handleChange({
-                          target: {
-                            name: 'tokens',
-                            value: e,
-                          },
-                        })
-                      }
+                      onChange={e => formik.setFieldValue('tokens', e)}
                     />
                   )}
+
                   {formik.touched.tokens && formik.errors.tokens && (
                     <FormErrorMessage>
                       <Text> {formik.errors.tokens as any}</Text>

@@ -56,3 +56,7 @@ export const uploadFileIPFS = async (fileToUpload: any) => {
     console.log('error IPFS', e);
   }
 };
+
+export const delay = (ms: number): Promise<void> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
