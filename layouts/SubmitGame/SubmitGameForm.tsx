@@ -180,8 +180,8 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     sourceUrl: Yup.string()
       .required('Link source game is required')
       .url('Source URL must be a valid URL'),
-    tokens: Yup.array().when('isOwnToken', (isOwnToken, schema) => {
-      if (isOwnToken) {
+    tokens: Yup.array().when('isOwnToken', (isOwnToken: any, schema) => {
+      if (isOwnToken === true) {
         return schema
           .of(
             Yup.string()
@@ -194,6 +194,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
             value => value && value.length === new Set(value).size
           );
       } else {
+        console.log('What Wrong ????');
         return schema
           .of(
             Yup.object().shape({
@@ -227,7 +228,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
 
           // Process tokens if necessary
-          if (values.tokens && !isAdvance) {
+          if ((values.tokens && !isAdvance) || (!isOwnToken && values.tokens)) {
             values.tokens = values.tokens.map((token: any) => token.value);
           }
 
@@ -285,7 +286,8 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
       ownTokens.filter((_, i) => i !== index)
     );
   };
-
+  console.log('Formik errors:', formik.errors);
+  console.log('Is Advance', isOwnToken);
   return (
     <Box px={4}>
       <form onSubmit={formik.handleSubmit}>
@@ -562,7 +564,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                                   { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
                                 ]
                           );
-                          // formik.validateField('tokens');
+                          formik.validateField('tokens');
                         }}
                       />
                     </HStack>
@@ -652,21 +654,30 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                     </FormErrorMessage>
                   )}
                 </FormControl>
-                <FormControl
-                  variant="submit_game"
-                  isRequired={isAdvance}
-                  isInvalid={
-                    !!(formik.touched.totalSupply && formik.errors.totalSupply)
-                  }
-                >
-                  <FormLabel>Total Supply</FormLabel>
-                  <Input variant="primary" type="text" placeholder="Ex: 100" />
-                  {formik.touched.totalSupply && formik.errors.totalSupply && (
-                    <FormErrorMessage>
-                      <Text> {formik.errors.totalSupply as any}</Text>
-                    </FormErrorMessage>
-                  )}
-                </FormControl>
+                {isOwnToken && (
+                  <FormControl
+                    variant="submit_game"
+                    isRequired={isOwnToken}
+                    isInvalid={
+                      !!(
+                        formik.touched.totalSupply && formik.errors.totalSupply
+                      )
+                    }
+                  >
+                    <FormLabel>Total Supply</FormLabel>
+                    <Input
+                      variant="primary"
+                      type="text"
+                      placeholder="Ex: 100"
+                    />
+                    {formik.touched.totalSupply &&
+                      formik.errors.totalSupply && (
+                        <FormErrorMessage>
+                          <Text> {formik.errors.totalSupply as any}</Text>
+                        </FormErrorMessage>
+                      )}
+                  </FormControl>
+                )}
               </Flex>
             </Collapse>
           </Flex>
