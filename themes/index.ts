@@ -205,7 +205,11 @@ const Textarea: ComponentStyleConfig = {
       fontSize: 'sm',
       padding: 4,
       border: '1px solid',
+
       borderColor: 'shader.600',
+      _placeholder: {
+        color: 'shader.400',
+      },
     },
   },
 };

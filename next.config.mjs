@@ -34,7 +34,9 @@ const nextConfig = {
     },
     env: {
         PUBLIC_NEXT_API: String(process.env.PUBLIC_NEXT_API) || 'http://localhost:5001',
-        PINATA_API_KEY: String(process.env.PINATA_API_KEY) || '',
+        PINATA_JWT: String(process.env.PINATA_JWT) || '',
+        NEXT_PUBLIC_GATEWAY_URL: String(process.env.NEXT_PUBLIC_GATEWAY_URL) || '',
+        NEXT_PUBLIC_GATEWAY_TOKEN: String(process.env.NEXT_PUBLIC_GATEWAY_TOKEN) || '',
     }
 };
 

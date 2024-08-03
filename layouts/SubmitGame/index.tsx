@@ -51,8 +51,9 @@ const SubmitGamePage = () => {
             display="inline-flex"
             fontSize="40px"
             textAlign="center"
-            fontWeight="700"
+            fontWeight="800"
             gap={2}
+            textTransform="uppercase"
             color="white"
           >
             Submitting
@@ -74,12 +75,7 @@ const SubmitGamePage = () => {
             variant="gradient_100"
             display={isOpen ? 'none' : 'block'}
             onClick={() => onOpen()}
-            leftIcon={
-              <Icon
-                as={ArrowIcon}
-                transform={`${isOpen}?rotate(180deg):none`}
-              />
-            }
+            leftIcon={<Icon as={ArrowIcon} />}
           >
             {isOpen ? 'Policy' : 'Submit a game'}
           </Button>
