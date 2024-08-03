@@ -10,6 +10,7 @@ import {
   useDisclosure,
   Button,
   StackProps,
+  TextProps,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import TwitterIcon from '@/public/assets/icons/twitter.svg';
@@ -20,6 +21,7 @@ interface LinkProps {
   link: string;
   target?: boolean;
   isDisbaled?: boolean;
+  sx?: TextProps;
 }
 interface IProps {
   sx?: StackProps;
@@ -42,16 +44,22 @@ const NavigationPage = ({ sx }: IProps) => {
       isDisbaled: true,
     },
     {
-      label: 'Others',
-      link: '/others',
-      isDisbaled: true,
+      label: 'Submit',
+      link: '/submit-game',
+      sx: {
+        background: 'gradient.100',
+        backgroundClip: 'text',
+        style: {
+          WebkitTextFillColor: 'transparent',
+        },
+      },
     },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <HStack gap={{ lg: 10, md: 6 }} {...sx}>
       {ListPage.map(item => (
-        <>
+        <React.Fragment key={item.label}>
           {item.isDisbaled ? (
             <Text fontWeight="bold" opacity={0.6} cursor="not-allowed">
               {item.label}
@@ -59,7 +67,6 @@ const NavigationPage = ({ sx }: IProps) => {
           ) : (
             <ChakraLink
               as={Link}
-              key={item.label}
               href={item.link}
               fontWeight="bold"
               sx={{
@@ -69,12 +76,13 @@ const NavigationPage = ({ sx }: IProps) => {
                   textDecoration: 'none',
                   color: 'primary.600',
                 },
+                ...item.sx,
               }}
             >
               {item.label}
             </ChakraLink>
           )}
-        </>
+        </React.Fragment>
       ))}
 
       <Menu variant="profile" isOpen={isOpen} onClose={onClose}>

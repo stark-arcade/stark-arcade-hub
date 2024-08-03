@@ -60,8 +60,8 @@ const GameSliders = () => {
                   objectFit="contain"
                   backgroundSize="cover"
                   height={{
-                    lg: 'full',
-                    base: 400,
+                    md: 'full',
+                    base: 300,
                   }}
                   borderRadius="24px"
                 ></GridItem>

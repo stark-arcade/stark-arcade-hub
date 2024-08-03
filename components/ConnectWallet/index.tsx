@@ -30,7 +30,13 @@ const ConnectWallet = ({ sx }: IProps) => {
   };
 
   return (
-    <Button variant="primary" onClick={handleConnectWallet} {...sx} as={HStack}>
+    <Button
+      cursor="pointer"
+      variant="primary"
+      onClick={handleConnectWallet}
+      {...sx}
+      as={HStack}
+    >
       <Icon as={WalletIcon} h={6} w={6} />
       <Text
         display={{

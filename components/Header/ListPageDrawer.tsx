@@ -1,5 +1,6 @@
 import React from 'react';
 import HamburgerIcon from '@/public/assets/icons/hamburger.svg';
+import CloseIcon from '@/public/assets/icons/close.svg';
 import {
   Drawer,
   DrawerBody,
@@ -13,7 +14,12 @@ const ListPageDrawer = () => {
   const { isOpen, onToggle, onClose } = useDisclosure();
   return (
     <>
-      <Icon as={HamburgerIcon} height={6} width={6} onClick={onToggle} />
+      <Icon
+        as={isOpen ? CloseIcon : HamburgerIcon}
+        height={8}
+        width={8}
+        onClick={onToggle}
+      />
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="full">
         <DrawerOverlay />
         <DrawerContent bg="shader.800" mt="80px">
