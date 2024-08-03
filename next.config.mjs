@@ -32,6 +32,10 @@ const nextConfig = {
             );
         return config;
     },
+    env: {
+        PUBLIC_NEXT_API: String(process.env.PUBLIC_NEXT_API) || 'http://localhost:5001',
+        PINATA_API_KEY: String(process.env.PINATA_API_KEY) || '',
+    }
 };
 
 export default nextConfig;

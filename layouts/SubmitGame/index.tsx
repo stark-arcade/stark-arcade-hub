@@ -25,6 +25,7 @@ const SubmitGamePage = () => {
     'f not, we will not keep any of the data concerning it.',
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box
       backgroundImage={`url('/assets/arts/art_submit_form.svg')`}
@@ -32,7 +33,7 @@ const SubmitGamePage = () => {
       backgroundPosition="center"
       backgroundSize="cover"
     >
-      <Container maxWidth="container.md" py={20}>
+      <Container maxWidth="container.md" py={20} minH="100vh">
         <VStack pos="relative" pt={10} width="full">
           <Box
             backgroundImage={`radial-gradient(closest-side, ${convertHex(

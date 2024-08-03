@@ -13,6 +13,7 @@ import {
   VStack,
   Image,
   Flex,
+  Collapse,
 } from '@chakra-ui/react';
 import React from 'react';
 import * as Yup from 'yup';
@@ -20,61 +21,83 @@ import { useFormik } from 'formik';
 import ArrowIcon from '@/public/assets/icons/arrow.svg';
 import CloseIcon from '@/public/assets/icons/logout.svg';
 import UploadImage from '@/components/UploadImage';
+import { Switch } from '@chakra-ui/react';
+import { useMutation } from '@tanstack/react-query';
+import { axiosHandlerNoBearer } from '@/config/axiosConfig';
+import { CONTRACT_ADDRESS } from '@/utils/constants';
 interface IGameSubmitProps {
-  game_name: string;
+  name: string;
   email: string;
-  short_description: string;
-  long_description: string;
-  game_url: string;
-  game_banner: any;
-  game_avatar: any;
-  link_source_game: string;
-  token_name?: string;
-  token_symbol?: string;
-  total_supply?: number;
+  shortDescription: string;
+  longDescription: string;
+  gameUrl: string;
+  banner: any;
+  logo: any;
+  sourceUrl: string;
+  tokens?: string[];
+  totalSupply?: number;
 }
 interface IProps {
   cancelSubmit: () => void;
 }
 const SubmitGameForm = ({ cancelSubmit }: IProps) => {
   const inititalValues: IGameSubmitProps = {
-    game_name: '',
-    short_description: '',
-    long_description: '',
+    name: '',
+    shortDescription: '',
+    longDescription: '',
     email: '',
-    game_url: '',
-    game_banner: undefined,
-    game_avatar: undefined,
-    link_source_game: '',
-    token_name: '',
-    token_symbol: '',
-    total_supply: 0,
+    gameUrl: '',
+    banner: undefined,
+    logo: undefined,
+    sourceUrl: '',
+    tokens: [CONTRACT_ADDRESS.STRK],
+    totalSupply: 0,
   };
   const [form, setForm] = React.useState(inititalValues);
   const validationSchema = Yup.object({
-    game_name: Yup.string().required('Game name is required'),
-    short_description: Yup.string().required('Short description is required'),
-    long_description: Yup.string().required('Long description is required'),
-    game_url: Yup.string().required('Game url is required'),
-    game_banner: Yup.string().required('Game banner is required'),
-    link_source_game: Yup.string().required('Link source game is required'),
-    token_name: Yup.string(),
-    token_symbol: Yup.string(),
-    total_supply: Yup.number(),
+    name: Yup.string().required('Game name is required'),
+    shortDescription: Yup.string().required('Short description is required'),
+    longDescription: Yup.string().required('Long description is required'),
+    gameUrl: Yup.string().required('Game url is required'),
+    // logo: Yup.string().required('Game avatar is required'),
+    // banner: Yup.string().required('Game banner is required'),
+    sourceUrl: Yup.string().required('Link source game is required'),
+    // totalSupply: Yup.number(),
   });
   function updateFields(fields: Partial<IGameSubmitProps>) {
     setForm(prev => {
       return { ...prev, ...fields };
     });
   }
+
+  const handleSubmitGame = useMutation({
+    mutationFn: async (form: any) => {
+      const { data } = await axiosHandlerNoBearer.post(
+        '/starkarcade-hub/submit-game',
+        form
+      );
+      return data;
+    },
+    onError: () => {},
+  });
+
   const formik = useFormik({
     initialValues: form,
     validationSchema: validationSchema,
     onSubmit: values => {
       console.log('Formik', values);
+      handleSubmitGame.mutate({
+        ...values,
+        banner: 'https://www.starkarcade.com/',
+        logo: 'https://www.starkarcade.com/',
+      });
     },
   });
-  const { isOpen: isAdvance, onClose: onCloseAdvance } = useDisclosure();
+  const {
+    isOpen: isAdvance,
+    onClose: onCloseAdvance,
+    onToggle: onToggleAdvance,
+  } = useDisclosure();
 
   return (
     <Box px={4}>
@@ -83,30 +106,46 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
           <FormControl
             variant="submit_game"
             isRequired
-            isInvalid={!!(formik.touched.game_name && formik.errors.game_name)}
+            isInvalid={!!(formik.touched.name && formik.errors.name)}
           >
             <FormLabel>Game Name</FormLabel>
             <Input
               variant="primary"
               type="text"
               placeholder="Ex: Starkarcade"
+              id="name"
+              value={formik.values.name}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  name: e.target.value,
+                });
+              }}
             />
-            {formik.touched.game_name && formik.errors.game_name && (
+            {formik.touched.name && formik.errors.name && (
               <FormErrorMessage>
-                <Text> {formik.errors.game_name as any}</Text>
+                <Text> {formik.errors.name as any}</Text>
               </FormErrorMessage>
             )}
           </FormControl>
           <FormControl
             variant="submit_game"
-            isInvalid={!!(formik.touched.game_name && formik.errors.game_name)}
+            isInvalid={!!(formik.touched.name && formik.errors.name)}
             isRequired
           >
             <FormLabel>Email Team</FormLabel>
             <Input
               variant="primary"
               type="text"
+              id="email"
               placeholder="Ex: starkarcade@gmail.com"
+              value={formik.values.email}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  email: e.target.value,
+                });
+              }}
             />
             {formik.touched.email && formik.errors.email && (
               <FormErrorMessage>
@@ -117,50 +156,106 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
           <FormControl
             variant="submit_game"
             isRequired
-            isInvalid={!!(formik.touched.game_name && formik.errors.game_name)}
+            isInvalid={!!(formik.touched.name && formik.errors.name)}
           >
             <FormLabel>Short Description</FormLabel>
             <Input
               variant="primary"
               type="text"
+              id="shortDescription"
               placeholder="Ex: Short Description"
+              value={formik.values.shortDescription}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  shortDescription: e.target.value,
+                });
+              }}
             />
-            {formik.touched.short_description &&
-              formik.errors.short_description && (
+            {formik.touched.shortDescription &&
+              formik.errors.shortDescription && (
                 <FormErrorMessage>
-                  <Text> {formik.errors.short_description as any}</Text>
+                  <Text> {formik.errors.shortDescription as any}</Text>
                 </FormErrorMessage>
               )}
           </FormControl>
           <FormControl
             variant="submit_game"
-            isInvalid={!!(formik.touched.game_name && formik.errors.game_name)}
+            isInvalid={
+              !!(
+                formik.touched.longDescription && formik.errors.longDescription
+              )
+            }
             isRequired
           >
             <FormLabel>Long Description</FormLabel>
 
-            <Textarea placeholder="Ex: LongDescription" variant="primary" />
-            {formik.touched.long_description &&
-              formik.errors.long_description && (
+            <Textarea
+              placeholder="Ex: LongDescription"
+              variant="primary"
+              id="longDescription"
+              value={formik.values.longDescription}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  longDescription: e.target.value,
+                });
+              }}
+            />
+            {formik.touched.longDescription &&
+              formik.errors.longDescription && (
                 <FormErrorMessage>
-                  <Text> {formik.errors.long_description as any}</Text>
+                  <Text> {formik.errors.longDescription as any}</Text>
                 </FormErrorMessage>
               )}
           </FormControl>
           <FormControl
             variant="submit_game"
             isRequired
-            isInvalid={!!(formik.touched.game_name && formik.errors.game_name)}
+            isInvalid={!!(formik.touched.name && formik.errors.name)}
           >
             <FormLabel>Game URL</FormLabel>
             <Input
               variant="primary"
               type="text"
+              id="gameUrl"
               placeholder="Ex: Starkarcade"
+              value={formik.values.gameUrl}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  gameUrl: e.target.value,
+                });
+              }}
             />
-            {formik.touched.game_url && formik.errors.game_url && (
+            {formik.touched.gameUrl && formik.errors.gameUrl && (
               <FormErrorMessage>
-                <Text> {formik.errors.game_url as any}</Text>
+                <Text> {formik.errors.gameUrl as any}</Text>
+              </FormErrorMessage>
+            )}
+          </FormControl>
+          <FormControl
+            variant="submit_game"
+            isRequired
+            isInvalid={!!(formik.touched.sourceUrl && formik.errors.sourceUrl)}
+          >
+            <FormLabel>Link Source Game</FormLabel>
+            <Input
+              variant="primary"
+              type="text"
+              id="sourceUrl"
+              placeholder="Ex: Link Source Game"
+              value={formik.values.sourceUrl}
+              onChange={e => {
+                formik.handleChange(e);
+                updateFields({
+                  sourceUrl: e.target.value,
+                });
+              }}
+            />
+            {formik.touched.sourceUrl && formik.errors.sourceUrl && (
+              <FormErrorMessage>
+                <Text> {formik.errors.sourceUrl as any}</Text>
               </FormErrorMessage>
             )}
           </FormControl>
@@ -168,90 +263,68 @@ const SubmitGameForm = ({ cancelSubmit }: IProps) => {
             <FormLabel>Game Media Kit</FormLabel>
             <HStack>
               <Box>
-                {form.game_avatar && (
+                {form.logo && (
                   <Image
-                    src={URL.createObjectURL(form.game_avatar)}
+                    src={URL.createObjectURL(form.logo)}
                     objectFit="cover"
                     alt="Game Avatar"
                   />
                 )}
                 <UploadImage
-                  imageFile={form.game_avatar}
+                  imageFile={formik.values.logo}
                   setImageFile={file => {
-                     updateFields({ game_avatar: file });
+                    formik.handleChange(file);
+                    // updateFields({ logo: file });
                   }}
                 />
               </Box>
               <Box>
-                {form.game_banner && (
+                {form.banner && (
                   <Image
-                    src={URL.createObjectURL(form.game_banner)}
+                    src={URL.createObjectURL(form.banner)}
                     objectFit="cover"
                     alt="Game Banner"
                   />
                 )}
                 <UploadImage
-                  imageFile={form.game_banner}
-                  setImageFile={file => updateFields({ game_banner: file })}
+                  imageFile={formik.values.banner}
+                  setImageFile={file => {
+                    formik.handleChange(file);
+                    // updateFields({ logo: file });
+                  }}
                 />
               </Box>
             </HStack>
           </FormControl>
           <Flex flexDirection="column" width="full" gap={4}>
-            <Text>Advanced (token if any)</Text>
-            <FormControl
-              variant="submit_game"
-              isRequired
-              isInvalid={
-                !!(formik.touched.game_name && formik.errors.game_name)
-              }
+            {/* <Text
+              onClick={() => {
+                onToggleAdvance();
+              }}
             >
-              <FormLabel>Token Name</FormLabel>
-              <Input
-                variant="primary"
-                type="text"
-                placeholder="Ex: Starkarcade"
-              />
-              {formik.touched.token_name && formik.errors.token_name && (
-                <FormErrorMessage>
-                  <Text> {formik.errors.token_name as any}</Text>
-                </FormErrorMessage>
-              )}
+              Advanced (token if any)
+            </Text> */}
+            <FormControl display="flex" alignItems="center">
+              <FormLabel htmlFor="advance" mb="0">
+                Advanced (token if any)
+              </FormLabel>
+              <Switch id="advance" onChange={onToggleAdvance} />
             </FormControl>
-            <FormControl
-              variant="submit_game"
-              isRequired
-              isInvalid={
-                !!(formik.touched.game_name && formik.errors.game_name)
-              }
-            >
-              <FormLabel>Token Symbol</FormLabel>
-              <Input
-                variant="primary"
-                type="text"
-                placeholder="Ex: Token Symbol"
-              />
-              {formik.touched.token_symbol && formik.errors.token_symbol && (
-                <FormErrorMessage>
-                  <Text> {formik.errors.token_symbol as any}</Text>
-                </FormErrorMessage>
-              )}
-            </FormControl>
-            <FormControl
-              variant="submit_game"
-              isRequired
-              isInvalid={
-                !!(formik.touched.game_name && formik.errors.game_name)
-              }
-            >
-              <FormLabel>Total Supply</FormLabel>
-              <Input variant="primary" type="text" placeholder="Ex: 100" />
-              {formik.touched.total_supply && formik.errors.total_supply && (
-                <FormErrorMessage>
-                  <Text> {formik.errors.total_supply as any}</Text>
-                </FormErrorMessage>
-              )}
-            </FormControl>
+
+            <Collapse in={isAdvance} animateOpacity>
+              <FormControl
+                variant="submit_game"
+                isInvalid={!!(formik.touched.name && formik.errors.name)}
+              >
+                <FormLabel>Total Supply</FormLabel>
+                <Input variant="primary" type="text" placeholder="Ex: 100" />
+                {formik.touched.totalSupply && formik.errors.totalSupply && (
+                  <FormErrorMessage>
+                    <Text> {formik.errors.totalSupply as any}</Text>
+                  </FormErrorMessage>
+                )}
+              </FormControl>
+            </Collapse>
           </Flex>
 
           <HStack>
