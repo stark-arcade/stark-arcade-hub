@@ -16,6 +16,7 @@ import DefaultLayout from '@/layouts/default';
 export const metadata: Metadata = {
   title: 'StarkArcade Hub',
   metadataBase: new URL('https://starkarcade.com'),
+
   description:
     'Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens.',
   icons: {
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
     'Starknet Arcade',
     'Starknet Arcade Hub',
     'Hub Game in Starknet',
+    'Starknet Game',
+    'Starknet Gaming',
   ],
   openGraph: {
     title: 'StarkArcade Hub',
