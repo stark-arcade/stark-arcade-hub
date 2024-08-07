@@ -286,8 +286,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
       ownTokens.filter((_, i) => i !== index)
     );
   };
-  console.log('Formik errors:', formik.errors);
-  console.log('Is Advance', isOwnToken);
+
   return (
     <Box px={4}>
       <form onSubmit={formik.handleSubmit}>
@@ -369,7 +368,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
             <FormLabel>Long Description</FormLabel>
 
             <Textarea
-              placeholder="Ex: LongDescription"
+              placeholder="Ex: Long Description"
               variant="primary"
               id="longDescription"
               value={formik.values.longDescription}
@@ -394,7 +393,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
               variant="primary"
               type="text"
               id="gameUrl"
-              placeholder="Ex: Starkarcade"
+              placeholder="Ex: https://www.starkarcade.com/"
               value={formik.values.gameUrl}
               onChange={e => {
                 formik.handleChange(e);
@@ -586,7 +585,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                           >
                             <HStack mb={2}>
                               <Input
-                                placeholder="Type Contract Address"
+                                placeholder="Ex Token: 0x00da114221cb83fa859dbdb4c44beeaa0bb37c7537ad5ae66fe5e0efd20e6eb3"
                                 variant="primary"
                                 value={token}
                                 onChange={e => {
