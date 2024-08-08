@@ -180,8 +180,8 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     sourceUrl: Yup.string()
       .required('Link source game is required')
       .url('Source URL must be a valid URL'),
-    tokens: Yup.array().when('isOwnToken', (isOwnToken, schema) => {
-      if (isOwnToken) {
+    tokens: Yup.array().when('isOwnToken', (isOwnToken: any, schema) => {
+      if (isOwnToken === true) {
         return schema
           .of(
             Yup.string()
@@ -194,6 +194,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
             value => value && value.length === new Set(value).size
           );
       } else {
+        console.log('What Wrong ????');
         return schema
           .of(
             Yup.object().shape({
@@ -227,7 +228,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
 
           // Process tokens if necessary
-          if (values.tokens && !isAdvance) {
+          if ((values.tokens && !isAdvance) || (!isOwnToken && values.tokens)) {
             values.tokens = values.tokens.map((token: any) => token.value);
           }
 
@@ -367,7 +368,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
             <FormLabel>Long Description</FormLabel>
 
             <Textarea
-              placeholder="Ex: LongDescription"
+              placeholder="Ex: Long Description"
               variant="primary"
               id="longDescription"
               value={formik.values.longDescription}
@@ -392,7 +393,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
               variant="primary"
               type="text"
               id="gameUrl"
-              placeholder="Ex: Starkarcade"
+              placeholder="Ex: https://www.starkarcade.com/"
               value={formik.values.gameUrl}
               onChange={e => {
                 formik.handleChange(e);
@@ -562,7 +563,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                                   { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
                                 ]
                           );
-                          // formik.validateField('tokens');
+                          formik.validateField('tokens');
                         }}
                       />
                     </HStack>
@@ -584,7 +585,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                           >
                             <HStack mb={2}>
                               <Input
-                                placeholder="Type Contract Address"
+                                placeholder="Ex Token: 0x00da114221cb83fa859dbdb4c44beeaa0bb37c7537ad5ae66fe5e0efd20e6eb3"
                                 variant="primary"
                                 value={token}
                                 onChange={e => {
@@ -652,21 +653,30 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                     </FormErrorMessage>
                   )}
                 </FormControl>
-                <FormControl
-                  variant="submit_game"
-                  isRequired={isAdvance}
-                  isInvalid={
-                    !!(formik.touched.totalSupply && formik.errors.totalSupply)
-                  }
-                >
-                  <FormLabel>Total Supply</FormLabel>
-                  <Input variant="primary" type="text" placeholder="Ex: 100" />
-                  {formik.touched.totalSupply && formik.errors.totalSupply && (
-                    <FormErrorMessage>
-                      <Text> {formik.errors.totalSupply as any}</Text>
-                    </FormErrorMessage>
-                  )}
-                </FormControl>
+                {isOwnToken && (
+                  <FormControl
+                    variant="submit_game"
+                    isRequired={isOwnToken}
+                    isInvalid={
+                      !!(
+                        formik.touched.totalSupply && formik.errors.totalSupply
+                      )
+                    }
+                  >
+                    <FormLabel>Total Supply</FormLabel>
+                    <Input
+                      variant="primary"
+                      type="text"
+                      placeholder="Ex: 100"
+                    />
+                    {formik.touched.totalSupply &&
+                      formik.errors.totalSupply && (
+                        <FormErrorMessage>
+                          <Text> {formik.errors.totalSupply as any}</Text>
+                        </FormErrorMessage>
+                      )}
+                  </FormControl>
+                )}
               </Flex>
             </Collapse>
           </Flex>

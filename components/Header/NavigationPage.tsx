@@ -44,7 +44,7 @@ const NavigationPage = ({ sx }: IProps) => {
       isDisbaled: true,
     },
     {
-      label: 'Submit',
+      label: 'Join us',
       link: '/submit-game',
       sx: {
         background: 'gradient.100',

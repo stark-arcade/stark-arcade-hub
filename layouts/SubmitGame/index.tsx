@@ -15,14 +15,14 @@ import {
 import React from 'react';
 import ArrowIcon from '@/public/assets/icons/arrow.svg';
 import SubmitGameForm from './SubmitGameForm';
-
+import SubmitIcon from '@/public/assets/icons/submitssion.svg';
 const SubmitGamePage = () => {
   const ListInfoBeforeSubmit = [
-    'Have you come up with a game and want to present it to us?',
-    'Fill in the form below and attach a video (maximum 3 minutes without music in English) explaining the general principle and mechanics of the game and showing its material',
-    'Unfortunately we no longer accept prototypes sent by mail or submitted during game events.We will try to reply to you within two to three weeks maximum',
-    'If we are interested in the project, we will ask you for further information',
-    'f not, we will not keep any of the data concerning it.',
+    'Want to build your first game on Starknet but don’t know where to start?',
+    'We offer Cairo resources, amplification, and funding support from the Starknet Foundation to bring your games to life.',
+    `To apply, fill out the form below and attach a video (max 3 minutes, in English, without music) explaining the game's principles and mechanics, and showcasing its material.`,
+    'If we are interested, we will request further information. If not, we will not retain any data related to your submission.',
+    'Expect a response within two to three weeks',
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isSubmited, setIsSubmited] = React.useState(false);
@@ -56,9 +56,10 @@ const SubmitGamePage = () => {
             textTransform="uppercase"
             color="white"
           >
-            Submitting
-            <Text variant="gradient_text">games</Text>
+            BRING YOUR GAMES TO
+            <Text variant="gradient_text">STARKNET</Text>
           </Box>
+          <Text fontWeight="bold"> For Builders by Builders</Text>
         </VStack>
         <Collapse in={!isOpen} animateOpacity>
           {ListInfoBeforeSubmit.map((item, index) => (
@@ -82,9 +83,18 @@ const SubmitGamePage = () => {
         </HStack>
         <Collapse in={isOpen} animateOpacity>
           {isSubmited ? (
-            <Box>
-              <Text>Thanks For Apply , Please Check Your Email...</Text>
-            </Box>
+            <VStack>
+              <Icon
+                as={SubmitIcon}
+                width={100}
+                height={100}
+                color="green.500"
+              />
+              <Text mt={6}>
+                Thank you for applying! Please check your email for further
+                information
+              </Text>
+            </VStack>
           ) : (
             <SubmitGameForm
               cancelSubmit={onClose}
