@@ -65,15 +65,7 @@ export const ListGame: GameProps[] = [
     banner: '/assets/games/brush_hit.png',
     thumbnail: '/assets/games/comming_start.svg',
   },
-  {
-    name: 'Brewmaster',
-    description:
-      'Navigate the bustling nightlife, master the taps and keep the party alive in Brewmaster’s Friday night ',
-    tags: ['Casual', 'Beer', 'Bar', 'Testnet'],
-    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
-    banner: '/assets/games/beer_catcher.png',
-    thumbnail: '/assets/games/comming_start.svg',
-  },
+
   {
     name: 'StarkVoyager',
     description:

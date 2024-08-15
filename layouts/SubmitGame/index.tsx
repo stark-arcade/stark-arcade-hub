@@ -90,7 +90,7 @@ const SubmitGamePage = () => {
                 height={100}
                 color="green.500"
               />
-              <Text mt={6}>
+              <Text mt={6} fontWeight="bold">
                 Thank you for applying! Please check your email for further
                 information
               </Text>

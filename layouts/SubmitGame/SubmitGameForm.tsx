@@ -73,7 +73,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
       { value: CONTRACT_ADDRESS.STRK, label: 'STRK' },
       { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
     ],
-    totalSupply: 0,
+    // totalSupply: 0,
   };
   Yup.addMethod(Yup.mixed, 'fileRequired', function (message) {
     return this.test('fileRequired', message, function (value) {
@@ -158,6 +158,9 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Game name is required'),
+    email: Yup.string()
+      .required('Email is required')
+      .email('Please Type Valid Email'),
     shortDescription: Yup.string()
       .required('Short description is required')
       .min(3, 'Short description must be at least 3 characters')
@@ -180,31 +183,31 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     sourceUrl: Yup.string()
       .required('Link source game is required')
       .url('Source URL must be a valid URL'),
-    tokens: Yup.array().when('isOwnToken', (isOwnToken: any, schema) => {
-      if (isOwnToken === true) {
-        return schema
-          .of(
-            Yup.string()
-              .required('Token address is required')
-              .matches(/^0x[0-9a-fA-F]/, 'Invalid token address')
-          )
-          .test(
-            'unique',
-            'Token addresses must be unique',
-            value => value && value.length === new Set(value).size
-          );
-      } else {
-        console.log('What Wrong ????');
-        return schema
-          .of(
-            Yup.object().shape({
-              value: Yup.string().required(),
-              label: Yup.string().required(),
-            })
-          )
-          .required('Tokens are required');
-      }
-    }),
+    // tokens: Yup.array().when('isOwnToken', (isOwnToken: any, schema) => {
+    //   if (isOwnToken === true) {
+    //     console.log('It not check here');
+    //     return schema
+    //       .of(
+    //         Yup.string()
+    //           .required('Token address is required')
+    //           .matches(/^0x[0-9a-fA-F]/, 'Invalid token address')
+    //       )
+    //       .test(
+    //         'unique',
+    //         'Token addresses must be unique',
+    //         value => value && value.length === new Set(value).size
+    //       );
+    //   } else {
+    //     return schema
+    //       .of(
+    //         Yup.object().shape({
+    //           value: Yup.string().required(),
+    //           label: Yup.string().required(),
+    //         })
+    //       )
+    //       .required('Tokens are required');
+    //   }
+    // }),
   });
   const toast = useToast();
   const handleSubmitGame = useMutation({
@@ -244,6 +247,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           setIsSubmited(true);
           return 'Success'; // Resolve the promise
         } catch (error) {
+          console.log('Error', error);
           throw new Error((error as Error).message); // Reject the promise
         }
       })();
@@ -313,7 +317,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           </FormControl>
           <FormControl
             variant="submit_game"
-            isInvalid={!!(formik.touched.name && formik.errors.name)}
+            isInvalid={!!(formik.touched.email && formik.errors.email)}
             isRequired
           >
             <FormLabel>Email Team</FormLabel>
@@ -516,7 +520,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
             )}
           </FormControl>
 
-          <Flex flexDirection="column" width="full" gap={4}>
+          {/* <Flex flexDirection="column" width="full" gap={4}>
             <FormControl display="flex" alignItems="center">
               <FormLabel htmlFor="advance" mb="0">
                 Advanced (token if any)
@@ -550,19 +554,22 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                         onChange={() => {
                           const newOwnToken = !isOwnToken;
                           onToggleOwnToken();
-                          formik.setFieldValue('isOwnToken', newOwnToken);
-                          formik.setFieldValue(
-                            'tokens',
-                            newOwnToken
-                              ? [...ownTokens]
-                              : [
-                                  {
-                                    value: CONTRACT_ADDRESS.STRK,
-                                    label: 'STRK',
-                                  },
-                                  { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
-                                ]
-                          );
+
+                          formik.setFieldValue('isOwnToken', ownTokens);
+
+                          if (!newOwnToken) {
+                            formik.setFieldValue('tokens', [
+                              {
+                                value: CONTRACT_ADDRESS.STRK,
+                                label: 'STRK',
+                              },
+                              {
+                                value: CONTRACT_ADDRESS.ETH,
+                                label: 'ETH',
+                              },
+                            ]);
+                          }
+
                           formik.validateField('tokens');
                         }}
                       />
@@ -615,8 +622,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                                 Remove
                               </Button>
                             </HStack>
-                            {isOwnToken &&
-                              formik.errors.tokens &&
+                            {formik.errors.tokens &&
                               formik.errors.tokens[index] && (
                                 <FormErrorMessage>
                                   {formik.errors.tokens[index]}
@@ -679,7 +685,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
                 )}
               </Flex>
             </Collapse>
-          </Flex>
+          </Flex> */}
 
           <HStack>
             <Button
