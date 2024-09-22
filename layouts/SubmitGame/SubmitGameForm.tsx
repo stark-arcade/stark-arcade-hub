@@ -30,6 +30,7 @@ import { Select } from 'chakra-react-select';
 import { delay, uploadFileIPFS } from '@/utils/helper';
 import { CONTRACT_ADDRESS, tokenInfos } from '@/utils/constants';
 import { SelectReactCustom } from '@/themes';
+import Link from 'next/link';
 interface IGameSubmitProps {
   name: string;
   email: string;
@@ -58,8 +59,6 @@ declare module 'yup' {
 }
 
 const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
-  const { isOpen: isAdvance, onToggle: onToggleAdvance } = useDisclosure();
-  const { isOpen: isOwnToken, onToggle: onToggleOwnToken } = useDisclosure();
   const inititalValues: IGameSubmitProps = {
     name: '',
     shortDescription: '',
@@ -69,10 +68,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     banner: undefined,
     logo: undefined,
     sourceUrl: '',
-    tokens: [
-      { value: CONTRACT_ADDRESS.STRK, label: 'STRK' },
-      { value: CONTRACT_ADDRESS.ETH, label: 'ETH' },
-    ],
+    tokens: [],
     // totalSupply: 0,
   };
   Yup.addMethod(Yup.mixed, 'fileRequired', function (message) {
@@ -168,7 +164,7 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     longDescription: Yup.string()
       .required('Long description is required')
       .min(3, 'Long description must be at least 3 characters')
-      .max(255, 'Long description must be at most 50 characters'),
+      .max(255, 'Long description must be at most 255 characters'),
     gameUrl: Yup.string()
       .required('Game url is required')
       .url('Game URL must be a valid URL'),
@@ -183,31 +179,6 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
     sourceUrl: Yup.string()
       .required('Link source game is required')
       .url('Source URL must be a valid URL'),
-    // tokens: Yup.array().when('isOwnToken', (isOwnToken: any, schema) => {
-    //   if (isOwnToken === true) {
-    //     console.log('It not check here');
-    //     return schema
-    //       .of(
-    //         Yup.string()
-    //           .required('Token address is required')
-    //           .matches(/^0x[0-9a-fA-F]/, 'Invalid token address')
-    //       )
-    //       .test(
-    //         'unique',
-    //         'Token addresses must be unique',
-    //         value => value && value.length === new Set(value).size
-    //       );
-    //   } else {
-    //     return schema
-    //       .of(
-    //         Yup.object().shape({
-    //           value: Yup.string().required(),
-    //           label: Yup.string().required(),
-    //         })
-    //       )
-    //       .required('Tokens are required');
-    //   }
-    // }),
   });
   const toast = useToast();
   const handleSubmitGame = useMutation({
@@ -231,9 +202,6 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           const dataBannerIPFS = await uploadFileIPFS(formik.values.banner);
 
           // Process tokens if necessary
-          if ((values.tokens && !isAdvance) || (!isOwnToken && values.tokens)) {
-            values.tokens = values.tokens.map((token: any) => token.value);
-          }
 
           // Make the API call
           await handleSubmitGame.mutateAsync({
@@ -257,9 +225,9 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
           title: 'Submit resolved',
           description: 'Submit Success',
         },
-        error: error => ({
+        error: (error: any) => ({
           title: 'Submit Error',
-          description: error.message,
+          description: error.response.data.message,
         }),
         loading: {
           title: 'Upload Form pending',
@@ -268,28 +236,6 @@ const SubmitGameForm = ({ cancelSubmit, setIsSubmited }: IProps) => {
       });
     },
   });
-
-  const [ownTokens, setOwnTokens] = React.useState<string[]>(['']);
-  const handleOwnTokenChange = (index: number, value: string) => {
-    const newTokens = [...ownTokens];
-    newTokens[index] = value;
-    setOwnTokens(newTokens);
-    formik.setFieldValue('tokens', newTokens);
-  };
-
-  const addTokenInput = () => {
-    if (ownTokens.length < 10) {
-      setOwnTokens([...ownTokens, '']);
-    }
-  };
-
-  const removeTokenInput = (index: number) => {
-    setOwnTokens(ownTokens.filter((_, i) => i !== index));
-    formik.setFieldValue(
-      'tokens',
-      ownTokens.filter((_, i) => i !== index)
-    );
-  };
 
   return (
     <Box px={4}>
