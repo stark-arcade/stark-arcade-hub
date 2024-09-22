@@ -16,6 +16,7 @@ import React from 'react';
 import ArrowIcon from '@/public/assets/icons/arrow.svg';
 import SubmitGameForm from './SubmitGameForm';
 import SubmitIcon from '@/public/assets/icons/submitssion.svg';
+import Link from 'next/link';
 const SubmitGamePage = () => {
   const ListInfoBeforeSubmit = [
     'Want to build your first game on Starknet but don’t know where to start?',
@@ -33,7 +34,12 @@ const SubmitGamePage = () => {
       backgroundPosition="center"
       backgroundSize="cover"
     >
-      <Container maxWidth="container.md" py={20} minH="100vh">
+      <Container
+        maxWidth="container.md"
+        py={20}
+        minH="100vh"
+        position="relative"
+      >
         <VStack pos="relative" pt={10} width="full">
           <Box
             backgroundImage={`radial-gradient(closest-side, ${convertHex(
@@ -90,10 +96,18 @@ const SubmitGamePage = () => {
                 height={100}
                 color="green.500"
               />
-              <Text mt={6}>
+              <Text mt={6} fontWeight="bold">
                 Thank you for applying! Please check your email for further
                 information
               </Text>
+              <Button
+                onClick={() => {
+                  setIsSubmited(false);
+                  onClose();
+                }}
+              >
+                Back To Submit
+              </Button>
             </VStack>
           ) : (
             <SubmitGameForm
@@ -102,6 +116,21 @@ const SubmitGamePage = () => {
             />
           )}
         </Collapse>
+        <Box position="absolute" bottom={4}>
+          <Text>
+            {`If you're encountering an issue that prevents you from applying,
+              please use this form instead:`}
+          </Text>
+          <Link href="https://forms.gle/s9mTHk8c5Yx3vNCF7" target="_blank">
+            <Text
+              fontWeight={900}
+              variant="gradient_text"
+              textDecor="underline"
+            >
+              Submit Here
+            </Text>
+          </Link>
+        </Box>
       </Container>
     </Box>
   );
