@@ -1,6 +1,6 @@
-import { HStack, Icon, Text } from "@chakra-ui/react";
-import React from "react";
-import LogoIcon from "@/public/assets/logo/logo.svg";
+import { HStack, Icon, Text } from '@chakra-ui/react';
+import React from 'react';
+import LogoIcon from '@/public/assets/logo/logo.svg';
 const Footer = () => {
   return (
     <HStack
@@ -8,11 +8,11 @@ const Footer = () => {
       px={10}
       py={5}
       fontSize="xs"
-      fontWeight={800}
+      fontWeight={600}
       columnGap={4}
       flexDirection={{
-        md: "row",
-        base: "column",
+        md: 'row',
+        base: 'column',
       }}
     >
       <Text>COPYRIGHT 2024 © STARKARCADE</Text>

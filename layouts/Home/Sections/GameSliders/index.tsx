@@ -40,7 +40,7 @@ const GameSliders = () => {
     ),
   };
   return (
-    <div className="slider-container">
+    <Box className="slider-container" pt={12}>
       {sliderRef != null && (
         <Slider ref={(slider: any) => (sliderRef = slider)} {...settings}>
           {ListGame.map((game, index) => (
@@ -163,7 +163,7 @@ const GameSliders = () => {
         </Slider>
       )}
 
-      {/* <div style={{ textAlign: "center" }}>
+      {/* <Box style={{ textAlign: "center" }}>
         <button className="button" onClick={play}>
           Play
         </button>
@@ -171,7 +171,7 @@ const GameSliders = () => {
           Pause
         </button>
       </div> */}
-    </div>
+    </Box>
   );
 };
 

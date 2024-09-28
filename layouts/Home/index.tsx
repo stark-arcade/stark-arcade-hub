@@ -4,39 +4,31 @@ import React from 'react';
 import HeroSection from './Sections/Hero/HeroSection';
 import GameSliders from './Sections/GameSliders';
 
-import ListGameSection from './Sections/ListGames';
 import FadeInVisible from '@/components/Animations/FadeInVisible';
+import GameForYou from './Sections/GameForYou';
+import HowToJoin from './Sections/HowToJoin';
+import BannerIntro from './Sections/BannerIntro';
 
 const HomePage = () => {
   return (
-    <Flex flexDirection="column" gap={6}>
-      <HeroSection />
-      <Box
-        backgroundImage={"url('/assets/arts/slider_section.png')"}
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        backgroundPosition="center"
-      >
-        <Container maxWidth="container.xl" px={4}>
-          <FadeInVisible>
-            <GameSliders />
-          </FadeInVisible>
-        </Container>
-      </Box>
-      <Box
-        backgroundImage={"url('/assets/arts/listing_section.png')"}
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        backgroundPosition="center"
-        py={10}
-      >
+    <React.Fragment>
+      <Flex flexDirection="column" gap={6}>
         <Container maxWidth="container.xl" px={0}>
           <FadeInVisible>
-            <ListGameSection />
+            <GameForYou />
           </FadeInVisible>
         </Container>
-      </Box>
-    </Flex>
+
+        <Box py={10}>
+          <Container maxWidth="container.xl" px={0}>
+            <FadeInVisible>
+              <HowToJoin />
+            </FadeInVisible>
+          </Container>
+        </Box>
+        <HeroSection />
+      </Flex>
+    </React.Fragment>
   );
 };
 

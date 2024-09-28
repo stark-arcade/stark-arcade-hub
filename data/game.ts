@@ -16,6 +16,15 @@ export enum LABEL_GAMES {
 export enum CATEGORY_GAME {}
 export const ListGame: GameProps[] = [
   {
+    name: 'Brewmaster',
+    description:
+      'The simplest gamble, but the biggest thrill - one flip away to decrypt your fortune on Starknet. 50/50 odds of double to triple gains or brutal losses. Call it in the air as the coin dances, while your destiny is defined!',
+    tags: ['Action', 'RPG', 'Adventure', 'Tesnet'],
+    typeGame: [LABEL_GAMES.PLAY_TO_EARN],
+    banner: '/assets/games/stark_voyage.png',
+    thumbnail: '/assets/games/comming_start.svg',
+  },
+  {
     name: '2048',
     description:
       'Challenge your mind and swipe your way to 2048 in the ultimate number-merging puzzle game!',
@@ -76,3 +85,5 @@ export const ListGame: GameProps[] = [
     thumbnail: '/assets/games/comming_start.svg',
   },
 ];
+
+export const LisGameForYou: GameProps[] = [];

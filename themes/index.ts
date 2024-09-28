@@ -32,6 +32,7 @@ export const colors = {
   },
   gradient: {
     100: 'linear-gradient(180deg, #E3FF74 0%, #E37C39 100%)',
+    200: `linear-gradient(180deg, #0575FA 0%, #11E6F9 100%)`,
   },
 };
 
@@ -58,7 +59,9 @@ const Button: ComponentStyleConfig = {
       borderRadius: '100px',
       fontSize: 'sm',
       fontWeight: 700,
-      _hover: {},
+      _hover: {
+        opacity: 0.8,
+      },
     },
   },
 };

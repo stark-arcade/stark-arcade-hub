@@ -13,6 +13,7 @@ import ButonDecolgenLab from '../Button/ButonDecolgenLab';
 import ProfileAccount from '../Account/ProfileAccount';
 
 import ListPageDrawer from './ListPageDrawer';
+import BannerIntro from '@/layouts/Home/Sections/BannerIntro';
 
 const Header = () => {
   const { userAddress, prevConnector } = useAuth();
@@ -59,40 +60,45 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userAddress, prevConnector]);
   return (
-    <HStack
+    <Box
       as="header"
-      px={{ md: 10, base: 4 }}
       zIndex={'popover'}
       position="sticky"
       top={0}
-      py={5}
       background="shader.800"
-      justifyContent="space-between"
     >
-      <HStack as={Link} href="/">
-        <Box display={{ md: 'none', base: 'flex' }} alignItems="center">
-          <ListPageDrawer />
+      <HStack
+        justifyContent="space-between"
+        mb={4}
+        px={{ md: 10, base: 4 }}
+        py={5}
+      >
+        <HStack as={Link} href="/">
+          <Box display={{ md: 'none', base: 'flex' }} alignItems="center">
+            <ListPageDrawer />
+          </Box>
+          <Icon as={LogoStark} height={8} width={8} />
+          <Icon
+            as={StarkText}
+            height={'auto'}
+            width={'auto'}
+            display={{ md: 'block', base: 'none' }}
+          />
+        </HStack>
+        <Box display={{ md: 'block', base: 'none' }}>
+          <NavigationPage />
         </Box>
-        <Icon as={LogoStark} height={8} width={8} />
-        <Icon
-          as={StarkText}
-          height={'auto'}
-          width={'auto'}
-          display={{ md: 'block', base: 'none' }}
-        />
-      </HStack>
-      <Box display={{ md: 'block', base: 'none' }}>
-        <NavigationPage />
-      </Box>
 
-      <HStack gap={4}>
-        <ButonDecolgenLab />
-        {
-          // eslint-disable-next-line no-nested-ternary
-          userAddress ? <ProfileAccount /> : <ConnectWallet />
-        }
+        <HStack gap={4}>
+          <ButonDecolgenLab />
+          {
+            // eslint-disable-next-line no-nested-ternary
+            userAddress ? <ProfileAccount /> : <ConnectWallet />
+          }
+        </HStack>
       </HStack>
-    </HStack>
+      <BannerIntro />
+    </Box>
   );
 };
 

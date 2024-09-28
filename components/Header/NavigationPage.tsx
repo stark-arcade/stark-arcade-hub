@@ -28,21 +28,11 @@ interface IProps {
 }
 const NavigationPage = ({ sx }: IProps) => {
   const ListPage: LinkProps[] = [
-    {
-      label: 'Games',
-      link: '/games',
-      isDisbaled: true,
-    },
-    {
-      label: 'Leaderboard',
-      link: '/leaderboard',
-      isDisbaled: true,
-    },
-    {
-      label: 'Services',
-      link: '/service',
-      isDisbaled: true,
-    },
+    // {
+    //   label: 'Services',
+    //   link: '/service',
+    //   isDisbaled: true,
+    // },
     {
       label: 'Join us',
       link: '/submit-game',
@@ -53,6 +43,16 @@ const NavigationPage = ({ sx }: IProps) => {
           WebkitTextFillColor: 'transparent',
         },
       },
+    },
+    {
+      label: 'Games',
+      link: '/games',
+      isDisbaled: true,
+    },
+    {
+      label: 'Leaderboard',
+      link: '/leaderboard',
+      isDisbaled: true,
     },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -97,7 +97,7 @@ const NavigationPage = ({ sx }: IProps) => {
         >
           Social
         </MenuButton>
-        <MenuList minWidth="80px" fontWeight="bold">
+        <MenuList minWidth="80px" fontWeight="bold" zIndex="popover">
           <Link href="https://twitter.com/starkarcade" target="_blank">
             <MenuItem gap={2}>
               <Icon as={TwitterIcon} h={6} w={6} />

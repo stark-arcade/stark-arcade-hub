@@ -18,9 +18,9 @@ const HeroSection = () => {
         width={400}
         borderRadius="100%"
         position="absolute"
-        top={-100}
+        // top={-100}
         zIndex={-2}
-        filter="blur(320px)"
+        filter="blur(220px)"
       />
       <Box
         textAlign="center"
@@ -69,14 +69,17 @@ const HeroSection = () => {
         />
         <Icon as={DecolgenLogo} height={{ md: 8, base: 5 }} width="auto" />
       </HStack>
-      <Box
-        backgroundImage="url('/assets/arts/hero_section.png')"
-        backgroundPosition="center"
-        height={{ md: 600, base: 350 }}
-        // width={{ lg: 1024, base: "full" }}
-        width="full"
-        bgRepeat="no-repeat"
-      ></Box>
+
+      <HStack my={8} overflow="hidden" width="full" justifyContent="center">
+        <Box
+          backgroundImage="url('/assets/arts/slider_bottom_art.png')"
+          backgroundPosition="center"
+          borderRadius="24px"
+          height={{ md: 600, base: 350 }}
+          width={{ lg: 1024, base: 'full' }}
+          bgRepeat="no-repeat"
+        />
+      </HStack>
       {/* <ScrollButton
         sx={{
           position: "absolute",

@@ -66,7 +66,7 @@
 .slick-track:after {
   display: table;
 
-  content: "";
+  content: '';
 }
 .slick-track:after {
   clear: both;
@@ -82,7 +82,7 @@
   height: 100%;
   min-height: 1px;
 }
-[dir="rtl"] .slick-slide {
+[dir='rtl'] .slick-slide {
   float: right;
 }
 .slick-slide img {
@@ -156,7 +156,7 @@
 
 .slick-prev:before,
 .slick-next:before {
-  font-family: "slick";
+  font-family: 'slick';
   font-size: 20px;
   line-height: 1;
 
@@ -170,29 +170,29 @@
 .slick-prev {
   left: -25px;
 }
-[dir="rtl"] .slick-prev {
+[dir='rtl'] .slick-prev {
   right: -25px;
   left: auto;
 }
 .slick-prev:before {
-  content: "←";
+  content: '←';
 }
-[dir="rtl"] .slick-prev:before {
-  content: "→";
+[dir='rtl'] .slick-prev:before {
+  content: '→';
 }
 
 .slick-next {
   right: -25px;
 }
-[dir="rtl"] .slick-next {
+[dir='rtl'] .slick-next {
   right: auto;
   left: -25px;
 }
 .slick-next:before {
-  content: "→";
+  content: '→';
 }
-[dir="rtl"] .slick-next:before {
-  content: "←";
+[dir='rtl'] .slick-next:before {
+  content: '←';
 }
 
 /* Dots */
@@ -250,7 +250,7 @@
   opacity: 1;
 }
 .slick-dots li button:before {
-  font-family: "slick";
+  font-family: 'slick';
   font-size: 6px;
   line-height: 20px;
 
@@ -261,7 +261,7 @@
   width: 10px;
   height: 10px;
 
-  content: "•";
+  content: '•';
   text-align: center;
 
   opacity: 0.25;
@@ -320,5 +320,148 @@
     top: 0;
     left: 0;
     border-radius: 4px;
+  }
+}
+
+/** Global **/
+
+@keyframes slide-to-left {
+  0% {
+    transform: translate(100%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-to-right {
+  0% {
+    transform: translate(0%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0);
+    opacity: 0;
+  }
+}
+
+.animate-slide-to-left {
+  animation: slide-to-left 500ms forwards;
+}
+
+.animate-slide-to-right {
+  animation: slide-to-right 500ms forwards;
+}
+/* Setting Carousel*/
+.embla {
+  /* max-width: 1440px; */
+  margin: auto;
+  --slide-height: 438px;
+  --slide-spacing: 1rem;
+  --slide-size: 60%;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .embla {
+    --slide-size: 100%; /* Slide size for mobile devices */
+    --slide-spacing: 2rem;
+  }
+}
+
+.embla::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(
+    90deg,
+    rgba(21, 21, 21, 0) 30.89%,
+    #151515 93.07%
+  );
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+
+.embla__controls {
+  /* display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between; */
+  /* gap: 1.2rem; */
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+.embla__dot {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #3f6104;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 52px;
+  height: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__dot--selected {
+  background-color: #82c708;
+  box-shadow: inset 0 0 0 0.2rem var(--text-body);
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* Width of the entire scrollbar */
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 6px;
+  border: 3px solid transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .scrolling::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .scrolling::-webkit-scrollbar-thumb {
+    background-color: #3f6104;
+    border-radius: 6px;
+    border: 3px solid #3f6104;
   }
 }
