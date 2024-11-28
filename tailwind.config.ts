@@ -4,13 +4,16 @@ export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
+      },
+      backgroundImage: {
+        "gradient-100": "linear-gradient(180deg, #E3FF74 0%, #E37C39 100%)",
       },
     },
   },

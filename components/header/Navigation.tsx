@@ -21,7 +21,7 @@ const Navigation = () => {
       {navItems.map((item, index) => (
         <Link
           href={item.url}
-          key={`navigation-${item.icon}`}
+          key={`navigation-${item.name}-${index}`}
           className="flex items-center gap-2"
         >
           <Image
@@ -30,7 +30,7 @@ const Navigation = () => {
             width={32}
             alt={`${item.name}-${index}`}
           />
-          <span>{item.name}</span>
+          <span className="font-bold text-sm">{item.name}</span>
         </Link>
       ))}
     </div>
