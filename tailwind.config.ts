@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-nunito-sans)", "sans-serif"],
+        paladin: ["var(--font-paladin)", "sans-serif"],
+      },
       colors: {
         background: "var(--background)",
       },

@@ -1,11 +1,30 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Favicon from "@/app/favicon.ico";
 import Layout from "@/layouts";
 const nutito_sans = Nunito_Sans({
   subsets: ["latin"],
+  variable: "--font-nunito-sans",
 });
+
+const paladin = localFont({
+  src: [
+    {
+      style: "normal",
+      weight: "400",
+      path: "./fonts/paladins.ttf",
+    },
+    {
+      style: "normal",
+      weight: "700",
+      path: "./fonts/paladinscond.ttf",
+    },
+  ],
+  variable: "--font-paladin",
+});
+
 export const metadata: Metadata = {
   title: "StarkArcade Hub",
   metadataBase: new URL("https://starkarcade.com"),
@@ -71,7 +90,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased ${nutito_sans.className}`}>
+      <body className={` antialiased ${nutito_sans.style} ${paladin.variable}`}>
         <Layout>{children}</Layout>
       </body>
     </html>
