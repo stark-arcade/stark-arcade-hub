@@ -1,8 +1,10 @@
 import React from "react";
+import VideoBgArt from "./VideoBgArt";
 
 const HeroSection = () => {
   return (
-    <div className="h-screen">
+    <div className="h-screen  overflow-hidden">
+      <VideoBgArt />
       <div className="container mx-auto py-[120px]">
         <div className="font-paladin text-[32px] max-w-[500px]">
           {`Accelerate the world's transition to `}

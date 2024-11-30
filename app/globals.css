@@ -25,3 +25,19 @@ body {
   -webkit-text-fill-color: transparent;
   width: fit-content;
 }
+
+.title_text{
+  font-size: 32px;
+  font-family: var(--font-paladin)
+}
+
+
+/** Setting Product Header **/
+.sticky-custom {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--background);
+  box-shadow: 0 2px 4px 0 rgba(220, 215, 215, 0.1);
+}
