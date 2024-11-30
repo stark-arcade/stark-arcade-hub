@@ -7,7 +7,7 @@ const VideoBgArt = () => {
       //   height="240"
       className="absolute top-0 left-0 object-cover w-full h-full z-[-1] border-none outline-none"
       autoPlay
-      loop
+      // loop
       muted
     >
       <source src="/assets/video/hero.mp4" type="video/mp4" />

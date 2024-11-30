@@ -26,11 +26,10 @@ body {
   width: fit-content;
 }
 
-.title_text{
+.title_text {
   font-size: 32px;
-  font-family: var(--font-paladin)
+  font-family: var(--font-paladin);
 }
-
 
 /** Setting Product Header **/
 .sticky-custom {
@@ -39,5 +38,5 @@ body {
   top: 0;
   z-index: 1000;
   background: var(--background);
-  box-shadow: 0 2px 4px 0 rgba(220, 215, 215, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(225, 222, 222, 0.1);
 }

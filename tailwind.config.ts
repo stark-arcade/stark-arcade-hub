@@ -15,6 +15,9 @@ export default {
       },
       colors: {
         background: "var(--background)",
+        primary: {
+          100: "#A1A1AA",
+        },
       },
       backgroundImage: {
         "gradient-100": "linear-gradient(180deg, #E3FF74 0%, #E37C39 100%)",
