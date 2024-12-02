@@ -10,11 +10,11 @@ export default function Home() {
       <HeroSection />
       <div className="px-10 ">
         <Image
-          src="/assets/arts/bg_intro_1.jpeg"
+          src="/assets/arts/bg_intro_1.png"
           alt="hero"
           width={1920}
           height={368}
-          className="object-cover h-[368px] w-full rounded-md"
+          className="object-cover h-[368px] w-full rounded-2xl"
         />
       </div>
       <UpcomingSection />
