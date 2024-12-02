@@ -40,3 +40,135 @@ body {
   background: var(--background);
   box-shadow: 0 2px 4px 0 rgba(225, 222, 222, 0.1);
 }
+
+/**Setting Embla Carousel*/
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+
+  position: relative;
+}
+/* .embla__viewport {
+  position: relative;
+}
+.embla .embla__viewport::after {
+  top: 0;
+  background: rgb(92, 90, 90);
+  opacity: 0.5;
+  content: '';
+  height: 85%;
+  position: absolute;
+  width: 40px;
+  right: 0;
+  pointer-events: none;
+  touch-action: none;
+} */
+.embla__slide {
+  position: relative;
+  flex: 0 0 25%;
+  width: 100%;
+  transition: flex-grow 0.3s ease;
+  cursor: pointer;
+}
+
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.embla__button {
+  -webkit-tap-highlight-color: white;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.embla__button:disabled {
+  color: var(--detail-high-contrast);
+}
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+.embla__dot {
+  -webkit-tap-highlight-color: white;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.embla__dot:after {
+  /* box-shadow: inset 0 0 0 0.2rem white; */
+  background: #3f3f46;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: '';
+}
+.embla__dot--selected:after {
+  background: linear-gradient(180deg, #e3ff74 0%, #fd5e04 100%);
+}
+
+/* Setting Verticle Embla**/
+.embla_verticle {
+  margin: auto;
+  --slide-height: 40rem;
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+.embla_verticle .embla__viewport {
+  overflow: hidden;
+}
+.embla_verticle .embla__container {
+  display: flex;
+  touch-action: pan-x pinch-zoom;
+  /* margin-top: calc(var(--slide-spacing) * -1); */
+  height: calc(var(--slide-spacing) + var(--slide-height));
+  flex-direction: column;
+}
+.embla_verticle .embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-height: 0;
+  padding-top: var(--slide-spacing);
+}
