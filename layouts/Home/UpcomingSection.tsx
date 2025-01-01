@@ -2,52 +2,9 @@ import React from "react";
 import Image from "next/image";
 import EmblaCarousel from "@/components/slider/Horizontal/EmblaCarousel";
 import PrimaryCard from "@/components/card/PrimaryCard";
+import { ListUpComming } from "@/config/data/game";
 
 const UpcomingSection = () => {
-  const ListExampleGame = [
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 1",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-    {
-      title: "Game 12",
-      image: "/assets/games/arcade/starkpot.png",
-      link: "/games/1",
-      description: "Dont let those boozer await! Serve your beers NOW",
-    },
-  ];
   return (
     <div className="container mx-auto my-6">
       <div className="flex items-center gap-2 ">
@@ -64,11 +21,11 @@ const UpcomingSection = () => {
       </p>
 
       <EmblaCarousel className="gap-[32px]">
-        {ListExampleGame.map((game, index) => (
+        {ListUpComming.map((game, index) => (
           <PrimaryCard
-            key={`${index}-card-${game.title}`}
-            title={game.title}
-            image={game.image}
+            key={`${index}-card-${game.name}`}
+            title={game.name}
+            image={game.banner}
             description={game.description}
             link={game.link}
           />

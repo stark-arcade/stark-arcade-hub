@@ -11,7 +11,7 @@ import Link from "next/link";
 import SectionRoadMap from "./SectionRoadMap";
 import SectionInfo from "./SectionInfo";
 import SectionQuestion from "./SectionQuestion";
-import Section3D from "./Section3D";
+
 const IncubationProgram = () => {
   const ListData = [
     {
@@ -36,7 +36,7 @@ const IncubationProgram = () => {
     // },
   ];
   return (
-    <div className="container mx-auto pt-[80px] max-w-5xl">
+    <div className="container mx-auto pt-[80px] max-w-5xl pb-[100px]">
       <div className="flex flex-col items-center gap-4 pb-8 border-b-[1px] border-b-primary-600">
         <Image
           src={ArcadeGradient}
@@ -83,7 +83,6 @@ const IncubationProgram = () => {
       <SectionRoadMap />
       <SectionInfo />
       <SectionQuestion />
-      <Section3D />
     </div>
   );
 };

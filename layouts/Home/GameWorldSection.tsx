@@ -10,7 +10,7 @@ const GameWorldSection = () => {
           width={40}
           height={40}
         />
-        <p className="title_text">Up coming games for you</p>
+        <p className="title_text">Game World</p>
       </div>
       <p className="text-primary-100 font-bold mt-4 mb-6">
         List of games we pick for you based on your interactions on Starkarcade

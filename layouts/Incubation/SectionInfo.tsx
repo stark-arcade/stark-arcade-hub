@@ -1,12 +1,31 @@
 import React from "react";
-
+import FrameArtLine from "@/public/assets/arts/frame_art_1.svg";
+import Image from "next/image";
 const SectionInfo = () => {
   return (
     <div className="flex flex-col items-center text-white">
       <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full">
         About Starknet Garden
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 relative">
+        <div className="absolute  -right-16 h-full w-auto">
+          <Image
+            src={FrameArtLine.src}
+            height={100}
+            width={1}
+            alt={""}
+            className="h-full w-auto"
+          />
+        </div>
+        <div className="absolute  -left-16 h-full w-auto">
+          <Image
+            src={FrameArtLine.src}
+            height={100}
+            width={1}
+            alt={""}
+            className="h-full w-auto rotate-180"
+          />
+        </div>
         <p className="text-2xl  font-bold text-center">
           Arcade Garden 1st Cohort: Shaping the Future of Decentralized
           Technology!
