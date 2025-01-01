@@ -19,6 +19,7 @@ export default {
           100: "#A1A1AA",
           200: "#E4E4E7",
           600: "#52525B",
+          900: "#18181B",
         },
       },
       backgroundImage: {

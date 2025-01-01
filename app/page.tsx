@@ -1,5 +1,7 @@
+import GameIncubator from "@/layouts/Home/GameIncubatorList";
 import GameWorldSection from "@/layouts/Home/GameWorldSection";
 import HeroSection from "@/layouts/Home/HeroSection";
+
 import HowToJoinSection from "@/layouts/Home/HowToJoinSection";
 import UpcomingSection from "@/layouts/Home/UpcomingSection";
 import Image from "next/image";
@@ -20,6 +22,7 @@ export default function Home() {
       <UpcomingSection />
       <HowToJoinSection />
       <GameWorldSection />
+      <GameIncubator />
     </div>
   );
 }

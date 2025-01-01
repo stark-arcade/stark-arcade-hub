@@ -5,23 +5,33 @@ import Image from "next/image";
 const PlanetStepper = () => {
   const steps = [
     {
-      title: "Submissions open",
-      date: "Jan 06, 19:00",
+      title: "Open Registration",
+      date: "Jan 02",
       active: true,
     },
     {
-      title: "Submissions close",
-      date: "Jan 06, 19:00",
+      title: "Close Registration",
+      date: "Jan 26",
       active: false,
     },
     {
-      title: "Phase 1",
-      date: "Jan 06, 19:00",
+      title: "Base Camp Batch 1",
+      date: "Feb 06",
       active: false,
     },
     {
-      title: "Phase 2",
-      date: "Jan 06, 19:00",
+      title: "Demo Day 1",
+      date: "March 11",
+      active: false,
+    },
+    {
+      title: "Demo Day 2",
+      date: "March 13",
+      active: false,
+    },
+    {
+      title: "Finalize SeedGrant",
+      date: "March 14",
       active: false,
     },
   ];
@@ -34,7 +44,7 @@ const PlanetStepper = () => {
 
         <div className="flex justify-between items-center w-full">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col  flex-1">
+            <div key={index} className="flex flex-col flex-1">
               <div
                 className={`w-12 h-12 rounded-full flex items-center relative 
                 ${
@@ -58,7 +68,7 @@ const PlanetStepper = () => {
               </div>
 
               <h3
-                className={`mt-4 text-base font-medium
+                className={`mt-4 font-medium
                 ${step.active ? "text-white" : "text-gray-500"}`}
               >
                 {step.title}

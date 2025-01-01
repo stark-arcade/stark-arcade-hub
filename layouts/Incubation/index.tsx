@@ -11,6 +11,8 @@ import Link from "next/link";
 import SectionRoadMap from "./SectionRoadMap";
 import SectionInfo from "./SectionInfo";
 import SectionQuestion from "./SectionQuestion";
+import FadeInVisible from "@/components/animations/FadeInvisible";
+import Section3D from "./Section3D";
 
 const IncubationProgram = () => {
   const ListData = [
@@ -80,9 +82,18 @@ const IncubationProgram = () => {
         </Link>
       </div>
 
-      <SectionRoadMap />
-      <SectionInfo />
-      <SectionQuestion />
+      <FadeInVisible>
+        <SectionRoadMap />
+      </FadeInVisible>
+      <FadeInVisible>
+        <SectionInfo />
+      </FadeInVisible>
+      <FadeInVisible>
+        <SectionQuestion />
+      </FadeInVisible>
+      <FadeInVisible>
+        <Section3D />
+      </FadeInVisible>
     </div>
   );
 };

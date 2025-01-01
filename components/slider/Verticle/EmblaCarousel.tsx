@@ -14,11 +14,13 @@ import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
 } from "./EmblaSelectedDisplay";
+import Image from "next/image";
 interface IProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const EmblaCarousel = ({ children }: IProps) => {
+const EmblaCarousel = ({ children, className }: IProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       axis: "y",
@@ -49,11 +51,13 @@ const EmblaCarousel = ({ children }: IProps) => {
       <div
         onMouseEnter={() => setIsScrolling(true)}
         onMouseLeave={() => setIsScrolling(false)}
-        className={`embla__viewport relative ${isScrolling ? "scrolling" : ""}`}
+        className={`embla__viewport relative ${
+          isScrolling ? "scrolling" : ""
+        } ${className}`}
         ref={emblaRef}
       >
         <div
-          className="embla__container"
+          className={`embla__container ${className}`}
           style={{
             paddingRight: "60px",
           }}
@@ -61,36 +65,34 @@ const EmblaCarousel = ({ children }: IProps) => {
           {children}
         </div>
         <div className="absolute top-0 right-0 z-[100] h-[90%] flex flex-col justify-end">
-          {/* <SelectedSnapDisplay
-    selectedSnap={selectedSnap}
-    snapCount={snapCount}
-  /> */}
           <div>
-            {/* <button
-      aria-label=""
-      className="icon_btn"
-      onClick={() => onFirstButtonClick()}
-      disabled={prevBtnDisabled}
-    >
-      <DoubleArrowsIcon className="rotate-[-90deg]" />
-    </button> */}
-
             <button
               aria-label=""
               className="icon_btn"
               onClick={() => onPrevButtonClick()}
               disabled={prevBtnDisabled}
             >
-              <ArrowIcon className="rotate-[-90deg]" />
+              {/* <ArrowIcon className="rotate-[-90deg]" /> */}
+              <Image
+                src={ArrowIcon.src}
+                alt="Arrow Icon"
+                height={24}
+                width={24}
+              />
             </button>
-            {/* <button
-      aria-label=""
-      className="icon_btn"
-      onClick={() => onNextButtonClick()}
-      disabled={nextBtnDisabled}
-    >
-      <ArrowIcon className="rotate-[90deg]" />
-    </button> */}
+            <button
+              aria-label=""
+              className="icon_btn"
+              onClick={() => onNextButtonClick()}
+              disabled={nextBtnDisabled}
+            >
+              <Image
+                src={ArrowIcon.src}
+                alt="Arrow Icon"
+                height={24}
+                width={24}
+              />
+            </button>
             {/* <button
       aria-label=""
       className="icon_btn"
