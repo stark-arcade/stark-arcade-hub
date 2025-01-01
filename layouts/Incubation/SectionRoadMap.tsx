@@ -1,5 +1,6 @@
 import NavSocial from "@/components/header/NavSocial";
 import React from "react";
+import PlanetStepper from "./PlaneSteper";
 
 const SectionRoadMap = () => {
   return (
@@ -11,7 +12,10 @@ const SectionRoadMap = () => {
         Starknet, delving into decentralized technology and forging the path
         ahead.
       </p>
-      <NavSocial />
+      <div className="py-8">
+        <NavSocial />
+      </div>
+      <PlanetStepper />
     </div>
   );
 };
