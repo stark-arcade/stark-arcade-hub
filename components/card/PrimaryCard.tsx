@@ -23,7 +23,7 @@ const PrimaryCard = ({ title, link, image, description }: IProps) => {
           <img
             src={image}
             alt={title}
-            className="rounded-lg w-full min-h-[320px] object-cover"
+            className="rounded-lg w-full h-[320px] object-cover"
           />
           <div className="p-4 min-h-[100px]">
             <p className="font-[900] text-3xl text-left mb-2 ">{title}</p>

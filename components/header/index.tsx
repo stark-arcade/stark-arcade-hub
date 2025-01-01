@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import LogoStarkArcade from "./Logo";
 import Navigation from "./Navigation";
 
-import PrimaryButton from "../button/PrimaryButton";
+// import PrimaryButton from "../button/PrimaryButton";
 
-import ReactIcon from "@/public/assets/icons/reaction.svg";
-import Image from "next/image";
+// import ReactIcon from "@/public/assets/icons/reaction.svg";
+// import Image from "next/image";
 import NavSocial from "./NavSocial";
 const Header = () => {
   useEffect(() => {
@@ -31,10 +31,10 @@ const Header = () => {
         <Navigation />
         <div className="flex items-center gap-6">
           <NavSocial />
-          <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
+          {/* <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
             <Image src={ReactIcon} height={24} width={24} alt="React join us" />
             <p>Join Us</p>
-          </PrimaryButton>
+          </PrimaryButton> */}
         </div>
       </div>
     </header>

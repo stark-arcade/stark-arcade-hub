@@ -24,6 +24,8 @@ export default {
       },
       backgroundImage: {
         "gradient-100": "linear-gradient(180deg, #E3FF74 0%, #E37C39 100%)",
+        "gradient-200":
+          "linear-gradient(0deg, #6C5811, #6C5811), linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4))",
       },
     },
   },

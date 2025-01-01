@@ -5,14 +5,16 @@ import PepleIcon from "@/public/assets/icons/people.svg";
 import TrophyIcon from "@/public/assets/icons/trophy.svg";
 import DateIcon from "@/public/assets/icons/clock.svg";
 import ArrowIcon from "@/public/assets/icons/arrow.svg";
-import Image from "next/image";
-import Link from "next/link";
 
+import Link from "next/link";
+import ReactIcon from "@/public/assets/icons/reaction.svg";
+import Image from "next/image";
 import SectionRoadMap from "./SectionRoadMap";
 import SectionInfo from "./SectionInfo";
 import SectionQuestion from "./SectionQuestion";
 import FadeInVisible from "@/components/animations/FadeInvisible";
-import Section3D from "./Section3D";
+// import Section3D from "./Section3D";
+import PrimaryButton from "@/components/button/PrimaryButton";
 
 const IncubationProgram = () => {
   const ListData = [
@@ -76,9 +78,13 @@ const IncubationProgram = () => {
           href="https://docs.google.com/forms/d/12UI4xQX0-qk1CGrLYKB17AZrMaMi3_YW10VeQLKDxXE/preview?edit_requested=true"
           target="_blank"
         >
-          <button className="bg-gradient-100 px-4 py-2 rounded-md font-bold hover:opacity-50">
+          <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
+            <Image src={ReactIcon} height={24} width={24} alt="React join us" />
+            <p>Register </p>
+          </PrimaryButton>
+          {/* <button className="btn-primary px-4 py-2 rounded-md font-bold hover:opacity-90">
             Register Now
-          </button>
+          </button> */}
         </Link>
       </div>
 
