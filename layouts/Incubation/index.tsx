@@ -91,9 +91,9 @@ const IncubationProgram = () => {
       <FadeInVisible>
         <SectionQuestion />
       </FadeInVisible>
-      <FadeInVisible>
+      {/* <FadeInVisible>
         <Section3D />
-      </FadeInVisible>
+      </FadeInVisible> */}
     </div>
   );
 };
