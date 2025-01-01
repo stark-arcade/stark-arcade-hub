@@ -2,11 +2,8 @@ import Link from "next/link";
 import React from "react";
 import { AiOutlineDiscord } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
-import PrimaryButton from "../button/PrimaryButton";
-import ConnectWalletButton from "../button/ConnectWalletButton";
-import ReactIcon from "@/public/assets/icons/reaction.svg";
-import Image from "next/image";
-const NavRight = () => {
+
+const NavSocial = () => {
   const navSocial = [
     {
       name: "Discord",
@@ -31,13 +28,10 @@ const NavRight = () => {
           {item.icon}
         </Link>
       ))}
-      <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
-        <Image src={ReactIcon} height={24} width={24} alt="React join us" />
-        <p>Join Us</p>
-      </PrimaryButton>
-      <ConnectWalletButton />
+
+      {/* <ConnectWalletButton /> */}
     </div>
   );
 };
 
-export default NavRight;
+export default NavSocial;

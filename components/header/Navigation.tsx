@@ -1,6 +1,7 @@
 import React from "react";
 import GameIcon from "@/public/assets/icons/controller_game.svg";
 import PodiumIcon from "@/public/assets/icons/podium.svg";
+import IncubationIcon from "@/public/assets/icons/plant.svg";
 import Link from "next/link";
 import Image from "next/image";
 const Navigation = () => {
@@ -10,10 +11,15 @@ const Navigation = () => {
       url: "/games",
       icon: GameIcon,
     },
+    // {
+    //   name: "Leaderboard",
+    //   url: "/leaderboard",
+    //   icon: PodiumIcon,
+    // },
     {
-      name: "Leaderboard",
-      url: "/leaderboard",
-      icon: PodiumIcon,
+      name: "Incubation Program",
+      url: "/ArcadeGarden",
+      icon: IncubationIcon,
     },
   ];
   return (

@@ -4,9 +4,9 @@ import React, { PropsWithChildren } from "react";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="font-sans">
+    <div className="font-sans min-h-screen flex flex-col">
       <Header />
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   );

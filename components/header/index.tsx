@@ -2,8 +2,12 @@
 import React, { useEffect } from "react";
 import LogoStarkArcade from "./Logo";
 import Navigation from "./Navigation";
-import NavRight from "./NavRight";
 
+import PrimaryButton from "../button/PrimaryButton";
+
+import ReactIcon from "@/public/assets/icons/reaction.svg";
+import Image from "next/image";
+import NavSocial from "./NavSocial";
 const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +29,13 @@ const Header = () => {
       <div className="container mx-auto flex justify-between py-6">
         <LogoStarkArcade />
         <Navigation />
-        <NavRight />
+        <div className="flex items-center gap-6">
+          <NavSocial />
+          <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
+            <Image src={ReactIcon} height={24} width={24} alt="React join us" />
+            <p>Join Us</p>
+          </PrimaryButton>
+        </div>
       </div>
     </header>
   );

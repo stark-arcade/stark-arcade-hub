@@ -17,6 +17,8 @@ export default {
         background: "var(--background)",
         primary: {
           100: "#A1A1AA",
+          200: "#E4E4E7",
+          600: "#52525B",
         },
       },
       backgroundImage: {
