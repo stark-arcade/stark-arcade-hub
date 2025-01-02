@@ -14,7 +14,7 @@ import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
 } from "./EmblaSelectedDisplay";
-import Image from "next/image";
+
 interface IProps {
   children: React.ReactNode;
   className?: string;
@@ -66,21 +66,21 @@ const EmblaCarousel = ({ children, className }: IProps) => {
         </div>
         <div className="absolute top-0 right-0 z-[100] h-[90%] flex flex-col justify-end">
           <div>
-            <button
+            {/* <button
               aria-label=""
               className="icon_btn"
               onClick={() => onPrevButtonClick()}
               disabled={prevBtnDisabled}
             >
-              {/* <ArrowIcon className="rotate-[-90deg]" /> */}
               <Image
                 src={ArrowIcon.src}
+                className="rotate-[-90deg]"
                 alt="Arrow Icon"
                 height={24}
                 width={24}
               />
-            </button>
-            <button
+            </button> */}
+            {/* <button
               aria-label=""
               className="icon_btn"
               onClick={() => onNextButtonClick()}
@@ -89,18 +89,11 @@ const EmblaCarousel = ({ children, className }: IProps) => {
               <Image
                 src={ArrowIcon.src}
                 alt="Arrow Icon"
+                className="rotate-[-90deg] text-white"
                 height={24}
                 width={24}
               />
-            </button>
-            {/* <button
-      aria-label=""
-      className="icon_btn"
-      onClick={() => onLastButtonClick()}
-      disabled={nextBtnDisabled}
-    >
-      <DoubleArrowsIcon className="rotate-[90deg]" />
-    </button> */}
+            </button> */}
           </div>
         </div>
       </div>

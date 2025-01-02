@@ -14,7 +14,7 @@ const SectionQuestion = () => {
       description: "Host",
     },
     {
-      title: "Starknet",
+      title: "Starknet Foundation ",
       icon: StarknetIcon,
       description: "Sponsor",
       link: "https://www.starknet.io/",

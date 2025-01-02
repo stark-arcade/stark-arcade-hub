@@ -2,6 +2,11 @@ import React from "react";
 import ArtNotFound from "@/public/assets/arts/404.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Page Not Found | StarkArcade ",
+  description: "Page Not Found | StarkArcade ",
+};
 const NotFound = () => {
   return (
     <div className="container mx-auto py-[120px] text-center flex flex-col items-center">

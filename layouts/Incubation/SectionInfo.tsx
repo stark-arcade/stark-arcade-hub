@@ -5,7 +5,7 @@ const SectionInfo = () => {
   return (
     <div className="flex flex-col items-center text-white">
       <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full">
-        About Starknet Garden
+        About Arcade Garden
       </div>
       <div className="flex flex-col gap-6 relative">
         <div className="absolute  -right-16 h-full w-auto">
