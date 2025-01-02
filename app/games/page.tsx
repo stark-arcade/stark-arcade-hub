@@ -1,8 +1,7 @@
-import GamePage from '@/layouts/Games';
-import React from 'react';
+import React from "react";
 
 const Games = () => {
-  return <GamePage />;
+  return <div>Games</div>;
 };
 
 export default Games;
