@@ -7,12 +7,12 @@ const NavSocial = () => {
   const navSocial = [
     {
       name: "Discord",
-      url: "https://discord.gg",
+      url: "https://discord.gg/kJawPz3j",
       icon: <AiOutlineDiscord className="h-6 w-6" />,
     },
     {
       name: "Twitter",
-      url: "https://discord.gg",
+      url: "https://x.com/starkarcade",
       icon: <FaXTwitter className="h-6 w-6" />,
     },
   ];
@@ -23,7 +23,7 @@ const NavSocial = () => {
           href={item.url}
           target="_blank"
           key={`social-${item.name}-navright`}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 hover:opacity-70"
         >
           {item.icon}
         </Link>

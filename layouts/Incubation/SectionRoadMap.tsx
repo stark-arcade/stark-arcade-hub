@@ -1,7 +1,7 @@
-import NavSocial from "@/components/header/NavSocial";
 import React from "react";
 import PlanetStepper from "./PlaneSteper";
-
+import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 const SectionRoadMap = () => {
   return (
     <div className="flex flex-col items-center gap-4 pt-8">
@@ -13,7 +13,14 @@ const SectionRoadMap = () => {
         ahead.
       </p>
       <div className="py-8">
-        <NavSocial />
+        <Link
+          href={`https://x.com/starkarcade`}
+          target="_blank"
+          key={`social-{item.name}-navright`}
+          className="flex items-center gap-2 hover:opacity-70"
+        >
+          <FaXTwitter className="h-6 w-6" />
+        </Link>
       </div>
       <PlanetStepper />
     </div>

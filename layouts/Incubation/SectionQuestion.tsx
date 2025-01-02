@@ -6,20 +6,9 @@ import StarkArcadeIcon from "@/public/assets/logo/logo.svg";
 import GradientCard from "@/components/card/GradientCard";
 import Link from "next/link";
 import FrameLineArt from "@/public/assets/arts/frame_art_2.svg";
+import { AiOutlineDiscord, AiOutlineGlobal } from "react-icons/ai";
+import { FaXTwitter } from "react-icons/fa6";
 const SectionQuestion = () => {
-  const ListSponsor = [
-    {
-      title: "Arcade Garden",
-      icon: StarkArcadeIcon,
-      description: "Host",
-    },
-    {
-      title: "Starknet Foundation ",
-      icon: StarknetIcon,
-      description: "Sponsor",
-      link: "https://www.starknet.io/",
-    },
-  ];
   const ListFrequentlyQuestion = [
     {
       title: "Are there any limits to team size?",
@@ -28,7 +17,7 @@ const SectionQuestion = () => {
     {
       title: "How does team formation work in the hackathon?",
       description:
-        "Team formation will take place on the form google submission.",
+        "Team formation will take place on the google form submission.",
     },
     {
       title: "Are there any eligibility requirements for participants?",
@@ -49,17 +38,36 @@ const SectionQuestion = () => {
       description:
         "Judging is done by the sponsors based on judging and acceptance criteria of the challenges.",
     },
-    {
-      title: "What happens if I win a Challenge?",
-      description:
-        "If you win a challenge, the sponsor or hackathon organizer will reach out or send your prize money directly to your submitted wallet address.",
-    },
   ];
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  const navSocialArcade = [
+    {
+      name: "Discord",
+      url: "https://discord.gg/kJawPz3j",
+      icon: <AiOutlineDiscord className="h-6 w-6" />,
+    },
+    {
+      name: "Twitter",
+      url: "https://x.com/starkarcade",
+      icon: <FaXTwitter className="h-6 w-6" />,
+    },
+  ];
+  const navSocialFoundation = [
+    {
+      name: "Website",
+      url: "https://www.starknet.io/",
+      icon: <AiOutlineGlobal className="h-6 w-6" />,
+    },
+    {
+      name: "Twitter",
+      url: "https://x.com/starkarcade",
+      icon: <FaXTwitter className="h-6 w-6" />,
+    },
+  ];
   return (
     <div className="flex flex-col items-center pt-6">
       <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full">
@@ -67,40 +75,59 @@ const SectionQuestion = () => {
       </div>
       <p>These amazing sponsors made it all happen</p>
       <div className="flex gap-10 pt-6">
-        {ListSponsor.map((item, index) => (
-          <GradientCard key={`sponsor-${item.title}-${index}`}>
-            {item.link ? (
-              <Link
-                href={item.link}
-                className="flex flex-col items-center gap-2 flex-1 min-w-[150px]"
-              >
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  height={100}
-                  width={100}
-                />
-                <div className="flex flex-col">
-                  <p className="font-bold text-lg">{item.title}</p>
-                  <p>{item.description}</p>
-                </div>
-              </Link>
-            ) : (
-              <div className="flex flex-col items-center gap-2 min-w-[150px]">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  height={100}
-                  width={100}
-                />
-                <div className="flex flex-col">
-                  <p className="font-bold text-lg">{item.title}</p>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            )}
-          </GradientCard>
-        ))}
+        <GradientCard>
+          <div className="flex flex-col items-center gap-2 flex-1 w-[180px]">
+            <Image
+              src={StarkArcadeIcon}
+              alt={"Starknet Foundation"}
+              height={100}
+              width={100}
+            />
+            <div className="flex flex-col">
+              <p className="font-bold text-lg">Arcade Garden</p>
+              <p>Host</p>
+            </div>
+            <div className="flex items-center gap-3 z-20">
+              {navSocialArcade.map((item) => (
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  key={`social-${item.name}-navright`}
+                  className="flex items-center gap-2 hover:opacity-70"
+                >
+                  {item.icon}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </GradientCard>
+
+        <GradientCard>
+          <div className="flex flex-col items-center gap-2 flex-1 w-[180px]">
+            <Image
+              src={StarknetIcon}
+              alt={"Starknet Foundation"}
+              height={100}
+              width={100}
+            />
+            <div className="flex flex-col">
+              <p className="font-bold text-lg">Starknet Foundation</p>
+              <p>Sponsor</p>
+            </div>
+            <div className="flex items-center gap-3 z-20">
+              {navSocialFoundation.map((item) => (
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  key={`social-${item.name}-navright`}
+                  className="flex items-center gap-2 hover:opacity-70"
+                >
+                  {item.icon}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </GradientCard>
       </div>
       {/** Frentquently Question */}
       <div className="font-paladin text-[32px] gradient_text bg-gradient-100 w-full mt-12 mb-6">

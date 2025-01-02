@@ -18,7 +18,7 @@ const Navigation = () => {
     // },
     {
       name: "Incubation Program",
-      url: "/ArcadeGarden",
+      url: "/garden",
       icon: IncubationIcon,
     },
   ];

@@ -26,12 +26,12 @@ const IncubationProgram = () => {
     {
       title: "People",
       icon: PepleIcon,
-      description: "290 participants",
+      description: "22 participants",
     },
     {
       title: "Trophy",
       icon: TrophyIcon,
-      description: "25,000+ USD in STRK",
+      description: "$5,000 Grand Finalist + Seed Grant Eligibility",
     },
     // {
     //   title: "Date",
@@ -49,7 +49,7 @@ const IncubationProgram = () => {
           width={166}
         />
         <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
-          StarkARCADE GARDEN 2025
+          ARCADE GARDEN 2025 Cohort: Batch I
         </div>
         <p>
           Empowering developers to build scalable, engaging on-chain gaming
