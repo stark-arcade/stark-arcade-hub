@@ -15,7 +15,7 @@ const GameIncubator = () => {
             {ListGame.map((game, index) => (
               <div
                 key={`game-intro${index}`}
-                className="flex flex-wrap lg:flex-nowrap gap-4 md:gap-[70px] flex-[0_0_100%] p-4"
+                className="flex flex-wrap justify-between lg:flex-nowrap gap-4 md:gap-[70px] flex-[0_0_100%] p-4"
               >
                 <div className="flex flex-col gap-4 lg:gap-[72px] p-4 h-full z-10">
                   <div className="relative w-[60px] h-[60px] md:w-[120px] md:h-[120px]">
@@ -73,7 +73,9 @@ const GameIncubator = () => {
                   <div
                     className="hidden lg:block rounded-3xl overflow-hidden w-[600px] h-[600px] bg-cover bg-center bg-no-repeat mt-4"
                     style={{
-                      backgroundImage: `url(${game.banner})`,
+                      backgroundImage: `url(${
+                        game.thumbnail ? game.thumbnail : game.banner
+                      })`,
                     }}
                   ></div>
                 </FadeInVisible>

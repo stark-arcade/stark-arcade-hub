@@ -36,13 +36,13 @@ const PrimaryCard = ({ title, link, image, description }: IProps) => {
           </div>
 
           {link ? (
-            <Link href={link}>
+            <Link href={link} target="_blank">
               <button className="bg-gradient-100 px-4 py-2 rounded-md font-bold w-[164px]">
-                <span>Play</span>
+                <span>Play Now</span>
               </button>
             </Link>
           ) : (
-            <button className="bg-gradient-100 px-4 py-2 rounded-md font-bold w-[164px]">
+            <button className="bg-gradient-200 px-4 py-2 rounded-md font-bold w-[164px]">
               <span>Up Comming</span>
             </button>
           )}
