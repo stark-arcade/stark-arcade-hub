@@ -1,15 +1,15 @@
 import Link from "next/link";
 import React from "react";
-import { AiOutlineDiscord } from "react-icons/ai";
+
 import { FaXTwitter } from "react-icons/fa6";
 
 const NavSocial = () => {
   const navSocial = [
-    {
-      name: "Discord",
-      url: "https://discord.gg/kJawPz3j",
-      icon: <AiOutlineDiscord className="h-6 w-6" />,
-    },
+    // {
+    //   name: "Discord",
+    //   url: "https://discord.gg/kJawPz3j",
+    //   icon: <AiOutlineDiscord className="h-6 w-6" />,
+    // },
     {
       name: "Twitter",
       url: "https://x.com/starkarcade",

@@ -11,7 +11,7 @@ const PlanetStepper = () => {
     },
     {
       title: "Close registration",
-      date: "> Jan 27",
+      date: "Jan 27",
       active: false,
     },
     {
@@ -20,12 +20,12 @@ const PlanetStepper = () => {
       active: false,
     },
     {
-      title: "Demo Day |",
+      title: "Demo Day I",
       date: "March 11",
       active: false,
     },
     {
-      title: "Demo Day ||",
+      title: "Demo Day II",
       date: "March 13",
       active: false,
     },

@@ -52,7 +52,7 @@ const IncubationProgram = () => {
           ARCADE GARDEN 2025
         </div>
         <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
-          Cohort: Batch I
+          Cohort I: Batch I
         </div>
         <p>
           Empowering developers to build scalable, engaging on-chain gaming
