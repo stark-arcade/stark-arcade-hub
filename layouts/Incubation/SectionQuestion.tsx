@@ -6,7 +6,7 @@ import StarkArcadeIcon from "@/public/assets/logo/logo.svg";
 import GradientCard from "@/components/card/GradientCard";
 import Link from "next/link";
 import FrameLineArt from "@/public/assets/arts/frame_art_2.svg";
-import { AiOutlineDiscord, AiOutlineGlobal } from "react-icons/ai";
+import { AiOutlineGlobal } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 const SectionQuestion = () => {
   const ListFrequentlyQuestion = [
@@ -45,11 +45,11 @@ const SectionQuestion = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   const navSocialArcade = [
-    {
-      name: "Discord",
-      url: "https://discord.gg/kJawPz3j",
-      icon: <AiOutlineDiscord className="h-6 w-6" />,
-    },
+    // {
+    //   name: "Discord",
+    //   url: "https://discord.gg/kJawPz3j",
+    //   icon: <AiOutlineDiscord className="h-6 w-6" />,
+    // },
     {
       name: "Twitter",
       url: "https://x.com/starkarcade",
@@ -64,7 +64,7 @@ const SectionQuestion = () => {
     },
     {
       name: "Twitter",
-      url: "https://x.com/starkarcade",
+      url: "https://x.com/StarknetFndn",
       icon: <FaXTwitter className="h-6 w-6" />,
     },
   ];

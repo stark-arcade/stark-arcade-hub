@@ -49,7 +49,10 @@ const IncubationProgram = () => {
           width={166}
         />
         <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
-          ARCADE GARDEN 2025 Cohort: Batch I
+          ARCADE GARDEN 2025
+        </div>
+        <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
+          Cohort: Batch I
         </div>
         <p>
           Empowering developers to build scalable, engaging on-chain gaming

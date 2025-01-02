@@ -30,7 +30,7 @@ const PlanetStepper = () => {
       active: false,
     },
     {
-      title: "Announce Finalists.",
+      title: "Announce Finalists",
       date: "March 14",
       active: false,
     },
