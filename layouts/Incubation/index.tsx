@@ -40,21 +40,22 @@ const IncubationProgram = () => {
     // },
   ];
   return (
-    <div className="container mx-auto pt-[80px] max-w-5xl pb-[100px]">
+    <div className="container mx-auto pt-[80px] max-w-5xl pb-[100px] px-4 md:px-0">
       <div className="flex flex-col items-center gap-4 pb-8 border-b-[1px] border-b-primary-600">
         <Image
           src={ArcadeGradient}
           alt="Arcade Gradient"
           height={166}
           width={166}
+          className="md:h-[166px] md:w-[166px] h-[120px] w-[120px]"
         />
-        <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
+        <div className="font-paladin text-2xl md:text-[32px] gradient_text bg-gradient-100 text-center">
           ARCADE GARDEN 2025
         </div>
-        <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
+        <div className="font-paladin text-2xl md:text-[32px] gradient_text bg-gradient-100 text-center">
           Cohort I: Batch I
         </div>
-        <p>
+        <p className="text-center">
           Empowering developers to build scalable, engaging on-chain gaming
           experiences on Starknet.
         </p>

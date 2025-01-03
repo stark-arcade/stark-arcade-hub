@@ -20,7 +20,7 @@ const UpcomingSection = () => {
         List of games we pick for you based on your interactions on Starkarcade
       </p>
 
-      <EmblaCarousel className="gap-[24px]">
+      <EmblaCarousel className="md:gap-[24px] gap-4">
         {ListUpComming.map((game, index) => (
           <PrimaryCard
             key={`${index}-card-${game.name}`}

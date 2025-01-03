@@ -26,7 +26,7 @@ const Header = () => {
   }, []);
   return (
     <header className="sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between py-6 ">
+      <div className="container mx-auto flex justify-between py-6 px-4 md:px-0">
         <LogoStarkArcade />
         <Navigation />
         <div className="flex items-center gap-6">

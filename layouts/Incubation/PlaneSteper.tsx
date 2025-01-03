@@ -68,7 +68,7 @@ const PlanetStepper = () => {
               </div>
 
               <h3
-                className={`mt-4 font-medium
+                className={`mt-4 font-medium md:text-base text-xs
                 ${step.active ? "text-white" : "text-gray-500"}`}
               >
                 {step.title}

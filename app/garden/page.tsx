@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
   title: "Arcade Garden 2025 ",
-  description: "ArcadeGarden - Incubation Program",
+  description:
+    "Get ready for the inaugural Cohort of Arcade Garden, brought to you by StarkArcade and the Starknet Foundation.",
 };
 const ArcadeGarden = () => {
   return <IncubationProgram />;

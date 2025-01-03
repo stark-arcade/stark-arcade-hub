@@ -13,7 +13,7 @@ const LogoStarkArcade = () => {
           alt="Stark Arcade Logo Text"
           width={100}
           height={12}
-          className="w-auto"
+          className="w-auto hidden md:block"
         />
       </div>
     </Link>
