@@ -40,10 +40,18 @@ const HowToJoinSection = () => {
       <div className="flex items-center w-full justify-between py-6">
         {ListJoin.map((item, index) => {
           return (
-            <div key={index} className="flex flex-col items-center ">
-              <Image src={item.icon} alt={item.title} height={80} width={80} />
-              <p className="text-2xl font-bold mt-3 mb-1">{item.title}</p>
-              <p>{item.content}</p>
+            <div key={index} className="flex flex-col items-center flex-wrap">
+              <Image
+                src={item.icon}
+                alt={item.title}
+                height={80}
+                width={80}
+                className="h-[40px] md:h-[80px]"
+              />
+              <p className=" text-base md:text-2xl font-bold mt-3 mb-1">
+                {item.title}
+              </p>
+              <p className="text-sm md:text-base text-center">{item.content}</p>
             </div>
           );
         })}
