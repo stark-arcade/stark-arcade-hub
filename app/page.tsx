@@ -10,13 +10,13 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-      <div className="px-10 ">
+      <div className="md:px-10 px-4">
         <Image
           src="/assets/arts/bg_intro_1.png"
           alt="hero"
           width={1920}
           height={368}
-          className="object-cover h-[368px] w-full rounded-2xl"
+          className="object-cover h-[124px] md:h-[368px] w-full rounded-2xl"
         />
       </div>
       <UpcomingSection />

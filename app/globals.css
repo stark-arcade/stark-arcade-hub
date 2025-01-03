@@ -74,14 +74,22 @@ body {
   transition: flex-grow 0.3s ease;
   cursor: pointer;
 }
-@media (max-width: 1024px) { /* Adjust the max-width as needed for your mobile breakpoint */
+@media (max-width: 1024px) {
+  /* Adjust the max-width as needed for your mobile breakpoint */
   .embla__slide {
     flex: 0 0 50%; /* Full width for mobile */
   }
+  .title_text {
+    font-size: 28px;
+  }
 }
-@media (max-width: 768px) { /* Adjust the max-width as needed for your mobile breakpoint */
+@media (max-width: 768px) {
+  /* Adjust the max-width as needed for your mobile breakpoint */
   .embla__slide {
     flex: 0 0 100%; /* Full width for mobile */
+  }
+  .title_text {
+    font-size: 24px;
   }
 }
 .embla__buttons {

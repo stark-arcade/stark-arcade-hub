@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <div className="h-screen  overflow-hidden">
       <VideoBgArt />
-      <div className="container mx-auto py-[120px]">
+      <div className="container mx-auto py-[120px] px-4 md:px-0">
         <div className="font-paladin text-[32px] max-w-[500px]">
           {`Accelerate the world's transition to `}
           <span className="gradient_text bg-gradient-100">

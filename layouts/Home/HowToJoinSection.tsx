@@ -29,7 +29,7 @@ const HowToJoinSection = () => {
     },
   ];
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 md:px-0 ">
       <div className="flex items-center gap-2 ">
         <Image src={GhostIcon} alt="Ghost Icon" height={40} width={40} />
         <p className="title_text">How to join</p>

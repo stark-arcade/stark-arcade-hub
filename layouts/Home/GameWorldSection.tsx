@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 const GameWorldSection = () => {
   return (
-    <div className="container mx-auto my-6">
+    <div className="container mx-auto my-6 px-4 md:px-0">
       <div className="flex items-center gap-2">
         <Image
           alt="Fire Icon"
