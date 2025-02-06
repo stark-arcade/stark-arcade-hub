@@ -104,7 +104,7 @@ const SectionQuestion = () => {
         </GradientCard>
 
         <GradientCard>
-          <div className="flex flex-col justify-center h-full items-center gap-2 flex-1 md:w-[180px w-[120px]">
+          <div className="flex flex-col justify-center h-full items-center gap-2 flex-1 md:w-[180px] w-[120px]">
             <Image
               src={StarknetIcon}
               alt={"Starknet Foundation"}

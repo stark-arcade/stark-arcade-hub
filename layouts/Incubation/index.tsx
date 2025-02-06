@@ -78,10 +78,7 @@ const IncubationProgram = () => {
             </div>
           </div>
         </div>
-        <Link
-          href="https://docs.google.com/forms/d/12UI4xQX0-qk1CGrLYKB17AZrMaMi3_YW10VeQLKDxXE/preview?edit_requested=true"
-          target="_blank"
-        >
+        <Link href="https://forms.gle/rRyWMDCbK381wz999" target="_blank">
           <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
             <Image src={ReactIcon} height={24} width={24} alt="React join us" />
             <p>Register </p>
