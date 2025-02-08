@@ -56,12 +56,7 @@ const EmblaCarousel = ({ children, className }: IProps) => {
         } ${className}`}
         ref={emblaRef}
       >
-        <div
-          className={`embla__container ${className}`}
-          style={{
-            paddingRight: "60px",
-          }}
-        >
+        <div className={`embla__container ${className} md:pr-[60px] pr-0`}>
           {children}
         </div>
         <div className="absolute top-0 right-0 z-[100] h-[90%] flex flex-col justify-end">
