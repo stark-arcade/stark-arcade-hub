@@ -52,7 +52,7 @@ const IncubationProgram = () => {
           ARCADE GARDEN 2025
         </div>
         <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
-          Cohort I: Batch I
+          Cohort II: Batch II
         </div>
         <p>
           Empowering developers to build scalable, engaging on-chain gaming
@@ -71,23 +71,17 @@ const IncubationProgram = () => {
           <div className="flex items-center gap-4">
             <Image src={DateIcon} alt="Date" height={24} width={24} />
             <div className="flex  gap-2 items-center">
-              <p className="font-bold text-sm">January 2, 2025</p>
+              <p className="font-bold text-sm">......, 2025</p>
               <Image src={ArrowIcon} alt="Arrow" height={16} width={16} />
-              <p className="font-bold text-sm">January 27, 2025</p>
+              <p className="font-bold text-sm">......, 2025</p>
             </div>
           </div>
         </div>
-        <Link
-          href="https://docs.google.com/forms/d/12UI4xQX0-qk1CGrLYKB17AZrMaMi3_YW10VeQLKDxXE/preview?edit_requested=true"
-          target="_blank"
-        >
+        <Link href="https://forms.gle/dexZ2SUxcwx9RLWn7" target="_blank">
           <PrimaryButton className="font-bold flex items-center gap-2 font-sm hover:opacity-70">
             <Image src={ReactIcon} height={24} width={24} alt="React join us" />
             <p>Register </p>
           </PrimaryButton>
-          {/* <button className="btn-primary px-4 py-2 rounded-md font-bold hover:opacity-90">
-            Register Now
-          </button> */}
         </Link>
       </div>
 

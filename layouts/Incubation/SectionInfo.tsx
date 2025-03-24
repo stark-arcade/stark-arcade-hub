@@ -32,9 +32,7 @@ const SectionInfo = () => {
         </p>
 
         <div className="flex flex-col gap-6 border-b-[1px] border-b-primary-600 pb-6">
-          <p className="font-[700] text-xl ">
-            Submission Dates: January 2-27, 2025
-          </p>
+          <p className="font-[700] text-xl ">Submission Dates: Upcoming</p>
           <p>
             Get ready for the inaugural Cohort of Arcade Garden, brought to you
             by StarkArcade and the Starknet Foundation. This two-month event

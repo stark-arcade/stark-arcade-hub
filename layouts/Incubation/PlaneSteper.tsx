@@ -6,32 +6,32 @@ const PlanetStepper = () => {
   const steps = [
     {
       title: "Open Registration",
-      date: "Jan 02",
+      date: "Upcoming",
       active: true,
     },
     {
       title: "Close registration",
-      date: "Jan 27",
+      date: "......",
       active: false,
     },
     {
       title: "Base Camp Batch I",
-      date: "Feb 06",
+      date: "......",
       active: false,
     },
     {
       title: "Demo Day I",
-      date: "March 11",
+      date: "......",
       active: false,
     },
     {
       title: "Demo Day II",
-      date: "March 13",
+      date: "......",
       active: false,
     },
     {
       title: "Announce Finalists",
-      date: "March 14",
+      date: "......",
       active: false,
     },
   ];
