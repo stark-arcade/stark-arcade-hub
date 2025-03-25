@@ -6,7 +6,7 @@ const HeroSection = () => {
     <div className="h-screen  overflow-hidden">
       {/* <VideoBgArt /> */}
       <Image
-        src="/assets/arts/bg_door.png"
+        src="/assets/hero_banner.gif"
         alt="hero"
         width={1920}
         height={368}
