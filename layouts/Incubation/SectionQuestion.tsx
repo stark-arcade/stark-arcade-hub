@@ -70,11 +70,11 @@ const SectionQuestion = () => {
   ];
   return (
     <div className="flex flex-col items-center pt-6">
-      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full">
+      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full text-center">
         Starknet Garden sponsors
       </div>
       <p>These amazing sponsors made it all happen</p>
-      <div className="flex gap-10 pt-6">
+      <div className="flex gap-10 pt-6 md:flex-nowrap flex-wrap justify-center">
         <GradientCard>
           <div className="flex flex-col items-center gap-2 flex-1 w-[180px]">
             <Image
@@ -82,9 +82,10 @@ const SectionQuestion = () => {
               alt={"Starknet Foundation"}
               height={100}
               width={100}
+              className="md:w-[100px] w-[60px]"
             />
             <div className="flex flex-col">
-              <p className="font-bold text-lg">Arcade Garden</p>
+              <p className="font-bold text-lg">STARK Arcade Basecamp</p>
               <p>Host</p>
             </div>
             <div className="flex items-center gap-3 z-20">
@@ -130,7 +131,7 @@ const SectionQuestion = () => {
         </GradientCard>
       </div>
       {/** Frentquently Question */}
-      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 w-full mt-12 mb-6">
+      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 w-full mt-12 mb-6 text-center">
         Frequently Asked Questions
       </div>
       <div className="relative w-full">
@@ -165,14 +166,14 @@ const SectionQuestion = () => {
           alt="Frame Line Art"
           width={1}
           height={1}
-          className="absolute -right-20 h-full w-auto top-0"
+          className="absolute -right-20 h-full w-auto top-0 md:block hidden"
         />
         <Image
           src={FrameLineArt}
           alt="Frame Line Art"
           width={1}
           height={1}
-          className="absolute -left-20 h-full w-auto top-0"
+          className="absolute -left-20 h-full w-auto top-0 md:block hidden"
         />
       </div>
     </div>

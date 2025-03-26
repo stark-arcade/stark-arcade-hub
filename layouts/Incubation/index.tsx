@@ -21,13 +21,13 @@ const IncubationProgram = () => {
     {
       title: "location",
       icon: LocationIcon,
-      description: "VietNam",
+      description: " Starknet Gaming House, HCM City, Vietnam",
     },
-    {
-      title: "People",
-      icon: PepleIcon,
-      description: "22 participants",
-    },
+    // {
+    //   title: "People",
+    //   icon: PepleIcon,
+    //   description: "22 participants",
+    // },
     {
       title: "Trophy",
       icon: TrophyIcon,
@@ -41,7 +41,7 @@ const IncubationProgram = () => {
   ];
   return (
     <div className="container mx-auto pt-[80px] max-w-5xl pb-[100px]">
-      <div className="flex flex-col items-center gap-4 pb-8 border-b-[1px] border-b-primary-600">
+      <div className="flex flex-col items-center gap-4 pb-8 border-b-[1px] border-b-primary-600 text-center">
         <Image
           src={ArcadeGradient}
           alt="Arcade Gradient"
@@ -52,11 +52,11 @@ const IncubationProgram = () => {
           ARCADE GARDEN 2025
         </div>
         <div className="font-paladin text-[32px] gradient_text bg-gradient-100">
-          Cohort II: Batch II
+          BASECAMP II
         </div>
-        <p>
-          Empowering developers to build scalable, engaging on-chain gaming
-          experiences on Starknet.
+        <p className="text-center">
+          Empowering developers to build AI-powered Applications (GameFi, DeFi)
+          on Starknet.
         </p>
         <div className="flex flex-col gap-2">
           {ListData.map((item, index) => (
@@ -71,9 +71,9 @@ const IncubationProgram = () => {
           <div className="flex items-center gap-4">
             <Image src={DateIcon} alt="Date" height={24} width={24} />
             <div className="flex  gap-2 items-center">
-              <p className="font-bold text-sm">......, 2025</p>
+              <p className="font-bold text-sm">March 25, 2025</p>
               <Image src={ArrowIcon} alt="Arrow" height={16} width={16} />
-              <p className="font-bold text-sm">......, 2025</p>
+              <p className="font-bold text-sm">May 22, 2025</p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Favicon from "@/app/favicon.ico";
+import Banner from "@/public/assets/banner.png";
 import Layout from "@/layouts";
 const nutito_sans = Nunito_Sans({
   subsets: ["latin"],
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
       "Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens.",
     images: [
       {
-        url: "https://starkarcade.com/assets/banner/banner.png",
+        url: Banner.src,
         width: 1200,
         height: 600,
         type: "image/png",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     description:
       "Starknet Arcade Hub is a tribute to our NFT community and one of the largest mini-games hub for the Starknet Degens.",
     images: {
-      url: "https://starkarcade.com/assets/banner/banner.png",
+      url: Banner.src,
       alt: "StarkArcade Hub",
     },
     site: "https://starkarcade.com",

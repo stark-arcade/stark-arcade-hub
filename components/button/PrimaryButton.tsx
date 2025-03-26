@@ -24,7 +24,7 @@ const PrimaryButton = ({ sx, className, children }: IProps) => {
 
       <button
         type="button"
-        className="transtion group flex h-10 w-32 items-center justify-center rounded-md  bg-gradient-100 p-[2px] text-white duration-300 "
+        className="transtion group flex h-12 w-36 items-center justify-center rounded-md  bg-gradient-100 p-[2px] text-white duration-300 "
         {...sx}
       >
         <div

@@ -3,12 +3,12 @@ import FrameArtLine from "@/public/assets/arts/frame_art_1.svg";
 import Image from "next/image";
 const SectionInfo = () => {
   return (
-    <div className="flex flex-col items-center text-white">
-      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full">
-        About Arcade Garden
+    <div className="flex flex-col items-center text-white px-4 md:px-0">
+      <div className="font-paladin text-[32px] gradient_text bg-gradient-100 mb-6 w-full text-center">
+        About STARK Arcade Basecamp
       </div>
       <div className="flex flex-col gap-6 relative">
-        <div className="absolute  -right-16 h-full w-auto">
+        <div className="absolute  -right-16 h-full w-auto md:block hidden">
           <Image
             src={FrameArtLine.src}
             height={100}
@@ -17,7 +17,7 @@ const SectionInfo = () => {
             className="h-full w-auto"
           />
         </div>
-        <div className="absolute  -left-16 h-full w-auto">
+        <div className="absolute  -left-16 h-full w-auto md:block hidden">
           <Image
             src={FrameArtLine.src}
             height={100}
@@ -27,20 +27,21 @@ const SectionInfo = () => {
           />
         </div>
         <p className="text-2xl  font-bold text-center">
-          Arcade Garden 1st Cohort: Shaping the Future of Decentralized
+          STARK Arcade Basecamp 1st Cohort: Shaping the Future of Decentralized
           Technology!
         </p>
 
         <div className="flex flex-col gap-6 border-b-[1px] border-b-primary-600 pb-6">
           <p className="font-[700] text-xl ">Submission Dates: Upcoming</p>
           <p>
-            Get ready for the inaugural Cohort of Arcade Garden, brought to you
-            by StarkArcade and the Starknet Foundation. This two-month event
-            challenges developers, blockchain enthusiasts, and tech innovators
-            to explore and expand the limits of decentralized technologies.
-            Serving as an ideal precursor to the Starknet Hacker House, this
-            program offers participants the opportunity to demonstrate their
-            capabilities and develop innovative solutions using Starknet.
+            Get ready for the inaugural Cohort of STARK Arcade Basecamp, brought
+            to you by StarkArcade and the Starknet Foundation. This two-month
+            event challenges developers, blockchain enthusiasts, and tech
+            innovators to explore and expand the limits of decentralized
+            technologies. Serving as an ideal precursor to the Starknet Hacker
+            House, this program offers participants the opportunity to
+            demonstrate their capabilities and develop innovative solutions
+            using Starknet.
           </p>
         </div>
         <div className="flex flex-col gap-[22px]">
