@@ -50,7 +50,7 @@ const GameIncubator = () => {
                       {game.description}
                     </p>
                   </div>
-                  {game.link && (
+                  {/* {game.link && (
                     <a
                       href={game.link}
                       target="_blank"
@@ -67,7 +67,18 @@ const GameIncubator = () => {
                         <span className="ml-2">Play Now!</span>
                       </button>
                     </a>
-                  )}
+                  )} */}
+                  {/** !TODO REWMOVE */}
+                  <button className=" bg-gradient-200 text-red-600 px-6 py-2 rounded-lg hover:bg-gradient-to-r flex items-center disable opacity-80 font-bold ">
+                    <Image
+                      alt="Socket Icon"
+                      src={SocketIcon}
+                      height={24}
+                      width={24}
+                      className="w-6 h-6 transition-transform duration-300 group-hover:rotate-40"
+                    />
+                    <span className="ml-2">Under maintenance</span>
+                  </button>
                 </div>
                 <FadeInVisible>
                   <div

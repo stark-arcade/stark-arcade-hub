@@ -3,7 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Favicon from "@/app/favicon.ico";
-import Banner from "@/public/assets/banner.png";
+import Banner from "@/public/assets/banner.jpeg";
 import Layout from "@/layouts";
 const nutito_sans = Nunito_Sans({
   subsets: ["latin"],

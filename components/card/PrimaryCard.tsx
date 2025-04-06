@@ -1,4 +1,5 @@
-import Link from "next/link";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// import Link from "next/link";
 import React from "react";
 interface IProps {
   title: string;
@@ -35,7 +36,7 @@ const PrimaryCard = ({ title, link, image, description }: IProps) => {
             </p>
           </div>
 
-          {link ? (
+          {/* {link ? (
             <Link href={link} target="_blank">
               <button className="bg-gradient-100 px-4 py-2 rounded-md font-bold w-[164px]">
                 <span>Play Now</span>
@@ -45,7 +46,10 @@ const PrimaryCard = ({ title, link, image, description }: IProps) => {
             <button className="bg-gradient-200 px-4 py-2 rounded-md font-bold w-[164px]">
               <span>Up Comming</span>
             </button>
-          )}
+          )} */}
+          <button className=" bg-gradient-200 text-red-600 px-6 py-2 rounded-lg hover:bg-gradient-to-r flex items-center disable opacity-80 font-bold w-fit">
+            <span className="ml-2">Under maintenance</span>
+          </button>
         </div>
       </div>
     </div>
