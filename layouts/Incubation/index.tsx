@@ -1,7 +1,6 @@
 import React from "react";
 import ArcadeGradient from "@/public/assets/icons/substract_gradient.svg";
 import LocationIcon from "@/public/assets/icons/location.svg";
-import PepleIcon from "@/public/assets/icons/people.svg";
 import TrophyIcon from "@/public/assets/icons/trophy.svg";
 import DateIcon from "@/public/assets/icons/clock.svg";
 import ArrowIcon from "@/public/assets/icons/arrow.svg";
@@ -73,7 +72,7 @@ const IncubationProgram = () => {
             <div className="flex  gap-2 items-center">
               <p className="font-bold text-sm">March 25, 2025</p>
               <Image src={ArrowIcon} alt="Arrow" height={16} width={16} />
-              <p className="font-bold text-sm">May 22, 2025</p>
+              <p className="font-bold text-sm">May 27, 2025</p>
             </div>
           </div>
         </div>

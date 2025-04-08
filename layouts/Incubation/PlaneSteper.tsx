@@ -11,17 +11,22 @@ const PlanetStepper = () => {
     },
     {
       title: "Close registration",
-      date: "April 14",
+      date: "April 18",
       active: false,
     },
     {
-      title: "Base Camp Batch I",
-      date: "April 16",
+      title: "Grand Opening",
+      date: "April 23",
       active: false,
     },
     {
-      title: "Demo Day I",
-      date: "May 20",
+      title: "First Session",
+      date: "April 24",
+      active: false,
+    },
+    {
+      title: "Demo Day",
+      date: "May 27",
       active: false,
     },
     // {
